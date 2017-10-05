@@ -9,17 +9,18 @@ package modelo;
  *
  * @author Nery
  */
-public class Administrador {
+public class Administrador extends Usuario{
  
     private String email;
     private String senha;
-    private String usuarioCPF;
 
-    public Administrador(String email, String senha, String usuarioCPF) {
+    public Administrador(String email, String senha, String cpf, String nome, String dataNascimento, String sexo, String telCel, String telRes, String cep, String rua, String uf, String cidade) {
+        super(cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade);
         this.email = email;
         this.senha = senha;
-        this.usuarioCPF = usuarioCPF;
     }
+
+    
 
     public String getEmail() {
         return email;
@@ -35,14 +36,6 @@ public class Administrador {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getUsuarioCPF() {
-        return usuarioCPF;
-    }
-
-    public void setUsuarioCPF(String usuarioCPF) {
-        this.usuarioCPF = usuarioCPF;
     }
 
     

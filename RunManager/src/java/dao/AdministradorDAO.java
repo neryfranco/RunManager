@@ -26,7 +26,7 @@ public class AdministradorDAO {
         try{
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Administrador");
+            ResultSet rs = comando.executeQuery("select * from Administrador, Usuario where Administrador.Usuario_cpf = Usuario.cpf");
             while(rs.next()){
                 Administrador administrador = new Administrador (rs.getString("email"),
                 rs.getString("senha"), null);
