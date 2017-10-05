@@ -14,14 +14,26 @@ public class Administrador extends Usuario{
     private String email;
     private String senha;
 
-    public Administrador(String email, String senha, String cpf, String nome, String dataNascimento, String sexo, String telCel, String telRes, String cep, String rua, String uf, String cidade) {
+    public Administrador
+       (String email, 
+        String senha, 
+        String cpf, 
+        String nome, 
+        String dataNascimento, 
+        String sexo, 
+        String telCel, 
+        String telRes, 
+        String cep, 
+        String rua, 
+        String uf, 
+        String cidade) 
+    {
         super(cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade);
         this.email = email;
         this.senha = senha;
     }
 
     
-
     public String getEmail() {
         return email;
     }
@@ -38,8 +50,5 @@ public class Administrador extends Usuario{
         this.senha = senha;
     }
 
-    
-
-    
     
 }

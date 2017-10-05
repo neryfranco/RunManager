@@ -2,6 +2,26 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Ingresso.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Categoria.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Organizador.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Chip.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Boleto.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Percurso.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Corrida.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Ranking.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Camisa.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Pagamento.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Administrador.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Tapete.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Kit.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/BD.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Usuario.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Atleta.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/CartaoCredito.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/AdministradorDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Lote.java</file>
+        </group>
     </open-files>
 </project-private>

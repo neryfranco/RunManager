@@ -28,8 +28,19 @@ public class AdministradorDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from Administrador, Usuario where Administrador.Usuario_cpf = Usuario.cpf");
             while(rs.next()){
-                Administrador administrador = new Administrador (rs.getString("email"),
-                rs.getString("senha"), null);
+                Administrador administrador = new Administrador 
+               (rs.getString("email"),
+                rs.getString("senha"), 
+                rs.getString("cpf"),
+                rs.getString("nome"),
+                rs.getString("dataNasc"),
+                rs.getString("sexo"),
+                rs.getString("tel_cel"),
+                rs.getString("tel_res"),
+                rs.getString("cep"),
+                rs.getString("rua"),
+                rs.getString("uf"),
+                rs.getString("cidade"));
                 administradores.add(administrador);
             }
         } catch(SQLException e){
