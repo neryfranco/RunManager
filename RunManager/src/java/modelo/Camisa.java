@@ -12,9 +12,11 @@ package modelo;
 public class Camisa {
     
     private String tamanho;
+    private Kit kit;
 
-    public Camisa(String tamanho) {
+    public Camisa(String tamanho, Kit kit) {
         this.tamanho = tamanho;
+        this.kit = kit;
     }
 
     public String getTamanho() {
@@ -23,6 +25,14 @@ public class Camisa {
 
     public void setTamanho(String tamanho) {
         this.tamanho = tamanho;
+    }
+
+    public Kit getKit() {
+        return kit;
+    }
+
+    public void setKit(Kit kit) {
+        this.kit = kit;
     }
     
     

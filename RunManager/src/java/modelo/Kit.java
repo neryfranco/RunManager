@@ -47,6 +47,22 @@ public class Kit {
     public void setCamisa(Camisa camisa) {
         this.camisa = camisa;
     }
+
+    public int getChip_num() {
+        return chip_num;
+    }
+
+    public void setChip_num(int chip_num) {
+        this.chip_num = chip_num;
+    }
+
+    public int getCamisa_id() {
+        return camisa_id;
+    }
+
+    public void setCamisa_id(int camisa_id) {
+        this.camisa_id = camisa_id;
+    }
     
     
 }

@@ -19,6 +19,7 @@ public class Percurso {
     private List<Tapete> tapetes;
     
     private int categoria_id;
+    private List<Integer> tapetes_id;
 
     public Percurso(Categoria categoria, String itinerario, int distancia, List<Tapete> tapetes) {
         this.categoria = categoria;
@@ -67,5 +68,25 @@ public class Percurso {
     
     public void insertTapete(Tapete tapete) {
         this.tapetes.add(tapete);
+    }
+
+    public int getCategoria_id() {
+        return categoria_id;
+    }
+
+    public void setCategoria_id(int categoria_id) {
+        this.categoria_id = categoria_id;
+    }
+
+    public List<Integer> getTapetes_id() {
+        return tapetes_id;
+    }
+
+    public void setTapetes_id(List<Integer> tapetes_id) {
+        this.tapetes_id = tapetes_id;
+    }
+    
+    public void addTapeteID(int id){
+        this.tapetes_id.add(id);
     }
 }

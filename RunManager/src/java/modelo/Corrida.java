@@ -5,7 +5,6 @@
  */
 package modelo;
 
-import java.sql.Date;
 import java.util.List;
 
 /**
@@ -18,13 +17,15 @@ public class Corrida {
     private List<Percurso> percursos;
     private String localLargada;
     private String horaLargada;
-    private Date dataCorrida;
-    private Date dataRetiradaKit;
+    private String dataCorrida;
+    private String dataRetiradaKit;
     private String localRetiradaKit;
     private int duracaoLimite;
     private int numMaxParticipantes;
+    
+    private List<Integer> percursos_id;
 
-    public Corrida(String nome, List<Percurso> percursos, String localLargada, String horaLargada, Date dataCorrida, Date dataRetiradaKit, String localRetiradaKit, int duracaoLimite, int numMaxParticipantes) {
+    public Corrida(String nome, List<Percurso> percursos, String localLargada, String horaLargada, String dataCorrida, String dataRetiradaKit, String localRetiradaKit, int duracaoLimite, int numMaxParticipantes) {
         this.nome = nome;
         this.percursos = percursos;
         this.localLargada = localLargada;
@@ -68,19 +69,19 @@ public class Corrida {
         this.horaLargada = horaLargada;
     }
 
-    public Date getDataCorrida() {
+    public String getDataCorrida() {
         return dataCorrida;
     }
 
-    public void setDataCorrida(Date dataCorrida) {
+    public void setDataCorrida(String dataCorrida) {
         this.dataCorrida = dataCorrida;
     }
 
-    public Date getDataRetiradaKit() {
+    public String getDataRetiradaKit() {
         return dataRetiradaKit;
     }
 
-    public void setDataRetiradaKit(Date dataRetiradaKit) {
+    public void setDataRetiradaKit(String dataRetiradaKit) {
         this.dataRetiradaKit = dataRetiradaKit;
     }
 
@@ -108,5 +109,16 @@ public class Corrida {
         this.numMaxParticipantes = numMaxParticipantes;
     }
 
+    public List<Integer> getPercursos_id() {
+        return percursos_id;
+    }
+
+    public void setPercursos_id(List<Integer> percursos_id) {
+        this.percursos_id = percursos_id;
+    }
+    
+    public void addPercursoID(int id){
+        percursos_id.add(id);
+    }
     
 }

@@ -9,7 +9,7 @@ package modelo;
  *
  * @author Nery
  */
-class Usuario {
+public class Usuario {
     
     private String cpf;
     private String nome;
@@ -23,8 +23,8 @@ class Usuario {
     private String cidade;
 
     public Usuario(String cpf, String nome, String dataNascimento, String sexo, String telCel, String telRes, String cep, String rua, String uf, String cidade) {
-        this.nome = nome;
         this.cpf = cpf;
+        this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
         this.telCel = telCel;

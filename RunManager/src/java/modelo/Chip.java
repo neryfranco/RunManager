@@ -12,16 +12,14 @@ package modelo;
 public class Chip {
     
     private int numero;
-    private Atleta atleta;
     private int tempoCorrida;
     private Categoria categoria;
     
     private int percurso_id;
     private int kit_id;
 
-    public Chip(int numero, Atleta atleta, int tempoCorrida, Categoria categoria) {
+    public Chip(int numero, int tempoCorrida, Categoria categoria) {
         this.numero = numero;
-        this.atleta = atleta;
         this.tempoCorrida = tempoCorrida;
         this.categoria = categoria;
     }
@@ -34,13 +32,6 @@ public class Chip {
         this.numero = numero;
     }
 
-    public Atleta getAtleta() {
-        return atleta;
-    }
-
-    public void setAtleta(Atleta atleta) {
-        this.atleta = atleta;
-    }
 
     public int getTempoCorrida() {
         return tempoCorrida;
@@ -56,6 +47,22 @@ public class Chip {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public int getPercurso_id() {
+        return percurso_id;
+    }
+
+    public void setPercurso_id(int percurso_id) {
+        this.percurso_id = percurso_id;
+    }
+
+    public int getKit_id() {
+        return kit_id;
+    }
+
+    public void setKit_id(int kit_id) {
+        this.kit_id = kit_id;
     }
     
     

@@ -37,6 +37,22 @@ public class Ranking {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    public int getCorrida_id() {
+        return corrida_id;
+    }
+
+    public void setCorrida_id(int corrida_id) {
+        this.corrida_id = corrida_id;
+    }
+
+    public int getCategoria_id() {
+        return categoria_id;
+    }
+
+    public void setCategoria_id(int categoria_id) {
+        this.categoria_id = categoria_id;
+    }
     
     
 }
