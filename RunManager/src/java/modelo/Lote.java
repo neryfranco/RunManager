@@ -12,34 +12,16 @@ import java.util.List;
  * @author Nery
  */
 public class Lote {
-    private List<Ingresso> ingressos;
-    private int quantidade;
     private double preco;
     private Corrida corrida;
+    private String dataLimite;
     
     private int corrida_id;
 
-    public Lote(List<Ingresso> ingressos, int quantidade, double preco, Corrida corrida) {
-        this.ingressos = ingressos;
-        this.quantidade = quantidade;
+    public Lote(double preco, Corrida corrida, String dataLimite) {
         this.preco = preco;
         this.corrida = corrida;
-    }
-
-    public List<Ingresso> getIngressos() {
-        return ingressos;
-    }
-
-    public void setIngressos(List<Ingresso> ingressos) {
-        this.ingressos = ingressos;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+        this.dataLimite = dataLimite;
     }
 
     public double getPreco() {
@@ -57,6 +39,21 @@ public class Lote {
     public void setCorrida(Corrida corrida) {
         this.corrida = corrida;
     }
-    
-    
+
+    public String getDataLimite() {
+        return dataLimite;
+    }
+
+    public void setDataLimite(String dataLimite) {
+        this.dataLimite = dataLimite;
+    }
+
+    public int getCorrida_id() {
+        return corrida_id;
+    }
+
+    public void setCorrida_id(int corrida_id) {
+        this.corrida_id = corrida_id;
+    }
 }
+    

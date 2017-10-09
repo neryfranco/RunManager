@@ -11,19 +11,19 @@ package modelo;
  */
 public class Pagamento {
     
-    private int metodoPagamento; 
+    private String metodoPagamento; 
     private double valor;
 
-    public Pagamento(int metodoPagamento, double valor) {
+    public Pagamento(String metodoPagamento, double valor) {
         this.metodoPagamento = metodoPagamento;
         this.valor = valor;
     }
 
-    public int getMetodoPagamento() {
+    public String getMetodoPagamento() {
         return metodoPagamento;
     }
 
-    public void setMetodoPagamento(int metodoPagamento) {
+    public void setMetodoPagamento(String metodoPagamento) {
         this.metodoPagamento = metodoPagamento;
     }
 

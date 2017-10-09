@@ -48,6 +48,14 @@ public class Boleto {
     public void setPagamento(Pagamento pagamento) {
         this.pagamento = pagamento;
     }
+
+    public int getPagamento_id() {
+        return pagamento_id;
+    }
+
+    public void setPagamento_id(int pagamento_id) {
+        this.pagamento_id = pagamento_id;
+    }
     
     
 }

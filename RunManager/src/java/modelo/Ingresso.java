@@ -68,6 +68,38 @@ public class Ingresso {
     public void setPagamento(Pagamento pagamento) {
         this.pagamento = pagamento;
     }
+
+    public int getLote_id() {
+        return lote_id;
+    }
+
+    public void setLote_id(int lote_id) {
+        this.lote_id = lote_id;
+    }
+
+    public int getKit_numPeito() {
+        return kit_numPeito;
+    }
+
+    public void setKit_numPeito(int kit_numPeito) {
+        this.kit_numPeito = kit_numPeito;
+    }
+
+    public String getAtleta_cpf() {
+        return atleta_cpf;
+    }
+
+    public void setAtleta_cpf(String atleta_cpf) {
+        this.atleta_cpf = atleta_cpf;
+    }
+
+    public int getPagamento_id() {
+        return pagamento_id;
+    }
+
+    public void setPagamento_id(int pagamento_id) {
+        this.pagamento_id = pagamento_id;
+    }
     
     
 }
