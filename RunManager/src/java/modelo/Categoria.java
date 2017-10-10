@@ -15,8 +15,9 @@ public class Categoria {
     private String sexo;
     private int idadeIni;
     private int idadeFim;
+    private String descricao;
 
-    public Categoria(int id, String sexo, int idadeIni, int idadeFim) {
+    public Categoria(int id, String sexo, int idadeIni, int idadeFim, String descricao) {
         this.id = id;
         this.sexo = sexo;
         this.idadeIni = idadeIni;
@@ -54,6 +55,12 @@ public class Categoria {
     public void setIdadeFim(int idadeFim) {
         this.idadeFim = idadeFim;
     }
-    
-    
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }

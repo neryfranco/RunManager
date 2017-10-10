@@ -28,16 +28,13 @@ public class PercursoDAO {
             ResultSet rs = comando.executeQuery("select * from Percurso");
             while(rs.next()){
                 Percurso percurso = new Percurso 
-                (null,
+                (rs.getInt("id"),
+                null,
                 rs.getString("itinerario"),
                 rs.getInt("distancia"),
                 null);
                 
                 percurso.setCategoria_id(rs.getInt("Categoria_id"));
-                ResultSet rs2 = comando.executeQuery("select * from Percurso, List_Tapetes where Percurso.id = Tapete.id");
-                while(rs2.next()){
-                    percurso.addTapeteID(rs.getInt("Tapete_id"));
-                }
                 percursos.add(percurso);
             }
         } catch(SQLException e){
@@ -56,5 +53,9 @@ public class PercursoDAO {
                 conexao.close();
         }
         catch (SQLException e){}
+    }
+
+    public static Percurso obterPercurso(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

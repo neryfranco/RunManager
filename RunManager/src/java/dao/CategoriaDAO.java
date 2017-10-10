@@ -32,7 +32,8 @@ public class CategoriaDAO {
                (rs.getInt("id"),
                 rs.getString("sexo"), 
                 rs.getInt("idadeIni"),
-                rs.getInt("idadeFim"));
+                rs.getInt("idadeFim"),
+                rs.getString("descricao"));
                 categorias.add(categoria);
             }
         } catch(SQLException e){
