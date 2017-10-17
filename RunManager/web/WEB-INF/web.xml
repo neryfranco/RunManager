@@ -4,9 +4,33 @@
         <servlet-name>PesquisaPercursoController</servlet-name>
         <servlet-class>controller.PesquisaPercursoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaTapeteController</servlet-name>
+        <servlet-class>controller.PesquisaTapeteController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisaCorridaController</servlet-name>
+        <servlet-class>controller.PesquisaCorridaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisaCategoriaController</servlet-name>
+        <servlet-class>controller.PesquisaCategoriaController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaPercursoController</servlet-name>
         <url-pattern>/PesquisaPercursoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaTapeteController</servlet-name>
+        <url-pattern>/PesquisaTapeteController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaCorridaController</servlet-name>
+        <url-pattern>/PesquisaCorridaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaCategoriaController</servlet-name>
+        <url-pattern>/PesquisaCategoriaController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

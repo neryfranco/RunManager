@@ -29,20 +29,24 @@ public class CorridaDAO {
             ResultSet rs = comando.executeQuery("select * from Corrida");
             while(rs.next()){
                 Corrida corrida = new Corrida 
-               (rs.getString("nome"),
+               (rs.getInt("id"),
+                rs.getString("nome"),
                 null,
-                rs.getString("localLargada"), 
+                rs.getString("localLargada"),
+                rs.getString("localChegada"), 
                 rs.getString("horaLargada"),
                 rs.getString("dataCorrida"),
                 rs.getString("dataRetiradaKit"),
                 rs.getString("localRetiradaKit"),
                 rs.getInt("duracaoLim"),
                 rs.getInt("numMaxInscritos"));
-                
-                ResultSet rs2 = comando.executeQuery("select * from Corrida, List_Percurso where Corrida.id = Percurso.id");
+                /*
+                ResultSet rs2 = comando.executeQuery("select * from List_Percurso");
                 while(rs2.next()){
-                    corrida.addPercursoID(rs.getInt("Percurso_id"));
+                    if(rs.getInt("id") == rs2.getInt("Corrida_id"))
+                        corrida.addPercursoID(rs.getInt("Percurso_id"));
                 }
+                */
                 corridas.add(corrida);
             }
         } catch(SQLException e){

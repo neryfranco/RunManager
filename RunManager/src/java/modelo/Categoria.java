@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import dao.CategoriaDAO;
+import java.util.List;
+
 /**
  *
  * @author Nery
@@ -13,11 +16,11 @@ public class Categoria {
     
     private int id;
     private String sexo;
-    private int idadeIni;
-    private int idadeFim;
+    private String idadeIni;
+    private String idadeFim;
     private String descricao;
 
-    public Categoria(int id, String sexo, int idadeIni, int idadeFim, String descricao) {
+    public Categoria(int id, String sexo, String idadeIni, String idadeFim, String descricao) {
         this.id = id;
         this.sexo = sexo;
         this.idadeIni = idadeIni;
@@ -40,19 +43,19 @@ public class Categoria {
         this.sexo = sexo;
     }
 
-    public int getIdadeIni() {
+    public String getIdadeIni() {
         return idadeIni;
     }
 
-    public void setIdadeIni(int idadeIni) {
+    public void setIdadeIni(String idadeIni) {
         this.idadeIni = idadeIni;
     }
 
-    public int getIdadeFim() {
+    public String getIdadeFim() {
         return idadeFim;
     }
 
-    public void setIdadeFim(int idadeFim) {
+    public void setIdadeFim(String idadeFim) {
         this.idadeFim = idadeFim;
     }
 
@@ -62,5 +65,9 @@ public class Categoria {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+    
+    public static List obterCategorias() throws ClassNotFoundException{
+        return CategoriaDAO.obterCategorias();
     }
 }

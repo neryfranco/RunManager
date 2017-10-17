@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/PercursoDAO.java</file>
             <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Categoria.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaPercurso.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/WEB-INF/web.xml</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaPercursoController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Percurso.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/CorridaDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaCategoriaController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaCorridaController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaCorrida.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaCategoria.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Corrida.java</file>
             <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/CategoriaDAO.java</file>
             <file>file:/D:/GitHub/RunManager/RunManager/web/index.jsp</file>
         </group>

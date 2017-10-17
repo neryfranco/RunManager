@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import dao.TapeteDAO;
+import java.util.List;
+
 /**
  *
  * @author Nery
@@ -75,5 +78,7 @@ public class Tapete {
         this.referencia = referencia;
     }
     
-    
+    public static List obterTapetes() throws ClassNotFoundException {
+        return TapeteDAO.obterTapetes();
+    }
 }

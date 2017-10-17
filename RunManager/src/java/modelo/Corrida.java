@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import dao.CorridaDAO;
 import java.util.List;
 
 /**
@@ -13,9 +14,11 @@ import java.util.List;
  */
 public class Corrida {
     
+    private int id;
     private String nome;
     private List<Percurso> percursos;
     private String localLargada;
+    private String localChegada;
     private String horaLargada;
     private String dataCorrida;
     private String dataRetiradaKit;
@@ -25,10 +28,12 @@ public class Corrida {
     
     private List<Integer> percursos_id;
 
-    public Corrida(String nome, List<Percurso> percursos, String localLargada, String horaLargada, String dataCorrida, String dataRetiradaKit, String localRetiradaKit, int duracaoLimite, int numMaxParticipantes) {
+    public Corrida(int id, String nome, List<Percurso> percursos, String localLargada, String localChegada, String horaLargada, String dataCorrida, String dataRetiradaKit, String localRetiradaKit, int duracaoLimite, int numMaxParticipantes) {
+        this.id = id;
         this.nome = nome;
         this.percursos = percursos;
         this.localLargada = localLargada;
+        this.localChegada = localChegada;
         this.horaLargada = horaLargada;
         this.dataCorrida = dataCorrida;
         this.dataRetiradaKit = dataRetiradaKit;
@@ -37,6 +42,14 @@ public class Corrida {
         this.numMaxParticipantes = numMaxParticipantes;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -59,6 +72,14 @@ public class Corrida {
 
     public void setLocalLargada(String localLargada) {
         this.localLargada = localLargada;
+    }
+
+    public String getLocalChegada() {
+        return localChegada;
+    }
+
+    public void setLocalChegada(String localChegada) {
+        this.localChegada = localChegada;
     }
 
     public String getHoraLargada() {
@@ -121,4 +142,7 @@ public class Corrida {
         percursos_id.add(id);
     }
     
+    public static List obterCorridas() throws ClassNotFoundException{
+        return CorridaDAO.obterCorridas();
+    }
 }

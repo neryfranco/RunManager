@@ -31,8 +31,8 @@ public class CategoriaDAO {
                Categoria categoria = new Categoria 
                (rs.getInt("id"),
                 rs.getString("sexo"), 
-                rs.getInt("idadeIni"),
-                rs.getInt("idadeFim"),
+                rs.getString("idadeIni"),
+                rs.getString("idadeFim"),
                 rs.getString("descricao"));
                 categorias.add(categoria);
             }

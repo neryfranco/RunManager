@@ -9,9 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>RunManager</title>
     </head>
     <body>
-        <a href="PesquisaPercursoController">ManterPercurso</a>
+        <a href="PesquisaPercursoController">Manter Percurso</a>
+        <a href="PesquisaTapeteController">Manter Tapete</a>
+        <a href="PesquisaCorridaController">Manter Corrida</a>
+        <a href="PesquisaCategoriaController">Manter Categoria</a>
     </body>
 </html>
