@@ -16,5 +16,7 @@
         <a href="PesquisaTapeteController">Manter Tapete</a>
         <a href="PesquisaCorridaController">Manter Corrida</a>
         <a href="PesquisaCategoriaController">Manter Categoria</a>
+        <a href="PesquisaOrganizadorController">Manter Organizador</a>
+        <a href="PesquisaAtletaController">Manter Atleta</a>
     </body>
 </html>

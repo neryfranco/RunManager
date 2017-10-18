@@ -10,8 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class BD {
-    
-    public static Connection getConexao()
+
             throws ClassNotFoundException, SQLException{
         Connection conexao = null;
         Class.forName("com.mysql.jdbc.Driver");

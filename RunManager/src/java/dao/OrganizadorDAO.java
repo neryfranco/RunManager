@@ -20,7 +20,6 @@ import modelo.Organizador;
  */
 public class OrganizadorDAO {
     
-    public static List<Organizador> obterOrganizadors() throws ClassNotFoundException{
         Connection conexao = null;
         Statement comando = null;
         List<Organizador> organizadores = new ArrayList<Organizador>();

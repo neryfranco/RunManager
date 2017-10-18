@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import dao.AtletaDAO;
+import java.util.List;
+
 /**
  *
  * @author Nery
@@ -51,6 +54,9 @@ public class Atleta extends Usuario{
         this.senha = senha;
     }
     
+    public static List<Atleta> obterAtletas() throws ClassNotFoundException{
+        return AtletaDAO.obterAtletas();
+    }
        
     
 }

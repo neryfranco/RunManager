@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import dao.OrganizadorDAO;
+import java.util.List;
+
 /**
  *
  * @author Nery
@@ -48,5 +51,8 @@ public class Organizador extends Usuario{
         this.senha = senha;
     }
     
+    public static List<Organizador> obterOrganizadores() throws ClassNotFoundException{
+        return OrganizadorDAO.obterOrganizadores();
+    }
     
 }
