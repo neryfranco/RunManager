@@ -25,6 +25,7 @@ public class Categoria {
         this.sexo = sexo;
         this.idadeIni = idadeIni;
         this.idadeFim = idadeFim;
+        this.descricao = descricao;
     }
 
     public int getId() {

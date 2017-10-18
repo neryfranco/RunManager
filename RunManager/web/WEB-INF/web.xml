@@ -16,6 +16,22 @@
         <servlet-name>PesquisaCategoriaController</servlet-name>
         <servlet-class>controller.PesquisaCategoriaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaOrganizadorController</servlet-name>
+        <servlet-class>controller.PesquisaOrganizadorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisaAtletaController</servlet-name>
+        <servlet-class>controller.PesquisaAtletaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterPercursoController</servlet-name>
+        <servlet-class>controller.ManterPercursoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterTapeteController</servlet-name>
+        <servlet-class>controller.ManterTapeteController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaPercursoController</servlet-name>
         <url-pattern>/PesquisaPercursoController</url-pattern>
@@ -31,6 +47,22 @@
     <servlet-mapping>
         <servlet-name>PesquisaCategoriaController</servlet-name>
         <url-pattern>/PesquisaCategoriaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaOrganizadorController</servlet-name>
+        <url-pattern>/PesquisaOrganizadorController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaAtletaController</servlet-name>
+        <url-pattern>/PesquisaAtletaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterPercursoController</servlet-name>
+        <url-pattern>/ManterPercursoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterTapeteController</servlet-name>
+        <url-pattern>/ManterTapeteController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
