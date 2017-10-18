@@ -5,6 +5,40 @@
         <group>
 <<<<<<< HEAD
             <file>file:/C:/Users/vicdo/Documents/GitHub/RunManager/RunManager/web/pesquisaCorrida.jsp</file>
+=======
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaOrganizador.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/manterPercurso.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaOrganizadorController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/nbproject/project.properties</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterPercursoController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Organizador.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/manterTapete.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/WEB-INF/web.xml</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaAtleta.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/nbproject/build-impl.xml</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/nbproject/project.xml</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/index.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/PercursoDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/BD.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/AtletaDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Atleta.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaCorrida.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaCategoria.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/CategoriaDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/AdministradorDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/OrganizadorDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Categoria.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaPercurso.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/CorridaDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaCategoriaController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaTapete.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Corrida.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaAtletaController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterTapeteController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaPercursoController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaCorridaController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/build.xml</file>
+>>>>>>> c0e04818ae6a20bba95839615a948bdd9a35a867
         </group>
     </open-files>
 </project-private>
