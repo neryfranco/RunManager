@@ -27,15 +27,15 @@ public class OrganizadorDAO {
         try{
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Organizador");
+            ResultSet rs = comando.executeQuery("select * from Usuario where cpf = ");
             while(rs.next()){
                 Organizador organizador = new Organizador 
                (rs.getString("email"),
                 rs.getString("senha"), 
-                rs.getString("cpf"),
+                rs.getString("Usuario_cpf"),
                 rs.getString("nome"),
                 rs.getString("dataNasc"),
-                rs.getString("sexo"),
+                rs.getInt("sexo"),
                 rs.getString("tel_cel"),
                 rs.getString("tel_res"),
                 rs.getString("cep"),
@@ -46,6 +46,7 @@ public class OrganizadorDAO {
             }
         } catch(SQLException e){
             e.printStackTrace();
+            System.out.println(e.getMessage());
         } finally{
             fecharConexao(conexao,comando);
         }

@@ -20,7 +20,7 @@ public class Administrador extends Usuario{
         String cpf, 
         String nome, 
         String dataNascimento, 
-        String sexo, 
+        int sexo, 
         String telCel, 
         String telRes, 
         String cep, 

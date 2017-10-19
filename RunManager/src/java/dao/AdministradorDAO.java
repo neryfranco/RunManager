@@ -34,7 +34,7 @@ public class AdministradorDAO {
                 rs.getString("cpf"),
                 rs.getString("nome"),
                 rs.getString("dataNasc"),
-                rs.getString("sexo"),
+                rs.getInt("sexo"),
                 rs.getString("tel_cel"),
                 rs.getString("tel_res"),
                 rs.getString("cep"),

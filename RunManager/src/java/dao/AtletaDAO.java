@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License HeadeselectAt in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -26,22 +26,23 @@ public class AtletaDAO {
         try{
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Atleta, Usuario where Atleta.Usuario_cpf = Usuario.cpf");
-            while(rs.next()){
-               Atleta atleta = new Atleta 
-               (rs.getString("email"),
-                rs.getString("senha"), 
-                rs.getString("cpf"),
-                rs.getString("nome"),
-                rs.getString("dataNasc"),
-                rs.getString("sexo"),
-                rs.getString("tel_cel"),
-                rs.getString("tel_res"),
-                rs.getString("cep"),
-                rs.getString("rua"),
-                rs.getString("uf"),
-                rs.getString("cidade"),
-                rs.getString("apelido"));
+            ResultSet selectAt = comando.executeQuery("select * from Atleta");
+            while(selectAt.next()){
+                ResultSet selectUs = comando.executeQuery("select * from Usuario where cpf = " + selectAt.getString("Usuario_cpf"));
+                Atleta atleta = new Atleta 
+               (selectAt.getString("email"),
+                selectAt.getString("senha"), 
+                selectUs.getString("cpf"),
+                selectUs.getString("nome"),
+                selectUs.getString("dataNasc"),
+                selectUs.getInt("sexo"),
+                selectUs.getString("tel_cel"),
+                selectUs.getString("tel_res"),
+                selectUs.getString("cep"),
+                selectUs.getString("rua"),
+                selectUs.getString("uf"),
+                selectUs.getString("cidade"),
+                selectAt.getString("apelido"));
                 atletas.add(atleta);
             }
         } catch(SQLException e){
