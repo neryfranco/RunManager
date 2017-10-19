@@ -6,6 +6,7 @@
 package modelo;
 
 import dao.PercursoDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -95,7 +96,11 @@ public class Percurso {
         this.tapetes_id.add(id);
     }
     
-    public static Percurso obterPercurso(int id){
+    public int getCategoria_id() {
+        return categoria_id;
+    }
+    
+    public static Percurso obterPercurso(int id) throws ClassNotFoundException, SQLException{
         return PercursoDAO.obterPercurso(id);
     }
     
@@ -103,13 +108,20 @@ public class Percurso {
         return PercursoDAO.obterPercursos();
     }
 
-    public int getCategoria_id() {
-        return categoria_id;
-    }
-
     public void setCategoria_id(int categoria_id) {
         this.categoria_id = categoria_id;
     }
      
+    public void gravar() throws SQLException, ClassNotFoundException{
+        PercursoDAO.gravar(this);
+    }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+        PercursoDAO.alterar(this);
+    }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+        PercursoDAO.excluir(this);
+    }
     
 }

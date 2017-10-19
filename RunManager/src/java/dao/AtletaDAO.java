@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License HeadeselectAt in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -34,7 +34,7 @@ public class AtletaDAO {
                         rs.getString("cpf"),
                         rs.getString("nome"),
                         rs.getString("dataNasc"),
-                        rs.getString("sexo"),
+                        rs.getInt("sexo"),
                         rs.getString("tel_cel"),
                         rs.getString("tel_res"),
                         rs.getString("cep"),
@@ -62,7 +62,7 @@ public class AtletaDAO {
             comando.setString(1, atleta.getCpf());
             comando.setString(2, atleta.getNome());
             comando.setString(3, atleta.getDataNascimento());
-            comando.setString(4, atleta.getSexo());
+            comando.setInt(4, atleta.getSexo());
             comando.setString(5, atleta.getTelCel());
             comando.setString(6, atleta.getTelRes());
             comando.setString(7, atleta.getCep());
@@ -96,7 +96,7 @@ public class AtletaDAO {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, atleta.getNome());
             comando.setString(2, atleta.getDataNascimento());
-            comando.setString(3, atleta.getSexo());
+            comando.setInt(3, atleta.getSexo());
             comando.setString(4, atleta.getTelCel());
             comando.setString(5, atleta.getTelRes());
             comando.setString(6, atleta.getCep());
@@ -142,7 +142,7 @@ public class AtletaDAO {
                     rs.getString("cpf"),
                     rs.getString("nome"),
                     rs.getString("dataNasc"),
-                    rs.getString("sexo"),
+                    rs.getInt("sexo"),
                     rs.getString("tel_cel"),
                     rs.getString("tel_res"),
                     rs.getString("cep"),

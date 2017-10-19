@@ -25,7 +25,7 @@ public class Atleta extends Usuario{
                   String cpf, 
                   String nome, 
                   String dataNascimento, 
-                  String sexo, 
+                  int sexo, 
                   String telCel, 
                   String telRes, 
                   String cep, 

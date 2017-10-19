@@ -35,7 +35,7 @@ public class AdministradorDAO {
                         rs.getString("cpf"),
                         rs.getString("nome"),
                         rs.getString("dataNasc"),
-                        rs.getString("sexo"),
+                        rs.getInt("sexo"),
                         rs.getString("tel_cel"),
                         rs.getString("tel_res"),
                         rs.getString("cep"),
@@ -62,7 +62,7 @@ public class AdministradorDAO {
             comando.setString(1, administrador.getCpf());
             comando.setString(2, administrador.getNome());
             comando.setString(3, administrador.getDataNascimento());
-            comando.setString(4, administrador.getSexo());
+            comando.setInt(4, administrador.getSexo());
             comando.setString(5, administrador.getTelCel());
             comando.setString(6, administrador.getTelRes());
             comando.setString(7, administrador.getCep());

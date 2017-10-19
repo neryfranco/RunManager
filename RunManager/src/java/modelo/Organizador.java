@@ -23,7 +23,7 @@ public class Organizador extends Usuario{
             String cpf, 
             String nome, 
             String dataNascimento, 
-            String sexo, 
+            int sexo, 
             String telCel, 
             String telRes, 
             String cep, 
@@ -51,7 +51,7 @@ public class Organizador extends Usuario{
         this.senha = senha;
     }
     
-    public static List<Organizador> obterOrganizadores() throws ClassNotFoundException{
+    public static List obterOrganizadores() throws ClassNotFoundException{
         return OrganizadorDAO.obterOrganizadores();
     }
     

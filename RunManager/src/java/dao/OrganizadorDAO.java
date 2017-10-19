@@ -35,7 +35,7 @@ public class OrganizadorDAO {
                         rs.getString("cpf"),
                         rs.getString("nome"),
                         rs.getString("dataNasc"),
-                        rs.getString("sexo"),
+                        rs.getInt("sexo"),
                         rs.getString("tel_cel"),
                         rs.getString("tel_res"),
                         rs.getString("cep"),
@@ -46,8 +46,9 @@ public class OrganizadorDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            fecharConexao(conexao, comando);
+            System.out.println(e.getMessage());
+        } finally{
+            fecharConexao(conexao,comando);
         }
         return organizadores;
     }
@@ -62,7 +63,7 @@ public class OrganizadorDAO {
             comando.setString(1, organizador.getCpf());
             comando.setString(2, organizador.getNome());
             comando.setString(3, organizador.getDataNascimento());
-            comando.setString(4, organizador.getSexo());
+            comando.setInt(4, organizador.getSexo());
             comando.setString(5, organizador.getTelCel());
             comando.setString(6, organizador.getTelRes());
             comando.setString(7, organizador.getCep());

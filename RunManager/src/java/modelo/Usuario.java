@@ -14,7 +14,7 @@ public class Usuario {
     private String cpf;
     private String nome;
     private String dataNascimento;
-    private String sexo;
+    private int sexo;
     private String telCel;
     private String telRes;
     private String cep;
@@ -22,7 +22,7 @@ public class Usuario {
     private String uf;
     private String cidade;
 
-    public Usuario(String cpf, String nome, String dataNascimento, String sexo, String telCel, String telRes, String cep, String rua, String uf, String cidade) {
+    public Usuario(String cpf, String nome, String dataNascimento, int sexo, String telCel, String telRes, String cep, String rua, String uf, String cidade) {
         this.cpf = cpf;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -59,11 +59,11 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
     }
 
-    public String getSexo() {
+    public int getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(int sexo) {
         this.sexo = sexo;
     }
 

@@ -32,7 +32,7 @@ public class UsuarioDAO {
                 Usuario usuario = new Usuario(rs.getString("cpf"),
                         rs.getString("nome"),
                         rs.getString("dataNasc"),
-                        rs.getString("sexo"),
+                        rs.getInt("sexo"),
                         rs.getString("tel_cel"),
                         rs.getString("tel_res"),
                         rs.getString("cep"),
@@ -59,7 +59,7 @@ public class UsuarioDAO {
             comando.setString(1, usuario.getCpf());
             comando.setString(2, usuario.getNome());
             comando.setString(3, usuario.getDataNascimento());
-            comando.setString(4, usuario.getSexo());
+            comando.setInt(4, usuario.getSexo());
             comando.setString(5, usuario.getTelCel());
             comando.setString(6, usuario.getTelRes());
             comando.setString(7, usuario.getCep());
