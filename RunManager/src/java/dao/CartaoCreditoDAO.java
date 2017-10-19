@@ -6,6 +6,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,44 +19,71 @@ import modelo.CartaoCredito;
  * @author Nery
  */
 public class CartaoCreditoDAO {
-    
-    public static List<CartaoCredito> obterCartaoCreditos() throws ClassNotFoundException{
+
+    public static List<CartaoCredito> obterCartaoCreditos() throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         List<CartaoCredito> cartoes = new ArrayList<CartaoCredito>();
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from CartaoCredito");
-            while(rs.next()){
-               CartaoCredito cartao = new CartaoCredito 
-               (rs.getString("numero"),
-                rs.getString("bandeira"), 
-                rs.getString("nomeTitular"),
-                rs.getString("cpfTitular"),
-                rs.getString("dataValidade"),
-                rs.getString("codSeguranca"),
-                rs.getInt("numParcelas"),
-                rs.getDouble("valorParcelas"),
-                null);
+            while (rs.next()) {
+                CartaoCredito cartao = new CartaoCredito(rs.getString("numero"),
+                        rs.getString("bandeira"),
+                        rs.getString("nomeTitular"),
+                        rs.getString("cpfTitular"),
+                        rs.getString("dataValidade"),
+                        rs.getString("codSeguranca"),
+                        rs.getInt("numParcelas"),
+                        rs.getDouble("valorParcelas"),
+                        null);
                 cartao.setPagamento_id(rs.getInt("Pagamento_id"));
                 cartoes.add(cartao);
             }
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        } finally{
-            fecharConexao(conexao,comando);
+        } finally {
+            fecharConexao(conexao, comando);
         }
         return cartoes;
     }
-    
-    public static void fecharConexao(Connection conexao ,Statement comando){
-        try{
-            if (comando != null)
-                comando.close();
-            if (conexao != null)
-                conexao.close();
+
+    public static void gravar(CartaoCredito cartaoCredito) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "insert into cartaoCredito (numCartao, bandeira, nomeTitular, )"
+                    + "(cpf, dataValidade, codSeguranca, numParcelas, valorParcelas, ) "
+                    + "(pagamento, pagamento_id)"
+                    + "values(?,?,?,?,?)";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, cartaoCredito.getNumCartao());
+            comando.setString(2, cartaoCredito.getBandeira());
+            comando.setString(3, cartaoCredito.getNomeTitular());
+            comando.setString(4, cartaoCredito.getCpf());
+            comando.setString(5, cartaoCredito.getDataValidade());
+            comando.setString(6, cartaoCredito.getCodSeguranca());
+            comando.setInt(7, cartaoCredito.getNumParcelas());
+            comando.setDouble(8, cartaoCredito.getValorParcelas());
+            comando.setObject(9, cartaoCredito.getPagamento());
+            comando.setInt(10, cartaoCredito.getPagamento_id());
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        } catch (SQLException e) {
         }
-        catch (SQLException e){}
+    }
+
+    public static void fecharConexao(Connection conexao, Statement comando) {
+        try {
+            if (comando != null) {
+                comando.close();
+            }
+            if (conexao != null) {
+                conexao.close();
+            }
+        } catch (SQLException e) {
+        }
     }
 }

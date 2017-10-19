@@ -13,7 +13,7 @@ import java.util.List;
  * @author Nery
  */
 public class Categoria {
-    
+        
     private int id;
     private String sexo;
     private String idadeIni;
