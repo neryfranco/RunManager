@@ -6,6 +6,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -42,6 +43,29 @@ public class RankingDAO {
         return rankings;
     }
     
+//    public static void gravar(Ranking ranking) throws SQLException, ClassNotFoundException {
+//        Connection conexao = null;
+//        try {
+//            conexao = BD.getConexao();
+//            String sql = "insert into ranking (corrida, categoria, corridaId, categoriaId) "
+//                    + "values(?,?,?,?)";
+//            PreparedStatement comando = conexao.prepareStatement(sql);
+//            comando.setString(1, ranking.getCorrida());
+//            comando.setString(2, ranking.getNome());
+//            comando.setString(3, ranking.getDataNascimento());
+//            comando.setString(4, ranking.getSexo());
+//            comando.setString(5, ranking.getTelCel());
+//            comando.setString(6, ranking.getTelRes());
+//            comando.setString(7, ranking.getCep());
+//            comando.setString(8, ranking.getRua());
+//            comando.setString(9, ranking.getRua());
+//            comando.setString(10, ranking.getCidade());
+//            comando.execute(sql);
+//            comando.close();
+//            conexao.close();
+//        } catch (SQLException e) {
+//        }
+//    }
     public static void fecharConexao(Connection conexao ,Statement comando){
         try{
             if (comando != null)
