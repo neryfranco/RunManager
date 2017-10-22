@@ -6,6 +6,7 @@
 package modelo;
 
 import dao.AtletaDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class Atleta extends Usuario{
                   String cpf, 
                   String nome, 
                   String dataNascimento, 
-                  String sexo, 
+                  int sexo, 
                   String telCel, 
                   String telRes, 
                   String cep, 
@@ -53,9 +54,42 @@ public class Atleta extends Usuario{
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public double getPace() {
+        return pace;
+    }
+
+    public void setPace(double pace) {
+        this.pace = pace;
+    }
+
+    public String getApelido() {
+        return apelido;
+    }
+
+    public void setApelido(String apelido) {
+        this.apelido = apelido;
+    }
+    
     
     public static List<Atleta> obterAtletas() throws ClassNotFoundException{
         return AtletaDAO.obterAtletas();
+    }
+    
+    public void gravar() throws SQLException,ClassNotFoundException{
+        AtletaDAO.gravar(this);
+    }
+    
+    public void alterar() throws SQLException,ClassNotFoundException{
+        AtletaDAO.alterar(this);
+    }
+    
+    public void excluir() throws SQLException,ClassNotFoundException{
+        AtletaDAO.excluir(this);
+    }
+    
+    public static Atleta obterAtleta(String email) throws SQLException,ClassNotFoundException{
+       return AtletaDAO.obterAtleta(email);
     }
        
     

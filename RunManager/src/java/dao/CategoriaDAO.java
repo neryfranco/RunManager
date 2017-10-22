@@ -6,6 +6,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -42,6 +43,25 @@ public class CategoriaDAO {
             fecharConexao(conexao,comando);
         }
         return categorias;
+    }
+
+    public static void gravar(Categoria categoria) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "insert into categoria (id, sexo, idadeIni, idadeFim, descricao) "
+                    + "values(?,?,?,?,?)";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setInt(1, categoria.getId());
+            comando.setString(2, categoria.getSexo());
+            comando.setString(3, categoria.getIdadeIni());
+            comando.setString(4, categoria.getIdadeFim());
+            comando.setString(5, categoria.getDescricao());
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        } catch (SQLException e) {
+        }
     }
     
     public static void fecharConexao(Connection conexao ,Statement comando){

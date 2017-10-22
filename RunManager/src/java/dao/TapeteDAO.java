@@ -6,6 +6,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -46,6 +47,26 @@ public class TapeteDAO {
         return tapetes;
     }
     
+    
+    public static void gravar(Tapete tapete) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "insert into tapete (id, cep, rua, cidade, uf, referencia) "
+                    + "values(?,?,?,?,?,?)";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setInt(1, tapete.getId());
+            comando.setString(2, tapete.getCep());
+            comando.setString(3, tapete.getRua());
+            comando.setString(4, tapete.getCidade());
+            comando.setString(5, tapete.getUf());
+            comando.setString(6, tapete.getReferencia());
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        } catch (SQLException e) {
+        }
+    }
     public static void fecharConexao(Connection conexao ,Statement comando){
         try{
             if (comando != null)
