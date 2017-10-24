@@ -19,12 +19,14 @@
             <tr>
                 <th>Número de Peito</th>
                 <th>Chip</th>
+                <th>Camisa</th>
                 <th colspan=2>Ação</th>
             </tr>
             <c:forEach items="${kits}" var="kit">
                 <tr>
                     <td><c:out value="${kit.numPeito}" /></td>
                     <td><c:out value="${kit.chip_num}" /></td>
+                    <td><c:out value="${kit.camisa_id}" /></td>
                         <td><a href="ManterAdministradorController?acao=prepararEditar&numPeitoKit=<c:out value="${kit.numPeito}"/>">Editar</a></td>
                         <td><a href="ManterAdministradorController?acao=prepararExcluir&numPeitoKit=<c:out value="${kit.numPeito}"/>">Excluir</a></td>
                 </tr>

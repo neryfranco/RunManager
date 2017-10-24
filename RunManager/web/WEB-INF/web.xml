@@ -48,6 +48,10 @@
         <servlet-name>PesquisaKitController</servlet-name>
         <servlet-class>controller.PesquisaKitController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaPagamentoController</servlet-name>
+        <servlet-class>controller.PesquisaPagamentoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaPercursoController</servlet-name>
         <url-pattern>/PesquisaPercursoController</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>PesquisaKitController</servlet-name>
         <url-pattern>/PesquisaKitController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaPagamentoController</servlet-name>
+        <url-pattern>/PesquisaPagamentoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

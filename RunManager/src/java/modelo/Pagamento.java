@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import dao.PagamentoDAO;
+import java.util.List;
+
 /**
  *
  * @author Nery
@@ -34,6 +37,9 @@ public class Pagamento {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
     
-    
+    public static List<Pagamento> obterPagamentos() throws ClassNotFoundException{
+        return PagamentoDAO.obterPagamentos();
+    }
 }
