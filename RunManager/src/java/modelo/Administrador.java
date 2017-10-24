@@ -5,12 +5,16 @@
  */
 package modelo;
 
+import dao.AdministradorDAO;
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  *
  * @author Nery
  */
 public class Administrador extends Usuario{
- 
+
     private String email;
     private String senha;
 
@@ -49,6 +53,8 @@ public class Administrador extends Usuario{
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
     
+    public static List<Administrador> obterAdministradores() throws ClassNotFoundException{
+        return AdministradorDAO.obterAdministradores();
+    }
 }

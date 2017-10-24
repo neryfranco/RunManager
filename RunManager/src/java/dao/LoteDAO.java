@@ -28,7 +28,11 @@ public class LoteDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from Lote");
             while(rs.next()){
-               Lote lote = new Lote (rs.getDouble("preco"),null,rs.getString("dataLimite"));
+               Lote lote = new Lote 
+                (rs.getInt("id"),
+                rs.getDouble("preco"),
+                null,rs.getString("dataLimite"));
+               
                lote.setCorrida_id(rs.getInt("Corrida_id"));
                lotes.add(lote);
             }

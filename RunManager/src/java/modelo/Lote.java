@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import dao.LoteDAO;
 import java.util.List;
 
 /**
@@ -12,16 +13,27 @@ import java.util.List;
  * @author Nery
  */
 public class Lote {
+    private int id;
     private double preco;
     private Corrida corrida;
     private String dataLimite;
+    private List<Ingresso> ingressos;
     
     private int corrida_id;
 
-    public Lote(double preco, Corrida corrida, String dataLimite) {
+    public Lote(int id, double preco, Corrida corrida, String dataLimite) {
+        this.id = id;
         this.preco = preco;
         this.corrida = corrida;
         this.dataLimite = dataLimite;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getPreco() {
@@ -54,6 +66,22 @@ public class Lote {
 
     public void setCorrida_id(int corrida_id) {
         this.corrida_id = corrida_id;
+    }
+
+    public List<Ingresso> getIngressos() {
+        return ingressos;
+    }
+
+    public void setIngressos(List<Ingresso> ingressos) {
+        this.ingressos = ingressos;
+    }
+    
+    public void addIngresso(Ingresso ingresso){
+        this.ingressos.add(ingresso);
+    }
+    
+    public static List<Lote> obterLotes() throws ClassNotFoundException{
+        return LoteDAO.obterLotes();
     }
 }
     

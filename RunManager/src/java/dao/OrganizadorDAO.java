@@ -28,7 +28,7 @@ public class OrganizadorDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Organizador");
+            ResultSet rs = comando.executeQuery("select * from Organizador left join Usuario on Organizador.Usuario_cpf = Usuario.cpf");
             while (rs.next()) {
                 Organizador organizador = new Organizador(rs.getString("email"),
                         rs.getString("senha"),

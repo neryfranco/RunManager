@@ -12,11 +12,16 @@
         <title>RunManager</title>
     </head>
     <body>
-        <a href="PesquisaPercursoController">Manter Percurso</a>
-        <a href="PesquisaTapeteController">Manter Tapete</a>
-        <a href="PesquisaCorridaController">Manter Corrida</a>
-        <a href="PesquisaCategoriaController">Manter Categoria</a>
-        <a href="PesquisaOrganizadorController">Manter Organizador</a>
-        <a href="PesquisaAtletaController">Manter Atleta</a>
+        <h2>Pesquisas: </h2>
+        <a href="PesquisaPercursoController">Percurso</a>
+        <a href="PesquisaTapeteController">Tapete</a>
+        <a href="PesquisaCorridaController">Corrida</a>
+        <a href="PesquisaCategoriaController">Categoria</a>
+        <a href="PesquisaOrganizadorController">Organizador</a>
+        <a href="PesquisaAtletaController">Atleta</a>
+        <a href="PesquisaAdministradorController">Administrador</a>
+        <a href="PesquisaRankingController">Ranking</a>
+        <a href="PesquisaLoteController">Lote</a>
+        <a href="PesquisaKitController">Kit</a>
     </body>
 </html>

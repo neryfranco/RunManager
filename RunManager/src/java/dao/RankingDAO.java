@@ -29,8 +29,7 @@ public class RankingDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from Ranking");
             while(rs.next()){
-                Ranking ranking = new Ranking (null,null);
-                
+                Ranking ranking = new Ranking (rs.getInt("id"),null,null);                
                 ranking.setCorrida_id(rs.getInt("Corrida_id"));
                 ranking.setCategoria_id(rs.getInt("Categoria_id"));
                 rankings.add(ranking);
