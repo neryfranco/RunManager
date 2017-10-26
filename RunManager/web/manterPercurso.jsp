@@ -19,10 +19,6 @@
         <form action="ManterPercursoController?acao=confirmar${operacao}" method="post" name="frmManterPercurso" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
-                    <td>Itinerário:</td> 
-                    <td><textarea type="text" rows="5" name="txtItinerario" value="${percurso.itinerario}" <c:if test="${operacao != 'Excluir'}"> readonly</c:if>></textarea></td>
-                </tr>
-                <tr>
                     <td>Distância (km):</td> 
                     <td><input type="text" name="txtDistancia" value="${percurso.distancia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
@@ -35,6 +31,10 @@
                             </c:forEach>
                         </select>
                     </td>
+                </tr>
+                <tr>
+                    <td>Itinerário:</td> 
+                    <td><textarea type="text" rows="5" name="txtItinerario" value="${percurso.itinerario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea></td>
                 </tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
                 </tr>

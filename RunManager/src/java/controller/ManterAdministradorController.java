@@ -12,14 +12,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Categoria;
-import modelo.Percurso;
 
 /**
  *
  * @author Nery
  */
-public class ManterPercursoController extends HttpServlet {
+public class ManterAdministradorController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String acao = request.getParameter("acao");
@@ -28,16 +26,11 @@ public class ManterPercursoController extends HttpServlet {
     }
     
     public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            request.setAttribute("operacao", "Incluir");
-            request.setAttribute("categorias", Categoria.obterCategorias());
-            RequestDispatcher view=
-                    request.getRequestDispatcher("/manterPercurso.jsp");
-            view.forward(request, response);
-        } catch(ClassNotFoundException ex){}
+        request.setAttribute("operacao", "Incluir");
+        RequestDispatcher view=
+                request.getRequestDispatcher("/manterAdministrador.jsp");
+        view.forward(request, response);
     }
-    
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

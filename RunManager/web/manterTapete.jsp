@@ -20,7 +20,7 @@
             <table>
                 <tr>
                     <td>CEP: </td> 
-                    <td><input type="text" name="txtItinerario" value="${tapete.cep}" <c:if test="${operacao != 'Excluir'}"> readonly</c:if>></td>
+                    <td><input type="text" name="txtItinerario" value="${tapete.cep}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Rua: </td> 

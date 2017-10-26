@@ -52,6 +52,30 @@
         <servlet-name>PesquisaPagamentoController</servlet-name>
         <servlet-class>controller.PesquisaPagamentoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManterCorridaController</servlet-name>
+        <servlet-class>controller.ManterCorridaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterCategoriaController</servlet-name>
+        <servlet-class>controller.ManterCategoriaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterAtletaController</servlet-name>
+        <servlet-class>controller.ManterAtletaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterOrganizadorController</servlet-name>
+        <servlet-class>controller.ManterOrganizadorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterAdministradorController</servlet-name>
+        <servlet-class>controller.ManterAdministradorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterRankingController</servlet-name>
+        <servlet-class>controller.ManterRankingController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaPercursoController</servlet-name>
         <url-pattern>/PesquisaPercursoController</url-pattern>
@@ -103,6 +127,30 @@
     <servlet-mapping>
         <servlet-name>PesquisaPagamentoController</servlet-name>
         <url-pattern>/PesquisaPagamentoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterCorridaController</servlet-name>
+        <url-pattern>/ManterCorridaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterCategoriaController</servlet-name>
+        <url-pattern>/ManterCategoriaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterAtletaController</servlet-name>
+        <url-pattern>/ManterAtletaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterOrganizadorController</servlet-name>
+        <url-pattern>/ManterOrganizadorController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterAdministradorController</servlet-name>
+        <url-pattern>/ManterAdministradorController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterRankingController</servlet-name>
+        <url-pattern>/ManterRankingController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

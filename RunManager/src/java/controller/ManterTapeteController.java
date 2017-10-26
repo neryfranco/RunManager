@@ -20,23 +20,17 @@ import modelo.Tapete;
  */
 public class ManterTapeteController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-   
-        try {
-            request.setAttribute("tapetes", Tapete.obterTapetes());
-            RequestDispatcher view=
-                    request.getRequestDispatcher("/manterTapete.jsp");
-            view.forward(request, response);
-        } catch(ClassNotFoundException ex){}
+        String acao = request.getParameter("acao");
+        if(acao.equals("prepararIncluir"))
+            prepararIncluir(request, response);
+    }
+    
+    public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("operacao", "Incluir");
+        RequestDispatcher view=
+                request.getRequestDispatcher("/manterTapete.jsp");
+        view.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -7,37 +7,36 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Categoria;
-import modelo.Percurso;
+import modelo.Corrida;
 
 /**
  *
  * @author Nery
  */
-public class ManterPercursoController extends HttpServlet {
+public class ManterRankingController extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
         String acao = request.getParameter("acao");
         if(acao.equals("prepararIncluir"))
             prepararIncluir(request, response);
     }
     
-    public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            request.setAttribute("operacao", "Incluir");
-            request.setAttribute("categorias", Categoria.obterCategorias());
-            RequestDispatcher view=
-                    request.getRequestDispatcher("/manterPercurso.jsp");
-            view.forward(request, response);
-        } catch(ClassNotFoundException ex){}
+    public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
+        request.setAttribute("operacao", "Incluir");
+        request.setAttribute("categorias", Corrida.obterCorridas());
+        request.setAttribute("categorias", Categoria.obterCategorias());
+        RequestDispatcher view=
+                request.getRequestDispatcher("/manterRanking.jsp");
+        view.forward(request, response);
     }
-    
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -51,7 +50,11 @@ public class ManterPercursoController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterRankingController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -65,7 +68,11 @@ public class ManterPercursoController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterRankingController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
