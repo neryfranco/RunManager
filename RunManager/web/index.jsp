@@ -23,5 +23,6 @@
         <a href="PesquisaRankingController">Ranking</a>
         <a href="PesquisaLoteController">Lote</a>
         <a href="PesquisaKitController">Kit</a>
+        <a href="PesquisaChipController">Chip</a>
     </body>
 </html>

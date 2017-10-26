@@ -32,8 +32,6 @@ public class ChipDAO {
                 Chip chip = new Chip(rs.getInt("numero"),
                         rs.getInt("tempoCorrida"),
                         null);
-
-                chip.setKit_id(rs.getInt("Kit_numPeito"));
                 chip.setPercurso_id(rs.getInt("Percurso_id"));
                 chips.add(chip);
             }
@@ -49,14 +47,12 @@ public class ChipDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into chip (numero, tempoCorrida, categoria, percurso_id, kit_id) "
-                    + "values(?,?,?,?,?)";
+            String sql = "insert into chip (numero, tempoCorrida, percurso_id) "
+                    + "values(?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, chip.getNumero());
             comando.setInt(2, chip.getTempoCorrida());
-            comando.setObject(3, chip.getCategoria());
             comando.setInt(4, chip.getPercurso_id());
-            comando.setInt(5, chip.getKit_id());
             comando.execute(sql);
             comando.close();
             conexao.close();

@@ -28,8 +28,8 @@
                     <td><c:out value="${lote.corrida_id}" /></td>
                     <td><c:out value="${lote.preco}" /></td>
                         <td><a href="PesquisaIngressoController?acao=prepararExcluir&idLote=<c:out value="${lote.id}"/>">Ingressos</a></td>
-                        <td><a href="ManterAdministradorController?acao=prepararEditar&idLote=<c:out value="${lote.id}"/>">Editar</a></td>
-                        <td><a href="ManterAdministradorController?acao=prepararExcluir&idLote=<c:out value="${lote.id}"/>">Excluir</a></td>
+                        <td><a href="ManterLoteController?acao=prepararEditar&idLote=<c:out value="${lote.id}"/>">Editar</a></td>
+                        <td><a href="ManterLoteController?acao=prepararExcluir&idLote=<c:out value="${lote.id}"/>">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>
