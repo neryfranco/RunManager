@@ -14,14 +14,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Categoria;
-import modelo.Corrida;
+import modelo.Camisa;
+import modelo.Chip;
 
 /**
  *
  * @author Nery
  */
-public class ManterRankingController extends HttpServlet {
+public class ManterKitController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
         String acao = request.getParameter("acao");
@@ -31,10 +31,10 @@ public class ManterRankingController extends HttpServlet {
     
     public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
         request.setAttribute("operacao", "Incluir");
-        request.setAttribute("corridas", Corrida.obterCorridas());
-        request.setAttribute("categorias", Categoria.obterCategorias());
+        request.setAttribute("chips", Chip.obterChips());
+        request.setAttribute("camisas", Camisa.obterCamisas());
         RequestDispatcher view=
-                request.getRequestDispatcher("/manterRanking.jsp");
+                request.getRequestDispatcher("/manterChip.jsp");
         view.forward(request, response);
     }
 
@@ -53,7 +53,7 @@ public class ManterRankingController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterRankingController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterKitController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -71,7 +71,7 @@ public class ManterRankingController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterRankingController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterKitController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

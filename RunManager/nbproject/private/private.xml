@@ -3,53 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaOrganizador.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Ingresso.java</file>
             <file>file:/D:/GitHub/RunManager/RunManager/web/manterPercurso.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaOrganizadorController.java</file>
             <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterPercursoController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Organizador.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/manterTapete.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/WEB-INF/web.xml</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaAtleta.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaRanking.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaAdministrador.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/PagamentoDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/index.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Ranking.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/LoteDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Pagamento.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Kit.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/AtletaDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/KitDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Atleta.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/RankingDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaAdministradorController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaCorrida.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaCategoria.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaRankingController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/CategoriaDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/AdministradorDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Lote.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/OrganizadorDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Categoria.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaPercurso.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/CorridaDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaCategoriaController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaTapete.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/BoletoDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Corrida.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaLote.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/manterAtleta.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaKit.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaAtletaController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Administrador.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaKitController.java</file>
             <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterTapeteController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaLoteController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaPercursoController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaCorridaController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/manterCorrida.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/manterTapete.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/manterRanking.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterRankingController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaCategoria.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/manterCategoria.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Ranking.java</file>
         </group>
     </open-files>
 </project-private>

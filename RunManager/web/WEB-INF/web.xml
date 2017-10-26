@@ -76,6 +76,14 @@
         <servlet-name>ManterRankingController</servlet-name>
         <servlet-class>controller.ManterRankingController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManterLoteController</servlet-name>
+        <servlet-class>controller.ManterLoteController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterKitController</servlet-name>
+        <servlet-class>controller.ManterKitController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaPercursoController</servlet-name>
         <url-pattern>/PesquisaPercursoController</url-pattern>
@@ -151,6 +159,14 @@
     <servlet-mapping>
         <servlet-name>ManterRankingController</servlet-name>
         <url-pattern>/ManterRankingController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterLoteController</servlet-name>
+        <url-pattern>/ManterLoteController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterKitController</servlet-name>
+        <url-pattern>/ManterKitController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

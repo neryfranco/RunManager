@@ -20,7 +20,7 @@
                 <th>ID</th>
                 <th>Corrida</th>
                 <th>Preço</th>
-                <th colspan=2>Ação</th>
+                <th colspan=3>Ação</th>
             </tr>
             <c:forEach items="${lotes}" var="lote">
                 <tr>
