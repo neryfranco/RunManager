@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Camisa;
+import modelo.Kit;
 
 /**
  *
@@ -54,6 +55,42 @@ public class CamisaDAO {
             conexao.close();
         } catch (SQLException e) {
         }
+    }
+     public static void excluir(Camisa camisa) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from curso where email = " + camisa.getKit();
+            comando.execute(stringSQL);
+        } catch (SQLException e) {
+            throw e;
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+
+    public static Camisa obterCamisa(Kit kit) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        Camisa camisa = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from Camisa where email = " + kit);
+            rs.first();
+            camisa = new Camisa(rs.getString("tamanho"),(null));
+            camisa.setKit_Id(rs.getInt("Kit_id"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+        return camisa;
     }
 
     public static void fecharConexao(Connection conexao, Statement comando) {

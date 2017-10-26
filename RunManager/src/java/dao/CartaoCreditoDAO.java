@@ -74,6 +74,49 @@ public class CartaoCreditoDAO {
         } catch (SQLException e) {
         }
     }
+    public static void excluir(CartaoCredito cartaoCredito) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from curso where Número Cartão = " + cartaoCredito.getNumCartao();
+            comando.execute(stringSQL);
+        } catch (SQLException e) {
+            throw e;
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+
+    public static CartaoCredito obterCartaoCredito(String numCartao) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        CartaoCredito cartaoCredito = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from CartaoCredito where Número Cartão = " + numCartao);
+            rs.first();
+            cartaoCredito = new CartaoCredito(rs.getString("numCartao"),
+                    rs.getString("bandeira"),
+                    rs.getString("nomeTitular"),
+                    rs.getString("cpf"),
+                    rs.getString("dataValidade"),
+                    rs.getString("codSeguranca"),
+                    rs.getInt("numParcelas"),
+                    rs.getDouble("valorParcelas"), (null));
+            cartaoCredito.setPagamento_id(rs.getInt("Pagamento_id"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+        return cartaoCredito;
+    }
 
     public static void fecharConexao(Connection conexao, Statement comando) {
         try {

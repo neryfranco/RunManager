@@ -13,7 +13,8 @@ public class Camisa {
     
     private String tamanho;
     private Kit kit;
-
+    
+    private int kit_Id;
     public Camisa(String tamanho, Kit kit) {
         this.tamanho = tamanho;
         this.kit = kit;
@@ -33,6 +34,10 @@ public class Camisa {
 
     public void setKit(Kit kit) {
         this.kit = kit;
+    }
+
+    public void setKit_Id(int kit_Id) {
+        this.kit_Id = kit_Id;
     }
     
     

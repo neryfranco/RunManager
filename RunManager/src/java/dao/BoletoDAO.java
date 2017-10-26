@@ -60,6 +60,44 @@ public class BoletoDAO {
         } catch (SQLException e) {
         }
     }
+    public static void excluir(Boleto boleto) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from curso where CPF = " + boleto.getCpf();
+            comando.execute(stringSQL);
+        } catch (SQLException e) {
+            throw e;
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+
+    public static Boleto obterBoleto(String cpf) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        Boleto boleto = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from Boleto where CPF = " + cpf);
+            rs.first();
+            boleto = new Boleto(rs.getString("cpf"),
+                    rs.getString("nome"),null);
+                boleto.setPagamento_id(rs.getInt("Pagamento_id"));
+                    
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+        return boleto;
+    }
 
     public static void fecharConexao(Connection conexao, Statement comando) {
         try {

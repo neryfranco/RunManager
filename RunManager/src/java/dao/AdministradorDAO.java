@@ -83,6 +83,54 @@ public class AdministradorDAO {
         } catch (SQLException e) {
         }
     }
+    
+     public static void excluir(Administrador administrador) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from curso where email = " + administrador.getEmail();
+            comando.execute(stringSQL);
+        } catch (SQLException e) {
+            throw e;
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+
+    public static Administrador obterAdministrador(String email) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        Administrador administrador = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from Administrador where email = " + email);
+            rs.first();
+            administrador = new Administrador(rs.getString("email"),
+                    rs.getString("senha"),
+                    rs.getString("cpf"),
+                    rs.getString("nome"),
+                    rs.getString("dataNasc"),
+                    rs.getInt("sexo"),
+                    rs.getString("tel_cel"),
+                    rs.getString("tel_res"),
+                    rs.getString("cep"),
+                    rs.getString("rua"),
+                    rs.getString("uf"),
+                    rs.getString("cidade"));
+                    
+                    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+       return administrador;  
+    }
 
     public static void fecharConexao(Connection conexao, Statement comando) {
         try {
