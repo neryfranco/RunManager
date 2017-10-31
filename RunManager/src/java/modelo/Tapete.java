@@ -6,6 +6,7 @@
 package modelo;
 
 import dao.TapeteDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -80,5 +81,9 @@ public class Tapete {
     
     public static List obterTapetes() throws ClassNotFoundException {
         return TapeteDAO.obterTapetes();
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException {
+        TapeteDAO.gravar(this);
     }
 }

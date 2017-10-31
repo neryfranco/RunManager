@@ -19,6 +19,10 @@
         <form action="ManterPercursoController?acao=confirmar${operacao}" method="post" name="frmManterPercurso" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
+                    <td>ID:</td> 
+                    <td><input type="text" name="txtID" value="${percurso.id}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                </tr>
+                <tr>
                     <td>Distância (km):</td> 
                     <td><input type="text" name="txtDistancia" value="${percurso.distancia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
@@ -27,14 +31,14 @@
                         <select name="optCategoria" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                             <option value="0" <c:if test="${percurso.categoria.id == null}"> selected</c:if>> </option>  
                             <c:forEach items="${categorias}" var="categoria">
-                                <option value="${categoria.descricao}" <c:if test="${percurso.categoria.id == categoria.id}"> selected</c:if>>${categoria.descricao}</option>  
+                                <option value="${categoria.id}" <c:if test="${percurso.categoria.id == categoria.id}"> selected</c:if>>${categoria.descricao}</option>  
                             </c:forEach>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>Itinerário:</td> 
-                    <td><textarea type="text" rows="5" name="txtItinerario" value="${percurso.itinerario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea></td>
+                    <td><input type="text" name="txtItinerario" value="${percurso.itinerario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea></td>
                 </tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
                 </tr>
