@@ -71,8 +71,8 @@ public class AdministradorDAO {
             comando.setString(10, administrador.getCidade());
             comando.execute(sql);
 
-            sql = "insert into administrador (email, senha, pace, apelido) "
-                    + "values(?,?,?,?)";
+            sql = "insert into administrador (email, senha) "
+                    + "values(?,?)";
             comando = conexao.prepareStatement(sql);
             comando.setString(1, administrador.getEmail());
             comando.setString(2, administrador.getSenha());
@@ -82,6 +82,75 @@ public class AdministradorDAO {
             conexao.close();
         } catch (SQLException e) {
         }
+    }
+    public static void alterar(Administrador administrador) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update curso set cpf = ?, nome = ?, dataNascimento = ?, sexo = ?, telCel = ?, telRes = ?, cep = ?, rua = ?, uf = ?, cidade = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, administrador.getNome());
+            comando.setString(2, administrador.getDataNascimento());
+            comando.setInt(3, administrador.getSexo());
+            comando.setString(4, administrador.getTelCel());
+            comando.setString(5, administrador.getTelRes());
+            comando.setString(6, administrador.getCep());
+            comando.setString(7, administrador.getRua());
+            comando.setString(8, administrador.getRua());
+            comando.setString(9, administrador.getCidade());
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        }
+        catch (SQLException e) {
+        }
+    }
+
+    public static void excluir(Administrador administrador) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from curso where email = " + administrador.getEmail();
+            comando.execute(stringSQL);
+        } catch (SQLException e) {
+            throw e;
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+
+    public static Administrador obterAdministrador(String email) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        Administrador administrador = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from Administrador where email = " + email);
+            rs.first();
+            administrador = new Administrador(rs.getString("email"),
+                    rs.getString("senha"),
+                    rs.getString("cpf"),
+                    rs.getString("nome"),
+                    rs.getString("dataNasc"),
+                    rs.getInt("sexo"),
+                    rs.getString("tel_cel"),
+                    rs.getString("tel_res"),
+                    rs.getString("cep"),
+                    rs.getString("rua"),
+                    rs.getString("uf"),
+                    rs.getString("cidade"));
+                    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+       return administrador;  
     }
 
     public static void fecharConexao(Connection conexao, Statement comando) {
