@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Camisa;
+import modelo.Kit;
 
 /**
  *
@@ -54,6 +55,58 @@ public class CamisaDAO {
             conexao.close();
         } catch (SQLException e) {
         }
+    }
+    public static void alterar(Camisa camisa) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update curso set cpf = ?, nome = ?, dataNascimento = ?, sexo = ?, telCel = ?, telRes = ?, cep = ?, rua = ?, uf = ?, cidade = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, camisa.getTamanho());
+            comando.setObject(2, camisa.getKit());            
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        }
+        catch (SQLException e) {
+        }
+    }
+
+    public static void excluir(Camisa camisa) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from curso where tamanho = " + camisa.getTamanho();
+            comando.execute(stringSQL);
+        } catch (SQLException e) {
+            throw e;
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+
+    public static Camisa obterCamisa(String email) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        Camisa camisa = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from Camisa where email = " + email);
+            rs.first();
+            camisa = new Camisa(rs.getString("tamanho"), (Kit) rs.getObject("kit"));
+                   
+                    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+       return camisa;  
     }
 
     public static void fecharConexao(Connection conexao, Statement comando) {
