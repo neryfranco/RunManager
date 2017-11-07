@@ -115,14 +115,14 @@ public class CartaoCreditoDAO {
         }
     }
 
-    public static CartaoCredito obterCartaoCredito(String email) throws ClassNotFoundException {
+    public static CartaoCredito obterCartaoCredito(String numCartao) throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         CartaoCredito cartaoCredito = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from CartaoCredito where email = " + email);
+            ResultSet rs = comando.executeQuery("select * from CartaoCredito where numCartao = " + numCartao);
             rs.first();
             cartaoCredito = new CartaoCredito(rs.getString("numCartao"),
                     rs.getString("bandeira"),

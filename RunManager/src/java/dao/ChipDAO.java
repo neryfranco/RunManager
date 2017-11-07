@@ -99,14 +99,14 @@ public class ChipDAO {
         }
     }
 
-    public static Chip obterChip(String email) throws ClassNotFoundException {
+    public static Chip obterChip(int numero) throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         Chip chip = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Chip where email = " + email);
+            ResultSet rs = comando.executeQuery("select * from Chip where numero = " + numero);
             rs.first();
             chip = new Chip(rs.getInt("numero"),
                     rs.getInt("tempoCorrida"), (Categoria) rs.getObject("categoria"));

@@ -123,14 +123,14 @@ public static void alterar(Corrida corrida) throws SQLException, ClassNotFoundEx
         }
     }
 
-    public static Corrida obterCorrida(String email) throws ClassNotFoundException {
+    public static Corrida obterCorrida(int id) throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         Corrida corrida = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Corrida where email = " + email);
+            ResultSet rs = comando.executeQuery("select * from Corrida where id = " + id);
             rs.first();
             corrida = new Corrida(rs.getInt("id"),
                     rs.getString("nome"), (List<Percurso>) rs.getObject("percursos"),
