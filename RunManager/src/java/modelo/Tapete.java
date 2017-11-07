@@ -82,8 +82,16 @@ public class Tapete {
     public static List obterTapetes() throws ClassNotFoundException {
         return TapeteDAO.obterTapetes();
     }
+    
+    public static Tapete obterTapete(int id) throws ClassNotFoundException {
+        return TapeteDAO.obterTapete(id);
+    }
 
     public void gravar() throws SQLException, ClassNotFoundException {
         TapeteDAO.gravar(this);
+    }
+
+    public void excluir() throws SQLException, ClassNotFoundException {
+        TapeteDAO.excluir(this);
     }
 }

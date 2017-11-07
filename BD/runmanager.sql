@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 24-Out-2017 às 13:24
+-- Generation Time: 07-Nov-2017 às 12:33
 -- Versão do servidor: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -360,7 +360,18 @@ CREATE TABLE IF NOT EXISTS `percurso` (
 
 INSERT INTO `percurso` (`id`, `itinerario`, `distancia`, `Categoria_id`) VALUES
 (1, 'Rio Branco', 15, 1),
-(2, 'Rio Branco', 15, 2);
+(2, 'Rio Branco', 15, 2),
+(3, 'sss', 10, 1),
+(5, '', 10, 1),
+(8, 'ddd', 10, 1),
+(9, '6', 66, 1),
+(10, 'awd', 10, 1),
+(15, 'sss', 10, 1),
+(98, 'hue', 98, 2),
+(5678, 'hue', 56789, 1),
+(9999, 'sad', 9999, 1),
+(56545, '12', 10, 2),
+(76577, 'wdwad', 75, 1);
 
 -- --------------------------------------------------------
 
