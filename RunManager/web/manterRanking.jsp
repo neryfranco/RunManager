@@ -25,7 +25,7 @@
                 <tr>
                     <td>Corrida: </td> 
                     <td>
-                        <select name="optCorrida" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <select name="optCorrida" <c:if test="${operacao == 'Excluir'}"> disabled</c:if>>
                         <option value="0" <c:if test="${ranking.corrida.id == null}"> selected</c:if>> </option>  
                         <c:forEach items="${corridas}" var="corrida">
                             <option value="${corrida.nome}" <c:if test="${ranking.corrida.id == corrida.id}"> selected</c:if>>${corrida.nome}</option>  

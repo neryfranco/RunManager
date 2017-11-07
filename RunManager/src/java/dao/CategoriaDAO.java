@@ -89,7 +89,7 @@ public class CategoriaDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Atleta where id = " + id);
+            ResultSet rs = comando.executeQuery("select * from Categoria where id = " + id);
             rs.first();
             categoria = new Categoria(rs.getInt("id"),
                     rs.getString("sexo"),

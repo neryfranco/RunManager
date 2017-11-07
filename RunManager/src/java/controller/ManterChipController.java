@@ -14,14 +14,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Camisa;
-import modelo.Chip;
+import modelo.Percurso;
 
 /**
  *
  * @author Nery
  */
-public class ManterKitController extends HttpServlet {
+public class ManterChipController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
         String acao = request.getParameter("acao");
@@ -31,10 +30,9 @@ public class ManterKitController extends HttpServlet {
     
     public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
         request.setAttribute("operacao", "Incluir");
-        request.setAttribute("chips", Chip.obterChips());
-        request.setAttribute("camisas", Camisa.obterCamisas());
+        request.setAttribute("percursos", Percurso.obterPercursos());
         RequestDispatcher view=
-                request.getRequestDispatcher("/manterKit.jsp");
+                request.getRequestDispatcher("/manterChip.jsp");
         view.forward(request, response);
     }
 
@@ -47,13 +45,12 @@ public class ManterKitController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterKitController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterChipController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -71,7 +68,7 @@ public class ManterKitController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterKitController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManterChipController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

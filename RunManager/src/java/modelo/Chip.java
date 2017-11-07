@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import dao.ChipDAO;
+import java.util.List;
+
 /**
  *
  * @author Nery
@@ -13,15 +16,15 @@ public class Chip {
     
     private int numero;
     private int tempoCorrida;
-    private Categoria categoria;
+    private Percurso percurso;
     
     private int percurso_id;
     private int kit_id;
 
-    public Chip(int numero, int tempoCorrida, Categoria categoria) {
+    public Chip(int numero, int tempoCorrida, Percurso percurso) {
         this.numero = numero;
         this.tempoCorrida = tempoCorrida;
-        this.categoria = categoria;
+        this.percurso = percurso;
     }
 
     public int getNumero() {
@@ -41,12 +44,12 @@ public class Chip {
         this.tempoCorrida = tempoCorrida;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public Percurso getPercurso() {
+        return percurso;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setPercurso(Percurso percurso) {
+        this.percurso = percurso;
     }
 
     public int getPercurso_id() {
@@ -65,5 +68,7 @@ public class Chip {
         this.kit_id = kit_id;
     }
     
-    
+    public static List<Chip> obterChips() throws ClassNotFoundException{
+        return ChipDAO.obterChips();
+    }
 }

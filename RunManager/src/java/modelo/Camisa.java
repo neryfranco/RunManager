@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import dao.CamisaDAO;
+import java.util.List;
+
 /**
  *
  * @author Nery
@@ -35,5 +38,7 @@ public class Camisa {
         this.kit = kit;
     }
     
-    
+    public static List<Camisa> obterCamisas() throws ClassNotFoundException{
+        return CamisaDAO.obterCamisas();
+    }
 }

@@ -7,35 +7,27 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Camisa;
 import modelo.Chip;
 
 /**
  *
  * @author Nery
  */
-public class ManterKitController extends HttpServlet {
+public class PesquisaChipController extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
-        String acao = request.getParameter("acao");
-        if(acao.equals("prepararIncluir"))
-            prepararIncluir(request, response);
-    }
-    
-    public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
-        request.setAttribute("operacao", "Incluir");
-        request.setAttribute("chips", Chip.obterChips());
-        request.setAttribute("camisas", Camisa.obterCamisas());
-        RequestDispatcher view=
-                request.getRequestDispatcher("/manterKit.jsp");
-        view.forward(request, response);
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   
+        try {
+            request.setAttribute("chips", Chip.obterChips());
+            RequestDispatcher view=
+                    request.getRequestDispatcher("/pesquisaChip.jsp");
+            view.forward(request, response);
+        } catch(ClassNotFoundException ex){}
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -50,11 +42,7 @@ public class ManterKitController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterKitController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -68,11 +56,7 @@ public class ManterKitController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManterKitController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

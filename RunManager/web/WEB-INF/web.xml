@@ -84,6 +84,14 @@
         <servlet-name>ManterKitController</servlet-name>
         <servlet-class>controller.ManterKitController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaChipController</servlet-name>
+        <servlet-class>controller.PesquisaChipController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterChipController</servlet-name>
+        <servlet-class>controller.ManterChipController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaPercursoController</servlet-name>
         <url-pattern>/PesquisaPercursoController</url-pattern>
@@ -167,6 +175,14 @@
     <servlet-mapping>
         <servlet-name>ManterKitController</servlet-name>
         <url-pattern>/ManterKitController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaChipController</servlet-name>
+        <url-pattern>/PesquisaChipController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterChipController</servlet-name>
+        <url-pattern>/ManterChipController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

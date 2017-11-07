@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/manterChip.jsp</file>
             <file>file:/D:/GitHub/RunManager/RunManager/web/manterPercurso.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterPercursoController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterTapeteController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/manterTapete.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/manterRanking.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterRankingController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaCategoria.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/manterCategoria.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Ranking.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterChipController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaChip.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaPercurso.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Chip.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Percurso.java</file>
         </group>
     </open-files>
 </project-private>
