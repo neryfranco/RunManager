@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Atleta;
 
 /**
  *
@@ -31,7 +32,23 @@ public class ManterAtletaController extends HttpServlet {
                 request.getRequestDispatcher("/manterAtleta.jsp");
         view.forward(request, response);
     }
-
+    
+    public void prepararExcluir(HttpServletRequest request, HttpServletResponse response){
+        try{
+            request.setAttribute("operacao", "Excluir");
+            request.setAttribute("atleta", Atleta.obterAtletas());
+            String email = request.getParameter("emailAtleta");
+            request.setAttribute("emailAtleta", email);
+            RequestDispatcher view = request.getRequestDispatcher("manterAtleta.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+            
+        } catch (IOException ex){
+            
+        } catch (ClassNotFoundException ex){
+            
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

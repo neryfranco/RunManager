@@ -20,7 +20,7 @@
             <table>
                 <tr>
                     <td>ID: </td> 
-                    <td><input type="text" name="txtEmail" value="${lote.id}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input type="text" name="txtId" value="${lote.id}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Corrida: </td> 
@@ -35,11 +35,11 @@
                 </tr>
                 <tr>
                     <td>Preço: </td> 
-                    <td><input type="text" name="txtSenha" value="${lote.preco}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input type="text" name="txtPreco" value="${lote.preco}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Data Limite (Validade): </td> 
-                    <td><input type="text" name="txtSenha" value="${lote.dataLimite}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input type="text" name="txtDataLimite" value="${lote.dataLimite}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 
                 
