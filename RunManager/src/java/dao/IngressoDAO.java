@@ -30,7 +30,7 @@ public class IngressoDAO {
             ResultSet rs = comando.executeQuery("select * from Ingresso");
             while (rs.next()) {
                 Ingresso ingresso = new Ingresso(null, rs.getInt("num_inscricao"), null, null, null);
-                ingresso.setAtleta_cpf(rs.getString("Atleta_Usuario_cpf"));
+                ingresso.setIngresso_cpf(rs.getString("Ingresso_Usuario_cpf"));
                 ingresso.setKit_numPeito(rs.getInt("Kit_numPeito"));
                 ingresso.setLote_id(rs.getInt("Lote_id"));
                 ingressos.add(ingresso);
@@ -47,26 +47,82 @@ public class IngressoDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into ingresso (lote, numInscricao, kit, Atleta, "
-                    + "pagamento, lote_id, pagamento_id, kit_numPeito, atleta_cpf) "
+            String sql = "insert into ingresso (lote, numInscricao, kit, Ingresso, "
+                    + "pagamento, lote_id, pagamento_id, kit_numPeito, ingresso_cpf) "
                     + "values(?,?,?,?,?,?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setObject(1, ingresso.getLote());
             comando.setLong(2, ingresso.getNumInscricao());
             comando.setObject(3, ingresso.getKit());
-            comando.setObject(4, ingresso.getAtleta());
+            comando.setObject(4, ingresso.getIngresso());
             comando.setObject(5, ingresso.getPagamento());
             comando.setInt(6, ingresso.getLote_id());
             comando.setInt(7, ingresso.getPagamento_id());
             comando.setInt(8, ingresso.getKit_numPeito());
-            comando.setString(9, ingresso.getAtleta_cpf());
+            comando.setString(9, ingresso.getIngresso_cpf());
             comando.execute(sql);
             comando.close();
             conexao.close();
         } catch (SQLException e) {
         }
     }
+public static void alterar(Ingresso ingresso) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update curso set lote = ?, kit = ?, atleta = ?, pagamento = ?, telCel = ?, telRes = ?, cep = ?, rua = ?, uf = ?, cidade = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setObject(1, ingresso.getLote());
+            comando.setObject(2, ingresso.getKit());
+            comando.setObject(3, ingresso.getAtleta());
+            comando.setObject(4, ingresso.getPagamento());            
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        }
+        catch (SQLException e) {
+        }
+    }
 
+    public static void excluir(Ingresso ingresso) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from curso where numInscricao = " + ingresso.getNumInscricao();
+            comando.execute(stringSQL);
+        } catch (SQLException e) {
+            throw e;
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+
+    public static Ingresso obterIngresso(String email) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        Ingresso ingresso = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from Ingresso where email = " + email);
+            rs.first();
+            ingresso = new Ingresso(rs.getObject("lote"),
+                    rs.getLong("numInscricao"),
+                    rs.getObject("kit"),
+                    rs.getObject("atleta"),
+                    rs.getObject("pagamento"));
+                    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+       return ingresso;  
+    }
     public static void fecharConexao(Connection conexao, Statement comando) {
         try {
             if (comando != null) {

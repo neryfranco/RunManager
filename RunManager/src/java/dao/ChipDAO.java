@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.Categoria;
 import modelo.Chip;
 
 /**
@@ -62,6 +63,60 @@ public class ChipDAO {
             conexao.close();
         } catch (SQLException e) {
         }
+    }
+    
+    public static void alterar(Chip chip) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update curso set numero = ?, tempoCorrida = ?, categoria = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setInt(1, chip.getNumero());
+            comando.setInt(2, chip.getTempoCorrida());
+            comando.setObject(3, chip.getCategoria());           
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        }
+        catch (SQLException e) {
+        }
+    }
+
+    public static void excluir(Chip chip) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from curso where numero = " + chip.getNumero();
+            comando.execute(stringSQL);
+        } catch (SQLException e) {
+            throw e;
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+
+    public static Chip obterChip(String email) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        Chip chip = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from Chip where email = " + email);
+            rs.first();
+            chip = new Chip(rs.getInt("numero"),
+                    rs.getInt("tempoCorrida"), (Categoria) rs.getObject("categoria"));
+                    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+       return chip;  
     }
 
     public static void fecharConexao(Connection conexao, Statement comando) {
