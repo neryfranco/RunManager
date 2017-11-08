@@ -30,7 +30,7 @@ public class IngressoDAO {
             ResultSet rs = comando.executeQuery("select * from Ingresso");
             while (rs.next()) {
                 Ingresso ingresso = new Ingresso(null, rs.getInt("num_inscricao"), null, null, null);
-                ingresso.setIngresso_cpf(rs.getString("Ingresso_Usuario_cpf"));
+                ingresso.setAtleta_cpf(rs.getString("Ingresso_Usuario_cpf"));
                 ingresso.setKit_numPeito(rs.getInt("Kit_numPeito"));
                 ingresso.setLote_id(rs.getInt("Lote_id"));
                 ingressos.add(ingresso);
@@ -51,15 +51,15 @@ public class IngressoDAO {
                     + "pagamento, lote_id, pagamento_id, kit_numPeito, ingresso_cpf) "
                     + "values(?,?,?,?,?,?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setObject(1, ingresso.getLote());
+            comando.setInt(1, ingresso.getLote().getId());
             comando.setLong(2, ingresso.getNumInscricao());
             comando.setObject(3, ingresso.getKit());
-            comando.setObject(4, ingresso.getIngresso());
+            //comando.setObject(4, ingresso.getAtleta());
             comando.setObject(5, ingresso.getPagamento());
             comando.setInt(6, ingresso.getLote_id());
             comando.setInt(7, ingresso.getPagamento_id());
             comando.setInt(8, ingresso.getKit_numPeito());
-            comando.setString(9, ingresso.getIngresso_cpf());
+            //comando.setString(9, ingresso.getIngresso_cpf());
             comando.execute(sql);
             comando.close();
             conexao.close();
@@ -110,12 +110,15 @@ public static void alterar(Ingresso ingresso) throws SQLException, ClassNotFound
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from Ingresso where email = " + email);
             rs.first();
-            ingresso = new Ingresso(rs.getObject("lote"),
+            ingresso = new Ingresso(null,
                     rs.getLong("numInscricao"),
-                    rs.getObject("kit"),
-                    rs.getObject("atleta"),
-                    rs.getObject("pagamento"));
-                    
+                    null,
+                    null,
+                    null);
+            ingresso.setLote_id(rs.getInt("lote"));
+            ingresso.setKit_numPeito(rs.getInt("kit"));
+            ingresso.setAtleta_cpf(rs.getString("atleta"));
+            ingresso.setPagamento_id(rs.getInt("pagamento"));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
