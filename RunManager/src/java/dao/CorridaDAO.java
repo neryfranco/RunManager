@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Corrida;
+import modelo.Percurso;
 
 /**
  *
@@ -83,7 +84,72 @@ public class CorridaDAO {
         } catch (SQLException e) {
         }
     }
+public static void alterar(Corrida corrida) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update curso set nome = ?, localLargada = ?, localChegada = ?, horaLargada = ?, dataCorrida = ?, dataRetiradaKit = ?, localRetiradaKit = ?, duracaoLimite = ?, nuumMaxParticipantes = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, corrida.getNome());
+            comando.setString(2, corrida.getLocalLargada());
+            comando.setString(3, corrida.getLocalChegada());
+            comando.setString(4, corrida.getHoraLargada());
+            comando.setString(6, corrida.getDataCorrida());
+            comando.setString(7, corrida.getLocalRetiradaKit());
+            comando.setInt(8, corrida.getDuracaoLimite());
+            comando.setInt(9, corrida.getNumMaxParticipantes());
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        }
+        catch (SQLException e) {
+        }
+    }
 
+    public static void excluir(Corrida corrida) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from curso where id = " + corrida.getId();
+            comando.execute(stringSQL);
+        } catch (SQLException e) {
+            throw e;
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+
+    public static Corrida obterCorrida(int id) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        Corrida corrida = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from Corrida where id = " + id);
+            rs.first();
+            corrida = new Corrida(rs.getInt("id"),
+                    rs.getString("nome"), (List<Percurso>) rs.getObject("percursos"),
+                    rs.getString("localLargada"),
+                    rs.getString("localChegada"),
+                    rs.getString("horaLargada"),
+                    rs.getString("dataCorrida"),
+                    rs.getString("dataRetiradaKit"),
+                    rs.getString("localRetiradaKit"),
+                    rs.getInt("duracaoLimite"),
+                    rs.getInt("numMaxParticipantes"));
+                    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+       return corrida;  
+    }
     public static void fecharConexao(Connection conexao, Statement comando) {
         try {
             if (comando != null) {

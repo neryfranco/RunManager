@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Boleto;
+import modelo.Pagamento;
 
 /**
  *
@@ -60,7 +61,61 @@ public class BoletoDAO {
         } catch (SQLException e) {
         }
     }
+public static void alterar(Boleto boleto) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update curso set cpf = ?, nome = ?, pagamento = ?, pagamento_id = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, boleto.getNome());
+            comando.setString(2, boleto.getCpf());
+            comando.setObject(3, boleto.getPagamento()); 
+            comando.setInt(4, boleto.getPagamento_id());
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        }
+        catch (SQLException e) {
+        }
+    }
 
+    public static void excluir(Boleto boleto) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from curso where email = " + boleto.getCpf();
+            comando.execute(stringSQL);
+        } catch (SQLException e) {
+            throw e;
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+
+    public static Boleto obterBoleto(String cpf) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        Boleto boleto = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from Boleto where cpf = " + cpf);
+            rs.first();
+            boleto = new Boleto(rs.getString("cpf"),
+                    rs.getString("nome"), (Pagamento) rs.getObject("pagamento"));
+                   
+                    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+       return boleto;  
+    }
     public static void fecharConexao(Connection conexao, Statement comando) {
         try {
             if (comando != null) {

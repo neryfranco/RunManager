@@ -5,7 +5,7 @@
  */
 package dao;
 
-import static dao.AtletaDAO.fecharConexao;
+import static dao.CategoriaDAO.fecharConexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.Atleta;
+import modelo.Categoria;
 import modelo.Categoria;
 
 /**
@@ -81,7 +81,26 @@ public class CategoriaDAO {
             fecharConexao(conexao, comando);
         }
     }
+    public static void alterar(Categoria categoria) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update curso set id = ?, sexo = ?, idadeIni = ?, descricao = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setInt(1, categoria.getId());
+            comando.setString(2, categoria.getSexo());
+            comando.setString(3, categoria.getIdadeIni());
+            comando.setString(4, categoria.getIdadeFim());
+            comando.setString(5, categoria.getDescricao());            
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        }
+        catch (SQLException e) {
+        }
+    }
 
+    
     public static Categoria obterCategoria(int id) throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;

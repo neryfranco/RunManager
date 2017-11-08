@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.Camisa;
 import modelo.Chip;
 
+
 /**
  *
  * @author Nery
@@ -31,12 +32,14 @@ public class ManterKitController extends HttpServlet {
     
     public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
         request.setAttribute("operacao", "Incluir");
-        request.setAttribute("chips", Chip.obterChips());
-        request.setAttribute("camisas", Camisa.obterCamisas());
+        //request.setAttribute("chips", Chip.obterChips());
+        //request.setAttribute("camisas", Camisa.obterCamisas());
         RequestDispatcher view=
                 request.getRequestDispatcher("/manterKit.jsp");
         view.forward(request, response);
     }
+    
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

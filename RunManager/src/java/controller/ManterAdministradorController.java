@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Administrador;
 
 /**
  *
@@ -30,6 +31,23 @@ public class ManterAdministradorController extends HttpServlet {
         RequestDispatcher view=
                 request.getRequestDispatcher("/manterAdministrador.jsp");
         view.forward(request, response);
+    }
+    
+        public void prepararExcluir(HttpServletRequest request, HttpServletResponse response){
+        try{
+            request.setAttribute("operacao", "Excluir");
+            request.setAttribute("administrador", Administrador.obterAdministradores());
+            String email = request.getParameter("emailAdministrador");
+            request.setAttribute("emailAdministrador", email);
+            RequestDispatcher view = request.getRequestDispatcher("manterAdministrador.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+            
+        } catch (IOException ex){
+            
+        } catch (ClassNotFoundException ex){
+            
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
