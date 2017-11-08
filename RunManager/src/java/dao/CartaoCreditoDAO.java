@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,6 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.CartaoCredito;
+import modelo.Pagamento;
 
 /**
  *
@@ -74,6 +76,29 @@ public class CartaoCreditoDAO {
         } catch (SQLException e) {
         }
     }
+    public static void alterar(CartaoCredito cartaoCredito) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update curso set numCartao = ?, bandeira = ?, nomeTitular = ?, cpf = ?, dataValidade = ?, codSegurança = ?, numParcelas = ?, valorParcelas = ?, pagamento = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, cartaoCredito.getNumCartao());
+            comando.setString(2, cartaoCredito.getBandeira());
+            comando.setString(3, cartaoCredito.getNomeTitular());
+            comando.setString(4, cartaoCredito.getCpf());
+            comando.setString(5, cartaoCredito.getDataValidade());
+            comando.setString(6, cartaoCredito.getCodSeguranca());
+            comando.setInt(7, cartaoCredito.getNumParcelas());
+            comando.setDouble(8, cartaoCredito.getValorParcelas());
+            comando.setObject(9, cartaoCredito.getPagamento());
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        }
+        catch (SQLException e) {
+        }
+    }
+
     public static void excluir(CartaoCredito cartaoCredito) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
@@ -81,7 +106,7 @@ public class CartaoCreditoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from curso where Número Cartão = " + cartaoCredito.getNumCartao();
+            stringSQL = "delete from curso where codSegurança = " + cartaoCredito.getCodSeguranca();
             comando.execute(stringSQL);
         } catch (SQLException e) {
             throw e;
@@ -98,24 +123,23 @@ public class CartaoCreditoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from CartaoCredito where Número Cartão = " + numCartao);
+            ResultSet rs = comando.executeQuery("select * from CartaoCredito where numCartao = " + numCartao);
             rs.first();
             cartaoCredito = new CartaoCredito(rs.getString("numCartao"),
                     rs.getString("bandeira"),
                     rs.getString("nomeTitular"),
                     rs.getString("cpf"),
                     rs.getString("dataValidade"),
-                    rs.getString("codSeguranca"),
+                    rs.getString("codSegurança"),
                     rs.getInt("numParcelas"),
-                    rs.getDouble("valorParcelas"), (null));
-            cartaoCredito.setPagamento_id(rs.getInt("Pagamento_id"));
-
+                    rs.getDouble("valorParcelas"), (Pagamento) rs.getObject("pagamento"));
+                    
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             fecharConexao(conexao, comando);
         }
-        return cartaoCredito;
+       return cartaoCredito;  
     }
 
     public static void fecharConexao(Connection conexao, Statement comando) {

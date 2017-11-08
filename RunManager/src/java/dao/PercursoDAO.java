@@ -20,111 +20,123 @@ import modelo.Percurso;
  * @author Nery
  */
 public class PercursoDAO {
-    
-    public static List<Percurso> obterPercursos() throws ClassNotFoundException{
+
+    public static List<Percurso> obterPercursos() throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         List<Percurso> percursos = new ArrayList<Percurso>();
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from Percurso");
-            while(rs.next()){
-                Percurso percurso = new Percurso 
-                (rs.getInt("id"),
-                null,
-                rs.getString("itinerario"),
-                rs.getInt("distancia"),
-                null);
-                
+            while (rs.next()) {
+                Percurso percurso = new Percurso(rs.getInt("id"),
+                        null,
+                        rs.getString("itinerario"),
+                        rs.getInt("distancia"),
+                        null);
+
                 percurso.setCategoria_id(rs.getInt("Categoria_id"));
                 percursos.add(percurso);
             }
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        } finally{
-            fecharConexao(conexao,comando);
+        } finally {
+            fecharConexao(conexao, comando);
         }
         return percursos;
     }
-    
+
     public static Percurso obterPercurso(int id) throws ClassNotFoundException, SQLException {
         Connection conexao = null;
         Statement comando = null;
         Percurso percurso = null;
-        try{
+        try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from Percurso where id = " + id);
             rs.first();
-            percurso = new Percurso 
-            (rs.getInt("id"),
-            null,
-            rs.getString("itinerario"),
-            rs.getInt("distancia"),
-            null);
+            percurso = new Percurso(rs.getInt("id"),
+                    null,
+                    rs.getString("itinerario"),
+                    rs.getInt("distancia"),
+                    null);
 
             percurso.setCategoria_id(rs.getInt("Categoria_id"));
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        } finally{
-            fecharConexao(conexao,comando);
+        } finally {
+            fecharConexao(conexao, comando);
         }
         return percurso;
     }
-    
-    public static void fecharConexao(Connection conexao ,Statement comando){
-        try{
-            if (comando != null)
+
+    public static void fecharConexao(Connection conexao, Statement comando) {
+        try {
+            if (comando != null) {
                 comando.close();
-            if (conexao != null)
+            }
+            if (conexao != null) {
                 conexao.close();
+            }
+        } catch (SQLException e) {
         }
-        catch (SQLException e){}
     }
 
     public static void gravar(Percurso percurso) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
-        try{
+        try {
             conexao = BD.getConexao();
-            String sql = "insert into Percurso (id, itinerario, distancia, categoria_id) "
-                       + "values (?, ?, ?, ?)";
+          /*String sql = "insert into percurso (id, itinerario, distancia, Categoria_id) values (?, ?, ?, ?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
+            
             comando.setInt(1,percurso.getId());
             comando.setString(2,percurso.getItinerario());
             comando.setInt(3,percurso.getDistancia());
             if(percurso.getCategoria() == null)
                 comando.setNull(4, Types.NULL);
             else
-                comando.setInt(4, percurso.getCategoria().getId());
+                comando.setInt(4, percurso.getCategoria().getId()); */
+
+            String sql = "insert into percurso (id, itinerario, distancia, Categoria_id) values ("
+                    + percurso.getId()
+                    + ", '" + percurso.getItinerario()
+                    + "', " + percurso.getDistancia()
+                    + ", ";
+            if (percurso.getCategoria() == null) {
+                sql = sql + Types.NULL;
+            } else {
+                sql = sql + percurso.getCategoria().getId();
+            }
+            sql = sql + ")";
+            PreparedStatement comando = conexao.prepareStatement(sql);
             comando.execute(sql);
             comando.close();
             conexao.close();
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
             throw e;
         }
     }
 
     public static void alterar(Percurso percurso) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
-        try{
+        try {
             conexao = BD.getConexao();
             String sql = "update Percurso set itinerario = ?, distancia = ?, categoria_id = ? "
-                       + "where id = ?";
+                    + "where id = ?";
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setString(1,percurso.getItinerario());
-            comando.setInt(2,percurso.getDistancia());
-            if(percurso.getCategoria() == null)
+            comando.setString(1, percurso.getItinerario());
+            comando.setInt(2, percurso.getDistancia());
+            if (percurso.getCategoria() == null) {
                 comando.setNull(3, Types.NULL);
-            else
+            } else {
                 comando.setInt(3, percurso.getCategoria().getId());
-            comando.setInt(4,percurso.getId());
+            }
+            comando.setInt(4, percurso.getId());
             comando.execute(sql);
             comando.close();
             conexao.close();
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
             throw e;
         }
     }
@@ -132,15 +144,15 @@ public class PercursoDAO {
     public static void excluir(Percurso percurso) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
-        try{
+        try {
             conexao = BD.getConexao();
-            String sql = "delete from Percurso where id = " + percurso.getId();
+            String sql = "delete from percurso where id = " + percurso.getId();
             comando.execute(sql);
-        } catch(SQLException e){
+        } catch (SQLException e) {
             throw e;
         } finally {
-            fecharConexao(conexao,comando);
+            fecharConexao(conexao, comando);
         }
-        
+
     }
 }

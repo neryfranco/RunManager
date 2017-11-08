@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -71,8 +72,8 @@ public class AdministradorDAO {
             comando.setString(10, administrador.getCidade());
             comando.execute(sql);
 
-            sql = "insert into administrador (email, senha, pace, apelido) "
-                    + "values(?,?,?,?)";
+            sql = "insert into administrador (email, senha) "
+                    + "values(?,?,)";
             comando = conexao.prepareStatement(sql);
             comando.setString(1, administrador.getEmail());
             comando.setString(2, administrador.getSenha());
@@ -84,7 +85,30 @@ public class AdministradorDAO {
         }
     }
     
-     public static void excluir(Administrador administrador) throws SQLException, ClassNotFoundException {
+    public static void alterar(Administrador administrador) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update curso set cpf = ?, nome = ?, dataNascimento = ?, sexo = ?, telCel = ?, telRes = ?, cep = ?, rua = ?, uf = ?, cidade = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, administrador.getNome());
+            comando.setString(2, administrador.getDataNascimento());
+            comando.setInt(3, administrador.getSexo());
+            comando.setString(4, administrador.getTelCel());
+            comando.setString(5, administrador.getTelRes());
+            comando.setString(6, administrador.getCep());
+            comando.setString(7, administrador.getRua());
+            comando.setString(8, administrador.getRua());
+            comando.setString(9, administrador.getCidade());
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        }
+        catch (SQLException e) {
+        }
+    }
+
+    public static void excluir(Administrador administrador) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         String stringSQL;
@@ -122,7 +146,6 @@ public class AdministradorDAO {
                     rs.getString("rua"),
                     rs.getString("uf"),
                     rs.getString("cidade"));
-                    
                     
         } catch (SQLException e) {
             e.printStackTrace();

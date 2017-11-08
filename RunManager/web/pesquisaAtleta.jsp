@@ -27,8 +27,8 @@
                     <td><c:out value="${atleta.nome}" /></td>
                     <td><c:out value="${atleta.email}" /></td>
                     <td><c:out value="${atleta.apelido}" /></td>
-                        <td><a href="ManterAdministradorController?acao=prepararEditar&emailAtleta=<c:out value="${atleta.email}"/>">Editar</a></td>
-                        <td><a href="ManterAdministradorController?acao=prepararExcluir&meailAtleta=<c:out value="${atleta.email}"/>">Excluir</a></td>
+                        <td><a href="ManterAtletaController?acao=prepararEditar&emailAtleta=<c:out value="${atleta.email}"/>">Editar</a></td>
+                        <td><a href="ManterAtletaController?acao=prepararExcluir&emailAtleta=<c:out value="${atleta.email}"/>">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>

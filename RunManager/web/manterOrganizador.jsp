@@ -1,10 +1,12 @@
 <%-- 
     Document   : manterOrganizador
-    Created on : 19/10/2017, 08:15:30
-    Author     : vicdo
+    Created on : 26/10/2017, 09:58:47
+    Author     : Nery
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,19 +19,19 @@
         <form action="ManterOrganizadorController?acao=confirmar${operacao}" method="post" name="frmManterOrganizador" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
-                    <td>Nome: </td> 
-                    <td><input type="text" name="txtNome" value="${organizador.nome}" <c:if test="${operacao != 'Excluir'}"> readonly</c:if>></td>
-                </tr>
-                <tr>
                     <td>Email: </td> 
                     <td><input type="text" name="txtEmail" value="${organizador.email}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Telefone:  </td> 
-                    <td><input type="text" name="txtTelefone" value="${organizador.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Senha: </td> 
+                    <td><input type="text" name="txtSenha" value="${organizador.senha}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
-
-                <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
+                <tr>
+                    <td>Apelido: </td> 
+                    <td><input type="text" name="txtApelido" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>
+                
+                    <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
             </table>
         </form>
     </body>

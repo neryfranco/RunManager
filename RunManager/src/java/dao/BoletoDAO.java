@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,6 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Boleto;
+import modelo.Pagamento;
 
 /**
  *
@@ -60,6 +62,24 @@ public class BoletoDAO {
         } catch (SQLException e) {
         }
     }
+public static void alterar(Boleto boleto) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update curso set cpf = ?, nome = ?, pagamento = ?, pagamento_id = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, boleto.getNome());
+            comando.setString(2, boleto.getCpf());
+            comando.setObject(3, boleto.getPagamento()); 
+            comando.setInt(4, boleto.getPagamento_id());
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        }
+        catch (SQLException e) {
+        }
+    }
+
     public static void excluir(Boleto boleto) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
@@ -67,7 +87,7 @@ public class BoletoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from curso where CPF = " + boleto.getCpf();
+            stringSQL = "delete from curso where email = " + boleto.getCpf();
             comando.execute(stringSQL);
         } catch (SQLException e) {
             throw e;
@@ -84,21 +104,19 @@ public class BoletoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Boleto where CPF = " + cpf);
+            ResultSet rs = comando.executeQuery("select * from Boleto where cpf = " + cpf);
             rs.first();
             boleto = new Boleto(rs.getString("cpf"),
-                    rs.getString("nome"),null);
-                boleto.setPagamento_id(rs.getInt("Pagamento_id"));
+                    rs.getString("nome"), (Pagamento) rs.getObject("pagamento"));
+                   
                     
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             fecharConexao(conexao, comando);
         }
-        return boleto;
+       return boleto;  
     }
-
     public static void fecharConexao(Connection conexao, Statement comando) {
         try {
             if (comando != null) {
@@ -111,3 +129,4 @@ public class BoletoDAO {
         }
     }
 }
+

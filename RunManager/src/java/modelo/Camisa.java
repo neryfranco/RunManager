@@ -1,9 +1,13 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package modelo;
+
+import dao.CamisaDAO;
+import java.util.List;
 
 /**
  *
@@ -13,8 +17,7 @@ public class Camisa {
     
     private String tamanho;
     private Kit kit;
-    
-    private int kit_Id;
+
     public Camisa(String tamanho, Kit kit) {
         this.tamanho = tamanho;
         this.kit = kit;
@@ -35,10 +38,9 @@ public class Camisa {
     public void setKit(Kit kit) {
         this.kit = kit;
     }
-
-    public void setKit_Id(int kit_Id) {
-        this.kit_Id = kit_Id;
+    
+    public static List<Camisa> obterCamisas() throws ClassNotFoundException{
+        return CamisaDAO.obterCamisas();
     }
-    
-    
 }
+
