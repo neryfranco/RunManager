@@ -65,11 +65,11 @@ public class ChipDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "update curso set numero = ?, tempoCorrida = ?, categoria = ?";
+            String sql = "update curso set numero = ?, tempoCorrida = ?, Percurso_id = ?";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, chip.getNumero());
             comando.setInt(2, chip.getTempoCorrida());
-            comando.setObject(3, chip.getCategoria());           
+            comando.setInt(3, chip.getPercurso_id());           
             comando.execute(sql);
             comando.close();
             conexao.close();
@@ -105,7 +105,8 @@ public class ChipDAO {
             ResultSet rs = comando.executeQuery("select * from Chip where numero = " + numero);
             rs.first();
             chip = new Chip(rs.getInt("numero"),
-                    rs.getInt("tempoCorrida"), (Categoria) rs.getObject("categoria"));
+                    rs.getInt("tempoCorrida"), null);
+            chip.setPercurso_id(rs.getInt("Percurso_id"));
                     
         } catch (SQLException e) {
             e.printStackTrace();
