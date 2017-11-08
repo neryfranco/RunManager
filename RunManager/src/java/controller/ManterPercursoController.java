@@ -89,14 +89,14 @@ public class ManterPercursoController extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("txtID"));
             int distancia = Integer.parseInt(request.getParameter("txtDistancia"));
-            int categoria_id = Integer.parseInt(request.getParameter("optCategoria"));
+            //int categoria_id = Integer.parseInt(request.getParameter("optCategoria"));
             String itinerario = request.getParameter("txtItinerario");
-
+            /*
             Categoria categoria = null;
             if (categoria_id != 0) {
                 categoria = Categoria.obterCategoria(categoria_id);
-            }
-            Percurso percurso = new Percurso(id, categoria, itinerario, distancia);
+            } */
+            Percurso percurso = new Percurso(id, null, itinerario, distancia);
             percurso.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
             view.forward(request, response);
