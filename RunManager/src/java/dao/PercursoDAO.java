@@ -122,17 +122,17 @@ public class PercursoDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "update Percurso set itinerario = ?, distancia = ?, categoria_id = ? "
-                    + "where id = ?";
-            PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setString(1, percurso.getItinerario());
-            comando.setInt(2, percurso.getDistancia());
-            if (percurso.getCategoria() == null) {
-                comando.setNull(3, Types.NULL);
+            String sql = "update Percurso set "
+                    + "itinerario = '" + percurso.getItinerario() + "'"
+                    + ", distancia = " + percurso.getDistancia()
+                    + ", Categoria_id = ";
+            if (percurso.getCategoria_id() == 0) {
+                sql = sql + Types.NULL;
             } else {
-                comando.setInt(3, percurso.getCategoria().getId());
+                sql = sql + percurso.getCategoria_id();
             }
-            comando.setInt(4, percurso.getId());
+            sql = sql + " where id = " + percurso.getId();
+            PreparedStatement comando = conexao.prepareStatement(sql);
             comando.execute(sql);
             comando.close();
             conexao.close();
@@ -152,7 +152,6 @@ public class PercursoDAO {
             comando.execute(stringSQL);
         } catch (SQLException e) {
             throw e;
-
         } finally {
             fecharConexao(conexao, comando);
         }

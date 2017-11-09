@@ -86,7 +86,7 @@ public static void alterar(Corrida corrida) throws SQLException, ClassNotFoundEx
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "update curso set nome = ?, localLargada = ?, localChegada = ?, horaLargada = ?, dataCorrida = ?, dataRetiradaKit = ?, localRetiradaKit = ?, duracaoLimite = ?, nuumMaxParticipantes = ?";
+            String sql = "update Corrida set nome = ?, localLargada = ?, localChegada = ?, horaLargada = ?, dataCorrida = ?, dataRetiradaKit = ?, localRetiradaKit = ?, duracaoLimite = ?, nuumMaxParticipantes = ?";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, corrida.getNome());
             comando.setString(2, corrida.getLocalLargada());

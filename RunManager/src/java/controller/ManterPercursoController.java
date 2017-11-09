@@ -105,12 +105,38 @@ public class ManterPercursoController extends HttpServlet {
         }
     }
 
-    private void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException {
+        try {
+            request.setAttribute("operacao", "Editar");
+            request.setAttribute("categorias", Categoria.obterCategorias());
+            int idPercurso = Integer.parseInt(request.getParameter("codPercurso"));
+            Percurso percurso = Percurso.obterPercurso(idPercurso);
+            request.setAttribute("percurso", percurso);
+            RequestDispatcher view = request.getRequestDispatcher("/manterPercurso.jsp");
+            view.forward(request, response);
+        } catch (ServletException e) {
+        }
     }
 
-    private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            int id = Integer.parseInt(request.getParameter("txtID"));
+            int distancia = Integer.parseInt(request.getParameter("txtDistancia"));
+            int categoria_id = Integer.parseInt(request.getParameter("optCategoria"));
+            String itinerario = request.getParameter("txtItinerario");
+            
+            Categoria categoria = null;
+            if (categoria_id != 0) {
+                categoria = Categoria.obterCategoria(categoria_id);
+            }
+            Percurso percurso = new Percurso(id, null, itinerario, distancia);
+            percurso.setCategoria_id(categoria_id);
+            percurso.alterar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
+            view.forward(request, response);
+        } catch (SQLException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

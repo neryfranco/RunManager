@@ -51,14 +51,14 @@ public class CategoriaDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into categoria (id, sexo, idadeIni, idadeFim, descricao) "
-                    + "values(?,?,?,?,?)";
+            String sql = "insert into categoria (id, sexo, idadeIni, idadeFim, descricao) values ("
+                    + categoria.getId()
+                    + ", " + categoria.getSexo()
+                    + ", " + categoria.getIdadeIni()
+                    + ", " + categoria.getIdadeFim()
+                    + ", '" + categoria.getDescricao()
+                    + "') ";
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setInt(1, categoria.getId());
-            comando.setString(2, categoria.getSexo());
-            comando.setString(3, categoria.getIdadeIni());
-            comando.setString(4, categoria.getIdadeFim());
-            comando.setString(5, categoria.getDescricao());
             comando.execute(sql);
             comando.close();
             conexao.close();
