@@ -34,6 +34,9 @@ public class ManterLoteController extends HttpServlet {
         } else if (acao.equals("confirmarExcluir")) {
             confirmarExcluir(request, response);
         }
+        else if (acao.equals("prepararAlterar")){
+            prepararEditar(request,response);
+        }
     }
 
     public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
@@ -69,6 +72,10 @@ public class ManterLoteController extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("txtId"));
         double preco = Double.parseDouble(request.getParameter("txtPreco"));
         String dataLimite = request.getParameter("txtDataLimite");
+    }
+    
+    public void prepararEditar(HttpServletRequest request, HttpServletResponse response){
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
