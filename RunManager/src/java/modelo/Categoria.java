@@ -6,6 +6,7 @@
 package modelo;
 
 import dao.CategoriaDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -75,5 +76,9 @@ public class Categoria {
     
     public static Categoria obterCategoria(int categoria_id) throws ClassNotFoundException {
         return CategoriaDAO.obterCategoria(categoria_id);
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException{
+        CategoriaDAO.gravar(this);
     }
 }

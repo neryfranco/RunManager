@@ -19,6 +19,10 @@
         <form action="ManterCategoriaController?acao=confirmar${operacao}" method="post" name="frmManterCategoria" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
+                    <td>ID: </td> 
+                    <td><input type="text" name="txtID" value="${categoria.id}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>
+                <tr>
                     <td>Sexo: </td> 
                     <td><input type="text" name="txtSexo" value="${categoria.sexo}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
@@ -28,7 +32,7 @@
                 </tr>
                 <tr>
                     <td>Idade Final:  </td> 
-                    <td><input type="text" name="txtLocalChegada" value="${categoria.idadeFinal}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input type="text" name="txtIdadeFinal" value="${categoria.idadeFinal}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Descrição:  </td> 

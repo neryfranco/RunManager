@@ -6,12 +6,15 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Categoria;
 
 /**
  *
@@ -19,16 +22,39 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ManterCategoriaController extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         String acao = request.getParameter("acao");
-        if(acao.equals("prepararIncluir"))
+        if (acao.equals("prepararIncluir")) {
             prepararIncluir(request, response);
+        } else if (acao.equals("confirmarIncluir")) {
+            confirmarIncluir(request, response);
+        } else if (acao.equals("prepararExcluir")) {
+            //prepararExcluir(request, response);
+        } else if (acao.equals("confirmarExcluir")) {
+            //confirmarExcluir(request, response);
+        } else if (acao.equals("prepararEditar")) {
+            //prepararEditar(request, response);
+        } else if (acao.equals("confirmarEditar")) {
+            //confirmarEditar(request, response);
+        }
     }
     
     public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("operacao", "Incluir");
         RequestDispatcher view=
                 request.getRequestDispatcher("/manterCategoria.jsp");
+        view.forward(request, response);
+    }
+    
+    private void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
+        int id = Integer.parseInt(request.getParameter("txtID"));
+        String Sexo = request.getParameter("txtSexo");
+        String idadeIni = request.getParameter("txtIdadeInicial");
+        String idadeFinal = request.getParameter("txtIdadeFinal");
+        String descricao = request.getParameter("txtDescricao");
+        Categoria categoria = new Categoria(id, Sexo, idadeIni, idadeFinal, descricao);
+        categoria.gravar();
+        RequestDispatcher view = request.getRequestDispatcher("PesquisaCategoriaController");
         view.forward(request, response);
     }
 
@@ -44,7 +70,13 @@ public class ManterCategoriaController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterCategoriaController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterCategoriaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -58,7 +90,13 @@ public class ManterCategoriaController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterCategoriaController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterCategoriaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
