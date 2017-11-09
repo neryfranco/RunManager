@@ -62,22 +62,20 @@ public class CorridaDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into corrida (id, nome, percursos, localLargada, )"
-                    + "(localChegada, horaLargada, dataCorrida, dataRetiradaKit, )"
-                    + "(localRetiradaKit, duracaoLimite, numMaxParticipantes, )"
-                    + "values(?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into corrida (id, nome, localLargada, "
+                    + "localChegada, horaLargada, dataCorrida, dataRetiradaKit, "
+                    + "localRetiradaKit, duracaoLim, numMaxInscritos) values("
+                    + corrida.getId() + ", '"
+                    + corrida.getNome() + "', '"
+                    + corrida.getLocalLargada() + "', '"
+                    + corrida.getLocalChegada() + "', '"
+                    + corrida.getHoraLargada() + "', '"
+                    + corrida.getDataCorrida() + "', '"
+                    + corrida.getDataRetiradaKit() + "', '"
+                    + corrida.getLocalRetiradaKit() + "', "
+                    + corrida.getDuracaoLimite() + ", "
+                    + corrida.getNumMaxParticipantes() + ") ";
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setInt(1, corrida.getId());
-            comando.setString(2, corrida.getNome());
-            comando.setObject(3, corrida.getPercursos());
-            comando.setString(4, corrida.getLocalLargada());
-            comando.setString(5, corrida.getLocalChegada());
-            comando.setString(6, corrida.getHoraLargada());
-            comando.setString(7, corrida.getDataCorrida());
-            comando.setString(8, corrida.getDataRetiradaKit());
-            comando.setString(9, corrida.getLocalRetiradaKit());
-            comando.setInt(10, corrida.getDuracaoLimite());
-            comando.setInt(11, corrida.getNumMaxParticipantes());
             comando.execute(sql);
             comando.close();
             conexao.close();
@@ -113,7 +111,7 @@ public static void alterar(Corrida corrida) throws SQLException, ClassNotFoundEx
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from curso where id = " + corrida.getId();
+            stringSQL = "delete from Corrida where id = " + corrida.getId();
             comando.execute(stringSQL);
         } catch (SQLException e) {
             throw e;
@@ -133,15 +131,15 @@ public static void alterar(Corrida corrida) throws SQLException, ClassNotFoundEx
             ResultSet rs = comando.executeQuery("select * from Corrida where id = " + id);
             rs.first();
             corrida = new Corrida(rs.getInt("id"),
-                    rs.getString("nome"), (List<Percurso>) rs.getObject("percursos"),
+                    rs.getString("nome"), null,
                     rs.getString("localLargada"),
                     rs.getString("localChegada"),
                     rs.getString("horaLargada"),
                     rs.getString("dataCorrida"),
                     rs.getString("dataRetiradaKit"),
                     rs.getString("localRetiradaKit"),
-                    rs.getInt("duracaoLimite"),
-                    rs.getInt("numMaxParticipantes"));
+                    rs.getInt("duracaoLim"),
+                    rs.getInt("numMaxInscritos"));
                     
         } catch (SQLException e) {
             e.printStackTrace();

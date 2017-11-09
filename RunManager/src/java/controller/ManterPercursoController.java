@@ -88,15 +88,15 @@ public class ManterPercursoController extends HttpServlet {
     private void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             int id = Integer.parseInt(request.getParameter("txtID"));
-            int distancia = Integer.parseInt(request.getParameter("txtDistancia"));
+            //int distancia = Integer.parseInt(request.getParameter("txtDistancia"));
             //int categoria_id = Integer.parseInt(request.getParameter("optCategoria"));
-            String itinerario = request.getParameter("txtItinerario");
+            //String itinerario = request.getParameter("txtItinerario");
             /*
             Categoria categoria = null;
             if (categoria_id != 0) {
                 categoria = Categoria.obterCategoria(categoria_id);
             } */
-            Percurso percurso = new Percurso(id, null, itinerario, distancia);
+            Percurso percurso = new Percurso(id, null, null, 0);
             percurso.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
             view.forward(request, response);

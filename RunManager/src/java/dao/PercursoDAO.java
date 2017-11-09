@@ -144,15 +144,17 @@ public class PercursoDAO {
     public static void excluir(Percurso percurso) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
+        String stringSQL;
         try {
             conexao = BD.getConexao();
-            String sql = "delete from percurso where id = " + percurso.getId();
-            comando.execute(sql);
+            comando = conexao.createStatement();
+            stringSQL = "delete from Percurso where id = " + percurso.getId();
+            comando.execute(stringSQL);
         } catch (SQLException e) {
             throw e;
+
         } finally {
             fecharConexao(conexao, comando);
         }
-
     }
 }
