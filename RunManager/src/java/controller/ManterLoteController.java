@@ -34,8 +34,11 @@ public class ManterLoteController extends HttpServlet {
         } else if (acao.equals("confirmarExcluir")) {
             confirmarExcluir(request, response);
         }
-        else if (acao.equals("prepararAlterar")){
+        else if (acao.equals("prepararEditar")){
             prepararEditar(request,response);
+        }
+        else if (acao.equals("confirmarEditar")){
+            confirmarEditar(request, response);
         }
     }
 
@@ -68,13 +71,28 @@ public class ManterLoteController extends HttpServlet {
         }
     }
 
-    public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("txtId"));
-        double preco = Double.parseDouble(request.getParameter("txtPreco"));
-        String dataLimite = request.getParameter("txtDataLimite");
+    public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) {       
     }
     
     public void prepararEditar(HttpServletRequest request, HttpServletResponse response){
+        try {
+            request.setAttribute("operacao", "Editar");
+            request.setAttribute("lote", Lote.obterLotes());
+            String id = request.getParameter("idLote");
+            request.setAttribute("idLote", id);
+            RequestDispatcher view = request.getRequestDispatcher("manterLote.jsp");
+            view.forward(request, response);
+        } catch (ServletException ex) {
+
+        } catch (IOException ex) {
+
+        } catch (ClassNotFoundException ex) {
+
+        }
+        
+    }
+    
+    public void confirmarEditar(HttpServletRequest request, HttpServletResponse response){
         
     }
 
