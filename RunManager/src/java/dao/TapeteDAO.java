@@ -85,10 +85,9 @@ public class TapeteDAO {
             comando.setString(4, tapete.getCidade());
             comando.setString(5, tapete.getUf());
             comando.setString(6, tapete.getReferencia()); */
-            String sql = "insert into tapete (id, cep, rua, cidade, uf, referencia) values ("
-                    + tapete.getId()
-                    + ", '" + tapete.getCep()
-                    + "', '" + tapete.getRua()
+            String sql = "insert into tapete (cep, rua, cidade, uf, referencia) values ("
+                    + tapete.getCep()
+                    + ", '" + tapete.getRua()
                     + "', '" + tapete.getCidade()
                     + "', '" + tapete.getUf()
                     + "', '" + tapete.getReferencia()
@@ -98,6 +97,26 @@ public class TapeteDAO {
             comando.close();
             conexao.close();
         } catch (SQLException e) {
+        }
+    }
+    
+    public static void alterar(Tapete tapete) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update Tapete set "
+                    + "cep = '" + tapete.getCep() + "'"
+                    + ", rua = '" + tapete.getRua() + "'"
+                    + ", cidade = '" + tapete.getCidade() + "'"
+                    + ", uf = '" + tapete.getUf()+ "'"
+                    + ", referencia = '" + tapete.getReferencia() + "'";
+            sql = sql + " where id = " + tapete.getId();
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        } catch (SQLException e) {
+            throw e;
         }
     }
     

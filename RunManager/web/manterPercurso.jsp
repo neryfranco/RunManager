@@ -19,8 +19,8 @@
         <form action="ManterPercursoController?acao=confirmar${operacao}" method="post" name="frmManterPercurso" >
             <table>
                 <tr>
-                    <td>ID:</td> 
-                    <td><input type="text" name="txtID" value="${percurso.id}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                    <td>ID: </td> 
+                    <td><input type="text" name="txtID" value="${percurso.id}" readonly></td>
                 </tr>
                 <tr>
                     <td>Distância (km):</td> 

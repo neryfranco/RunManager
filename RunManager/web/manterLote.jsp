@@ -20,7 +20,7 @@
             <table>
                 <tr>
                     <td>ID: </td> 
-                    <td><input type="text" name="txtId" value="${lote.id}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input type="text" name="txtID" value="${lote.id}" readonly></td>
                 </tr>
                 <tr>
                     <td>Corrida: </td> 

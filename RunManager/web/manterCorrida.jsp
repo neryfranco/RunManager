@@ -16,11 +16,11 @@
     <body>
         <h1>Manter Corrida - ${operacao}</h1>
 
-        <form action="ManterCorridaController?acao=confirmar${operacao}" method="post" name="frmManterCorrida" onsubmit="return validarFormulario(this)">
+        <form action="ManterCorridaController?acao=confirmar${operacao}" method="post" name="frmManterCorrida">
             <table>
                 <tr>
                     <td>ID: </td> 
-                    <td><input type="text" name="txtID" value="${corrida.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if>></td>
+                    <td><input type="text" name="txtID" value="${corrida.id}" readonly></td>
                 </tr>
                 <tr>
                     <td>Nome: </td> 

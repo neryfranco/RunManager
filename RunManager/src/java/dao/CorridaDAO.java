@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Corrida;
@@ -86,21 +87,22 @@ public static void alterar(Corrida corrida) throws SQLException, ClassNotFoundEx
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "update Corrida set nome = ?, localLargada = ?, localChegada = ?, horaLargada = ?, dataCorrida = ?, dataRetiradaKit = ?, localRetiradaKit = ?, duracaoLimite = ?, nuumMaxParticipantes = ?";
+            String sql = "update Corrida set "
+                    + " nome = '" + corrida.getNome() + "'"
+                    + ", localLargada = '" + corrida.getLocalLargada()+ "'"
+                    + ", localChegada = '" + corrida.getLocalChegada() + "'"
+                    + ", horaLargada = '" + corrida.getHoraLargada() + "'"
+                    + ", duracaoLim = " + corrida.getDuracaoLimite()
+                    + ", dataRetiradaKit = '" + corrida.getDataRetiradaKit() + "'"
+                    + ", localRetiradaKit = '" + corrida.getLocalRetiradaKit() + "'"
+                    + ", numMaxInscritos = " + corrida.getNumMaxParticipantes();
+            sql = sql + " where id = " + corrida.getId();
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setString(1, corrida.getNome());
-            comando.setString(2, corrida.getLocalLargada());
-            comando.setString(3, corrida.getLocalChegada());
-            comando.setString(4, corrida.getHoraLargada());
-            comando.setString(6, corrida.getDataCorrida());
-            comando.setString(7, corrida.getLocalRetiradaKit());
-            comando.setInt(8, corrida.getDuracaoLimite());
-            comando.setInt(9, corrida.getNumMaxParticipantes());
             comando.execute(sql);
             comando.close();
             conexao.close();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
+            throw e;
         }
     }
 

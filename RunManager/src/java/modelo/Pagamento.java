@@ -14,14 +14,28 @@ import java.util.List;
  */
 public class Pagamento {
     
+    private int id;
     private String metodoPagamento; 
     private double valor;
+    private Ingresso ingresso;
+    
+    private int ingresso_id;
 
-    public Pagamento(String metodoPagamento, double valor) {
+    public Pagamento(int id, String metodoPagamento, double valor, Ingresso ingresso) {
+        this.id = id;
         this.metodoPagamento = metodoPagamento;
         this.valor = valor;
+        this.ingresso = ingresso;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getMetodoPagamento() {
         return metodoPagamento;
     }
@@ -38,6 +52,21 @@ public class Pagamento {
         this.valor = valor;
     }
 
+    public Ingresso getIngresso() {
+        return ingresso;
+    }
+
+    public void setIngresso(Ingresso ingresso) {
+        this.ingresso = ingresso;
+    }
+
+    public int getIngresso_id() {
+        return ingresso_id;
+    }
+
+    public void setIngresso_id(int ingresso_id) {
+        this.ingresso_id = ingresso_id;
+    }
     
     public static List<Pagamento> obterPagamentos() throws ClassNotFoundException{
         return PagamentoDAO.obterPagamentos();

@@ -53,7 +53,6 @@ public class ManterPercursoController extends HttpServlet {
     }
 
     private void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(request.getParameter("txtID"));
         int distancia = Integer.parseInt(request.getParameter("txtDistancia"));
         int categoria_id = Integer.parseInt(request.getParameter("optCategoria"));
         String itinerario = request.getParameter("txtItinerario");
@@ -62,7 +61,7 @@ public class ManterPercursoController extends HttpServlet {
             if (categoria_id != 0) {
                 categoria = Categoria.obterCategoria(categoria_id);
             }
-            Percurso percurso = new Percurso(id, categoria, itinerario, distancia);
+            Percurso percurso = new Percurso(0, categoria, itinerario, distancia);
             percurso.gravar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
             view.forward(request, response);

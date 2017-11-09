@@ -48,7 +48,6 @@ public class ManterCorridaController extends HttpServlet {
     }
     
     private void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(request.getParameter("txtID"));
         String nome = request.getParameter("txtNome");
         String localLargada = request.getParameter("txtLocalLargada");
         String localChegada = request.getParameter("txtLocalChegada");
@@ -58,7 +57,7 @@ public class ManterCorridaController extends HttpServlet {
         String localRetiradaKit = request.getParameter("txtLocalRetiradaKit");
         int duracaoLimite = Integer.parseInt(request.getParameter("txtDuracaoLimite"));
         int numMaxParticipantes = Integer.parseInt(request.getParameter("txtNumMaxParticipantes"));
-        Corrida corrida = new Corrida(id, nome, null, localLargada, localChegada, horarioLargada,
+        Corrida corrida = new Corrida(0, nome, null, localLargada, localChegada, horarioLargada,
                 dataCorrida, dataRetiradaKit, localRetiradaKit, duracaoLimite, numMaxParticipantes);
         corrida.gravar();
         RequestDispatcher view = request.getRequestDispatcher("PesquisaCorridaController");
@@ -79,7 +78,8 @@ public class ManterCorridaController extends HttpServlet {
 
     private void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            int id = Integer.parseInt(request.getParameter("txtID"));
+            String id1 = request.getParameter("txtID");
+            int id = Integer.parseInt(id1);
             Corrida corrida = new Corrida(id, null, null, null, null, null, null, null, null, 0, 0);
             corrida.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaCorridaController");
@@ -89,12 +89,38 @@ public class ManterCorridaController extends HttpServlet {
         } 
     }
 
-    private void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, IOException, SQLException {
+        try {
+            request.setAttribute("operacao", "Editar");
+            int idCorrida = Integer.parseInt(request.getParameter("codCorrida"));
+            Corrida corrida = Corrida.obterCorrida(idCorrida);
+            request.setAttribute("corrida", corrida);
+            RequestDispatcher view = request.getRequestDispatcher("/manterCorrida.jsp");
+            view.forward(request, response);
+        } catch (ServletException e) {
+        }
     }
 
-    private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            int id = Integer.parseInt(request.getParameter("txtID"));
+            String nome = request.getParameter("txtNome");
+            String localLargada = request.getParameter("txtLocalLargada");
+            String localChegada = request.getParameter("txtLocalChegada");
+            String horarioLargada = request.getParameter("txtHorarioLargada");
+            String dataCorrida = request.getParameter("txtDataCorrida");
+            String dataRetiradaKit = request.getParameter("txtDataRetiradaKit");
+            String localRetiradaKit = request.getParameter("txtLocalRetiradaKit");
+            int duracaoLim = Integer.parseInt(request.getParameter("txtDuracaoLimite"));
+            int numMaxParticipantes = Integer.parseInt(request.getParameter("txtNumMaxParticipantes"));
+            Corrida corrida = new Corrida(id, nome, null, localLargada, localChegada, horarioLargada, dataCorrida, dataRetiradaKit, localRetiradaKit, duracaoLim, numMaxParticipantes);
+            corrida.alterar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaCorridaController");
+            view.forward(request, response);
+        } catch (SQLException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -28,7 +28,7 @@ public class PagamentoDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from Pagamento");
             while(rs.next()){
-                Pagamento pagamento = new Pagamento (rs.getString("metodoPag"),rs.getDouble("preco"));
+                Pagamento pagamento = new Pagamento (rs.getInt("id"), rs.getString("metodoPag"),rs.getDouble("preco"), null);
                 pagamentos.add(pagamento);
             }
         } catch(SQLException e){

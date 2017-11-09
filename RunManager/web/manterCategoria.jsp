@@ -16,11 +16,11 @@
     <body>
         <h1>Manter Categoria - ${operacao}</h1>
 
-        <form action="ManterCategoriaController?acao=confirmar${operacao}" method="post" name="frmManterCategoria" onsubmit="return validarFormulario(this)">
+        <form action="ManterCategoriaController?acao=confirmar${operacao}" method="post" name="frmManterCategoria">
             <table>
                 <tr>
                     <td>ID: </td> 
-                    <td><input type="text" name="txtID" value="${categoria.id}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input type="text" name="txtID" value="${categoria.id}" readonly></td>
                 </tr>
                 <tr>
                     <td>Sexo: </td> 

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : manterTapete
-    Created on : 17/10/2017, 09:47:12
+    Document   : manterPagamento
+    Created on : 09/11/2017, 14:45:03
     Author     : Nery
 --%>
 
@@ -11,38 +11,44 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Manter Tapete</title>
+        <title>Manter Pagamento</title>
     </head>
     <body>
-        <h1>Manter Tapete - ${operacao}</h1>
+        <h1>Manter Pagamento - ${operacao}</h1>
 
-        <form action="ManterTapeteController?acao=confirmar${operacao}" method="post" name="frmManterTapete" onsubmit="return validarFormulario(this)">
+        <form action="ManterPagamentoController?acao=confirmar${operacao}" method="post" name="frmManterPagamento" >
             <table>
                 <tr>
                     <td>ID: </td> 
-                    <td><input type="text" name="txtID" value="${tapete.id}" readonly></td>
+                    <td><input type="text" name="txtID" value="${pagamento.id}" readonly></td>
                 </tr>
                 <tr>
-                    <td>CEP: </td> 
-                    <td><input type="text" name="txtCEP" value="${tapete.cep}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Preço (R$): </td> 
+                    <td><input type="text" name="txtPreco" value="${pagamento.preco}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Rua: </td> 
-                    <td><input type="text" name="txtRua" value="${tapete.rua}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Metodo de Pagamento: </td> 
+                    <td>
+                        <select name="optMetodo" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                            <option value="cartao">Cartão de Crédito</option> 
+                            <option value="boleto">Boleto Bancário</option> 
+                        </select>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Cidade: </td> 
-                    <td><input type="text" name="txtCidade" value="${tapete.cidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td>Ingresso:</td> 
+                    <td>
+                        <select name="optIngresso" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                            <option value="0" <c:if test="${pagamento.ingresso_id == null}"> selected</c:if>> </option>  
+                            <c:forEach items="${ingressos}" var="ingresso">
+                                <option value="${ingresso.id}" <c:if test="${pagamento.ingresso_id == ingresso.id}"> selected</c:if>>${ingresso.id}</option>  
+                            </c:forEach>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
-                    <td>UF: </td> 
-                    <td><input type="text" name="txtUF" value="${tapete.uf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                </tr>
-                <tr>
-                    <td>Referência: </td> 
-                    <td><input type="text" name="txtReferencia" value="${tapete.referencia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                </tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
+                </tr>
             </table>
         </form>
         <SCRIPT language="JavaScript">
@@ -67,11 +73,11 @@
             function validarFormulario(form) { 
                 var mensagem;
                 mensagem = "";
-                if (form.txtCodTapete.value == ""){
-                    mensagem = mensagem + "Informe o Código do Tapete\n";
+                if (form.txtCodPagamento.value == ""){
+                    mensagem = mensagem + "Informe o Código do Pagamento\n";
                 }                             
-                if (form.txtNomeTapete.value == ""){
-                    mensagem = mensagem + "Informe o Nome do Tapete\n";
+                if (form.txtNomePagamento.value == ""){
+                    mensagem = mensagem + "Informe o Nome do Pagamento\n";
                 }             
                 if (form.txtTotalPeriodos.value == ""){
                     mensagem = mensagem + "Informe o Total de Períodos\n";
@@ -79,8 +85,8 @@
                 if (form.txtCargaHoraria.value == ""){
                     mensagem = mensagem + "Informe a Carga Horária\n";
                 }                  
-                if (!campoNumerico(form.txtCodTapete.value)){
-                    mensagem = mensagem + "Código do Tapete deve ser numérico\n";
+                if (!campoNumerico(form.txtCodPagamento.value)){
+                    mensagem = mensagem + "Código do Pagamento deve ser numérico\n";
                 }                  
                 if (!campoNumerico(form.txtTotalPeriodos.value)){
                     mensagem = mensagem + "Total de Períodos deve ser numérico\n";

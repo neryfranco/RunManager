@@ -94,4 +94,8 @@ public class Tapete {
     public void excluir() throws SQLException, ClassNotFoundException {
         TapeteDAO.excluir(this);
     }
+
+    public void editar() throws SQLException, ClassNotFoundException {
+        TapeteDAO.alterar(this);
+    }
 }
