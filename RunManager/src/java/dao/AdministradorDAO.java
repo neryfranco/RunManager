@@ -73,6 +73,7 @@ public class AdministradorDAO {
 
             sql = "insert into administrador (email, senha) "
                     + "values(?,?)";
+
             comando = conexao.prepareStatement(sql);
             comando.setString(1, administrador.getEmail());
             comando.setString(2, administrador.getSenha());
@@ -83,6 +84,7 @@ public class AdministradorDAO {
         } catch (SQLException e) {
         }
     }
+
     public static void alterar(Administrador administrador) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         try {
@@ -101,8 +103,7 @@ public class AdministradorDAO {
             comando.execute(sql);
             comando.close();
             conexao.close();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
         }
     }
 
@@ -144,13 +145,13 @@ public class AdministradorDAO {
                     rs.getString("rua"),
                     rs.getString("uf"),
                     rs.getString("cidade"));
-                    
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             fecharConexao(conexao, comando);
         }
-       return administrador;  
+        return administrador;
     }
 
     public static void fecharConexao(Connection conexao, Statement comando) {

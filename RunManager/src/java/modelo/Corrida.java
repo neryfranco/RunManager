@@ -6,6 +6,7 @@
 package modelo;
 
 import dao.CorridaDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -144,5 +145,21 @@ public class Corrida {
     
     public static List obterCorridas() throws ClassNotFoundException{
         return CorridaDAO.obterCorridas();
+    }
+    
+    public static Corrida obterCorrida(int id) throws ClassNotFoundException, SQLException{
+        return CorridaDAO.obterCorrida(id);
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException{
+        CorridaDAO.gravar(this);
+    }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+        CorridaDAO.alterar(this);
+    }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+        CorridaDAO.excluir(this);
     }
 }

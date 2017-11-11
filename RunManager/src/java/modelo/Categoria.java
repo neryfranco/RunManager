@@ -13,7 +13,8 @@ import java.util.List;
  * @author Nery
  */
 public class Categoria {
-        
+
+         
     private int id;
     private String sexo;
     private String idadeIni;
@@ -70,5 +71,9 @@ public class Categoria {
     
     public static List obterCategorias() throws ClassNotFoundException{
         return CategoriaDAO.obterCategorias();
+    }
+    
+    public static Categoria obterCategoria(int categoria_id) throws ClassNotFoundException {
+        return CategoriaDAO.obterCategoria(categoria_id);
     }
 }

@@ -5,23 +5,36 @@
  */
 package modelo;
 
+import dao.RankingDAO;
+import java.util.List;
+
 /**
  *
  * @author Nery
  */
 public class Ranking {
     
+    private int id;
     private Corrida corrida;
     private Categoria categoria;
     
     private int corrida_id;
     private int categoria_id;
 
-    public Ranking(Corrida corrida, Categoria categoria) {
+    public Ranking(int id, Corrida corrida, Categoria categoria) {
+        this.id = id;
         this.corrida = corrida;
         this.categoria = categoria;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+     
     public Corrida getCorrida() {
         return corrida;
     }
@@ -54,5 +67,7 @@ public class Ranking {
         this.categoria_id = categoria_id;
     }
     
-    
+    public static List<Ranking> obterRankings() throws ClassNotFoundException{
+        return RankingDAO.obterRankings();
+    }
 }

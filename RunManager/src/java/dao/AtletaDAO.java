@@ -118,7 +118,7 @@ public class AtletaDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from curso where email = " + atleta.getEmail();
+            stringSQL = "delete from Atleta where email = " + atleta.getEmail();
             comando.execute(stringSQL);
         } catch (SQLException e) {
             throw e;

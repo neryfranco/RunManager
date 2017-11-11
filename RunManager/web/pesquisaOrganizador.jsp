@@ -1,5 +1,5 @@
 <%-- 
-    Document   : pesquisaAdministrador
+    Document   : pesquisaOrganizador
     Created on : 16/10/2017, 22:28:21
     Author     : Victor Domingos
 --%>
@@ -27,8 +27,8 @@
                     <td><c:out value="${organizador.nome}" /></td>
                     <td><c:out value="${organizador.email}" /></td>
                     <td><c:out value="${organizador.telCel}" /></td>
-                        <td><a href="ManterAdministradorController?acao=prepararEditar&emailOrganizador=<c:out value="${organizador.email}"/>">Editar</a></td>
-                        <td><a href="ManterAdministradorController?acao=prepararExcluir&meailOrganizador=<c:out value="${organaziador.email}"/>">Excluir</a></td>
+                        <td><a href="ManterOrganizadorController?acao=prepararEditar&emailOrganizador=<c:out value="${organizador.email}"/>">Editar</a></td>
+                        <td><a href="ManterOrganizadorController?acao=prepararExcluir&emailOrganizador=<c:out value="${organaziador.email}"/>">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>

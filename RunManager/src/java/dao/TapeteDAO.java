@@ -47,11 +47,35 @@ public class TapeteDAO {
         return tapetes;
     }
     
+    public static Tapete obterTapete(int id) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        Tapete tapete = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from Tapete where id = " + id);
+            rs.first();
+            tapete = new Tapete(rs.getInt("id"),
+                    rs.getString("cep"),
+                    rs.getString("rua"),
+                    rs.getString("cidade"),
+                    rs.getString("uf"),
+                    rs.getString("referencia"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+        return tapete;
+    }
     
     public static void gravar(Tapete tapete) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
+            /*
             String sql = "insert into tapete (id, cep, rua, cidade, uf, referencia) "
                     + "values(?,?,?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
@@ -60,13 +84,40 @@ public class TapeteDAO {
             comando.setString(3, tapete.getRua());
             comando.setString(4, tapete.getCidade());
             comando.setString(5, tapete.getUf());
-            comando.setString(6, tapete.getReferencia());
+            comando.setString(6, tapete.getReferencia()); */
+            String sql = "insert into tapete (id, cep, rua, cidade, uf, referencia) values ("
+                    + tapete.getId()
+                    + ", '" + tapete.getCep()
+                    + "', '" + tapete.getRua()
+                    + "', '" + tapete.getCidade()
+                    + "', '" + tapete.getUf()
+                    + "', '" + tapete.getReferencia()
+                    + "') ";
+            PreparedStatement comando = conexao.prepareStatement(sql);
             comando.execute(sql);
             comando.close();
             conexao.close();
         } catch (SQLException e) {
         }
     }
+    
+    public static void excluir(Tapete tapete) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from Tapete where id = " + tapete.getId();
+            comando.execute(stringSQL);
+        } catch (SQLException e) {
+            throw e;
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+    
     public static void fecharConexao(Connection conexao ,Statement comando){
         try{
             if (comando != null)

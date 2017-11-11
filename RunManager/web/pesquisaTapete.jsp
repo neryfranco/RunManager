@@ -24,7 +24,7 @@
                 <th>Cidade</th>
                 <th>UF</th>
                 <th>Referência</th>
-                <th colspan=2>Ação</th>
+                <th colspan=3>Ação</th>
             </tr>
             <c:forEach items="${tapetes}" var="tapete">
                 <tr>

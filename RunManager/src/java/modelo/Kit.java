@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import dao.KitDAO;
+import java.util.List;
+
 /**
  *
  * @author Nery
@@ -64,5 +67,7 @@ public class Kit {
         this.camisa_id = camisa_id;
     }
     
-    
+    public static List<Kit> obterKits() throws ClassNotFoundException{
+        return KitDAO.obterKits();
+    }
 }
