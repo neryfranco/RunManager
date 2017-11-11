@@ -43,7 +43,7 @@ public class ManterAdministradorController extends HttpServlet {
         request.setAttribute("operacao", "Incluir");
         request.setAttribute("administrador", Administrador.obterAdministradores());
         RequestDispatcher view
-                = request.getRequestDispatcher("/manterAdmmimnistrador.jsp");
+                = request.getRequestDispatcher("/manterAdministrador.jsp");
         view.forward(request, response);
     }
 

@@ -44,7 +44,7 @@ public class ManterOrganizadorController extends HttpServlet {
         request.setAttribute("operacao", "Incluir");
         request.setAttribute("organizador", Organizador.obterOrganizadores());
         RequestDispatcher view
-                = request.getRequestDispatcher("/manterAdmmimnistrador.jsp");
+                = request.getRequestDispatcher("/manterOrganizador.jsp");
         view.forward(request, response);
     }
 

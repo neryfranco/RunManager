@@ -92,12 +92,12 @@ public class AdministradorDAO {
             String sql = "update curso set cpf = ?, nome = ?, dataNascimento = ?, sexo = ?, telCel = ?, telRes = ?, cep = ?, rua = ?, uf = ?, cidade = ?";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, administrador.getNome());
-            comando.setString(2, administrador.getDataNascimento());
-            comando.setInt(3, administrador.getSexo());
-            comando.setString(4, administrador.getTelCel());
-            comando.setString(5, administrador.getTelRes());
-            comando.setString(6, administrador.getCep());
-            comando.setString(7, administrador.getRua());
+            comando.setString(2, administrador.getNome());
+            comando.setString(3, administrador.getDataNascimento());
+            comando.setInt(4, administrador.getSexo());
+            comando.setString(5, administrador.getTelCel());
+            comando.setString(6, administrador.getTelRes());
+            comando.setString(7, administrador.getCep());
             comando.setString(8, administrador.getRua());
             comando.setString(9, administrador.getCidade());
             comando.execute(sql);
