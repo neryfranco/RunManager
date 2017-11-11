@@ -57,4 +57,16 @@ public class Administrador extends Usuario{
     public static List<Administrador> obterAdministradores() throws ClassNotFoundException{
         return AdministradorDAO.obterAdministradores();
     }
+
+    public void gravar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void excluir() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void alterar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
