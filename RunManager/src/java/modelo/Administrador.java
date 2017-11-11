@@ -6,6 +6,7 @@
 package modelo;
 
 import dao.AdministradorDAO;
+import dao.AdministradorDAO;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -58,15 +59,15 @@ public class Administrador extends Usuario{
         return AdministradorDAO.obterAdministradores();
     }
 
-    public void gravar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   public void gravar() throws SQLException, ClassNotFoundException{
+        AdministradorDAO.gravar(this);
     }
-
-    public void excluir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+        AdministradorDAO.alterar(this);
     }
-
-    public void alterar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+        AdministradorDAO.excluir(this);
     }
 }

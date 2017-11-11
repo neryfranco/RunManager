@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -49,8 +50,29 @@ public class ManterAtletaController extends HttpServlet {
         view.forward(request, response);
     }
 
-    public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
-
+    public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = request.getParameter("txtEmail");
+        String senha = request.getParameter("txtSenha");
+        
+        String apelido = request.getParameter("txtSenha");
+        String cpf = request.getParameter("txtCpf");
+        String nome = request.getParameter("txtNome");
+        String dataNascimento = request.getParameter("txtDataNascimento");
+        int sexo = Integer.parseInt(request.getParameter("txtSexo"));
+        String telCel = request.getParameter("txtTelCel");
+        String telRes = request.getParameter("txtTelRes");
+        String cep = request.getParameter("txtCep");
+        String rua = request.getParameter("txtRua");
+        String uf = request.getParameter("txtUf");
+        String cidade = request.getParameter("txtCidade");
+        try {
+            Atleta atleta = new Atleta(email, senha, cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade, apelido);
+            atleta.gravar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaAdministradorController");
+            view.forward(request, response);
+        } catch (SQLException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
     }
 
     public void prepararExcluir(HttpServletRequest request, HttpServletResponse response) {
@@ -70,7 +92,18 @@ public class ManterAtletaController extends HttpServlet {
         }
     }
 
-    public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) {       
+    public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+        try {
+            String email = request.getParameter("txtEmail");
+
+            Atleta atleta = new Atleta(email, null, null, null, null, 0, null, null, null, null, null, null, null);
+
+            atleta.excluir();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
+            view.forward(request, response);
+        } catch (SQLException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
     }
     
     public void prepararEditar(HttpServletRequest request, HttpServletResponse response){
@@ -91,8 +124,31 @@ public class ManterAtletaController extends HttpServlet {
         
     }
     
-    public void confirmarEditar(HttpServletRequest request, HttpServletResponse response){
-        
+    public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        try {
+            String email = request.getParameter("txtEmail");
+            String senha = request.getParameter("txtSenha");
+            String cpf = request.getParameter("txtCpf");
+            String nome = request.getParameter("txtNome");
+            String dataNascimento = request.getParameter("txtDataNascimento");
+            int sexo = Integer.parseInt(request.getParameter("txtSexo"));
+            String telCel = request.getParameter("txtTelCel");
+            String telRes = request.getParameter("txtTelRes");
+            String cep = request.getParameter("txtCep");
+            String rua = request.getParameter("txtRua");
+            String uf = request.getParameter("txtUf");
+            String cidade = request.getParameter("txtCidade");
+            String apelido = request.getParameter("txtApelido");
+
+
+            Atleta atleta = new Atleta(email, senha, cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade, apelido);
+            atleta.setEmail(email);
+            atleta.alterar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
+            view.forward(request, response);
+        } catch (SQLException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

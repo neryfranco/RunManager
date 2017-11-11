@@ -48,20 +48,20 @@ public class ManterAdministradorController extends HttpServlet {
     }
 
     public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            String email = request.getParameter("txtEmail");
-            String senha = request.getParameter("txtSenha");
-            String cpf = request.getParameter("txtCpf");
-            String nome = request.getParameter("txtNome");
-            String dataNascimento = request.getParameter("txtDataNascimento");
-            int sexo = Integer.parseInt(request.getParameter("txtSexo"));
-            String telCel = request.getParameter("txtTelCel");
-            String telRes = request.getParameter("txtTelRes");
-            String cep = request.getParameter("txtCep");
-            String rua = request.getParameter("txtRua");
-            String uf = request.getParameter("txtUf");
-            String cidade = request.getParameter("txtCidade");
 
+        String email = request.getParameter("txtEmail");
+        String senha = request.getParameter("txtSenha");
+        String cpf = request.getParameter("txtCpf");
+        String nome = request.getParameter("txtNome");
+        String dataNascimento = request.getParameter("txtDataNascimento");
+        int sexo = Integer.parseInt(request.getParameter("txtSexo"));
+        String telCel = request.getParameter("txtTelCel");
+        String telRes = request.getParameter("txtTelRes");
+        String cep = request.getParameter("txtCep");
+        String rua = request.getParameter("txtRua");
+        String uf = request.getParameter("txtUf");
+        String cidade = request.getParameter("txtCidade");
+        try {
             Administrador administrador = new Administrador(email, senha, cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade);
             administrador.gravar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaAdministradorController");
@@ -104,7 +104,7 @@ public class ManterAdministradorController extends HttpServlet {
 
     public void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
         try {
-            
+
             request.setAttribute("operacao", "Editar");
             request.setAttribute("administrador", Administrador.obterAdministradores());
             String email = request.getParameter("txtEmail");
@@ -135,7 +135,7 @@ public class ManterAdministradorController extends HttpServlet {
             String rua = request.getParameter("txtRua");
             String uf = request.getParameter("txtUf");
             String cidade = request.getParameter("txtCidade");
-            
+
             Administrador administrador = new Administrador(email, senha, cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade);
             administrador.setEmail(email);
             administrador.alterar();

@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/manterChip.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/manterPercurso.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterChipController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaChip.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaPercurso.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Chip.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Percurso.java</file>
+            <file>file:/C:/Users/Victor%20Domingos/Documents/GitHub/RunManager/RunManager/src/java/modelo/Organizador.java</file>
+            <file>file:/C:/Users/Victor%20Domingos/Documents/GitHub/RunManager/RunManager/src/java/controller/ManterOrganizadorController.java</file>
         </group>
     </open-files>
 </project-private>
