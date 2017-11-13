@@ -23,19 +23,6 @@
                     <td><input type="text" name="txtID" value="${pagamento.id}" readonly></td>
                 </tr>
                 <tr>
-                    <td>Preço (R$): </td> 
-                    <td><input type="text" name="txtPreco" value="${pagamento.preco}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                </tr>
-                <tr>
-                    <td>Metodo de Pagamento: </td> 
-                    <td>
-                        <select name="optMetodo" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
-                            <option value="cartao">Cartão de Crédito</option> 
-                            <option value="boleto">Boleto Bancário</option> 
-                        </select>
-                    </td>
-                </tr>
-                <tr>
                     <td>Ingresso:</td> 
                     <td>
                         <select name="optIngresso" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
@@ -47,22 +34,31 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Metodo de Pagamento: </td> 
+                    <td>
+                        <select name="optMetodo" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                            <option value="c">Cartão de Crédito</option> 
+                            <option value="b">Boleto Bancário</option> 
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
                 </tr>
             </table>
         </form>
         <SCRIPT language="JavaScript">
-            <!--
-            
+<!--
+
             function campoNumerico(valor)
             {
                 var caracteresValidos = "0123456789";
                 var ehNumero = true;
                 var umCaracter;
-                for (i = 0; i < valor.length && ehNumero == true; i++) 
-                { 
-                    umCaracter = valor.charAt(i); 
-                    if (caracteresValidos.indexOf(umCaracter) == -1) 
+                for (i = 0; i < valor.length && ehNumero == true; i++)
+                {
+                    umCaracter = valor.charAt(i);
+                    if (caracteresValidos.indexOf(umCaracter) == -1)
                     {
                         ehNumero = false;
                     }
@@ -70,37 +66,37 @@
                 return ehNumero;
             }
 
-            function validarFormulario(form) { 
+            function validarFormulario(form) {
                 var mensagem;
                 mensagem = "";
-                if (form.txtCodPagamento.value == ""){
+                if (form.txtCodPagamento.value == "") {
                     mensagem = mensagem + "Informe o Código do Pagamento\n";
-                }                             
-                if (form.txtNomePagamento.value == ""){
+                }
+                if (form.txtNomePagamento.value == "") {
                     mensagem = mensagem + "Informe o Nome do Pagamento\n";
-                }             
-                if (form.txtTotalPeriodos.value == ""){
+                }
+                if (form.txtTotalPeriodos.value == "") {
                     mensagem = mensagem + "Informe o Total de Períodos\n";
-                }                  
-                if (form.txtCargaHoraria.value == ""){
+                }
+                if (form.txtCargaHoraria.value == "") {
                     mensagem = mensagem + "Informe a Carga Horária\n";
-                }                  
-                if (!campoNumerico(form.txtCodPagamento.value)){
+                }
+                if (!campoNumerico(form.txtCodPagamento.value)) {
                     mensagem = mensagem + "Código do Pagamento deve ser numérico\n";
-                }                  
-                if (!campoNumerico(form.txtTotalPeriodos.value)){
+                }
+                if (!campoNumerico(form.txtTotalPeriodos.value)) {
                     mensagem = mensagem + "Total de Períodos deve ser numérico\n";
-                }                  
-                if (!campoNumerico(form.txtCargaHoraria.value)){
+                }
+                if (!campoNumerico(form.txtCargaHoraria.value)) {
                     mensagem = mensagem + "Carga Horária deve ser numérica\n";
-                }                  
-                if (mensagem == ""){
+                }
+                if (mensagem == "") {
                     return true;
-                }else{
+                } else {
                     alert(mensagem);
                     return false;
-                }                
-            } 
+                }
+            }
             //-->
         </SCRIPT>        
     </body>

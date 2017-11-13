@@ -6,6 +6,7 @@
 package modelo;
 
 import dao.PagamentoDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -70,5 +71,21 @@ public class Pagamento {
     
     public static List<Pagamento> obterPagamentos() throws ClassNotFoundException{
         return PagamentoDAO.obterPagamentos();
+    }
+    
+    public static Pagamento obterPagamento(int id) throws ClassNotFoundException {
+        return PagamentoDAO.obterPagamento(id);
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException {
+        PagamentoDAO.gravar(this);
+    }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+        PagamentoDAO.alterar(this);
+    }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+        PagamentoDAO.excluir(this);
     }
 }
