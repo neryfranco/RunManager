@@ -107,4 +107,8 @@ public class Ingresso {
     public static List<Ingresso> obterIngressos() throws ClassNotFoundException{
         return IngressoDAO.obterIngressos();
     }
+    
+    public static Ingresso obterIngresso(int ingresso_id) {
+        return null;
+    }
 }

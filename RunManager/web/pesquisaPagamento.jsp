@@ -19,8 +19,9 @@
         <table border=1>
             <tr>
                 <th>ID</th>
-                <th>Sexo</th>
-                <th colspan=2>Faixa Etária</th>
+                <th>Método de Pagamento</th>
+                <th>Valor (R$)</th>
+                <th>Ingresso</th>
                 <th colspan=2>Ação</th>
             </tr>
             <c:forEach items="${pagamentos}" var="pagamento">
