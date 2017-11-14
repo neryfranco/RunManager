@@ -43,8 +43,7 @@ public class ManterAtletaController extends HttpServlet {
     }
 
     public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
-        request.setAttribute("operacao", "Incluir");
-        request.setAttribute("atleta", Atleta.obterAtletas());
+        request.setAttribute("operacao", "Incluir");        
         RequestDispatcher view
                 = request.getRequestDispatcher("/manterAtleta.jsp");
         view.forward(request, response);

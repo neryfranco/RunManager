@@ -41,8 +41,7 @@ public class ManterOrganizadorController extends HttpServlet {
     }
 
     public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
-        request.setAttribute("operacao", "Incluir");
-        request.setAttribute("organizador", Organizador.obterOrganizadores());
+        request.setAttribute("operacao", "Incluir");       
         RequestDispatcher view
                 = request.getRequestDispatcher("/manterOrganizador.jsp");
         view.forward(request, response);

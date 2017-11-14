@@ -16,7 +16,7 @@
     <body>
         <h1>Manter Atleta - ${operacao}</h1>
 
-        <form action="ManterAtletaController?acao=confirmar${operacao}" method="post" name="frmManterAtleta" onsubmit="return validarFormulario(this)">
+        <form action="ManterAtletaController?acao=confirmar${operacao}" method="post" name="frmManterAtleta">
             <table>
                 <tr>
                     <td>Email: </td> 
