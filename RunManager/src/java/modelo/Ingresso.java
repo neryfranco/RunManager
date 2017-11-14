@@ -13,10 +13,6 @@ import java.util.List;
  * @author Nery
  */
 public class Ingresso {
-
-    public static Ingresso obterIngresso(int ingresso_id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     private Lote lote;
     private long numInscricao;
     private Kit kit;
@@ -110,5 +106,9 @@ public class Ingresso {
     
     public static List<Ingresso> obterIngressos() throws ClassNotFoundException{
         return IngressoDAO.obterIngressos();
+    }
+    
+    public static Ingresso obterIngresso(int ingresso_id) {
+        return null;
     }
 }
