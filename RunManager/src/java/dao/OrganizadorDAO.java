@@ -81,6 +81,23 @@ public class OrganizadorDAO {
 
             comando.close();
             conexao.close();
+            
+            /*String sql = "insert into organizador (cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) "
+                    + ", '" + organizador.getCpf()
+                    + ", '" + organizador.getNome()
+                    + ", '" + organizador.getDataNascimento()
+                    + ", '" + organizador.getSexo()
+                    + ", '" + organizador.getTelCel()
+                    + ", '" + organizador.getTelRes()
+                    + ", '" + organizador.getCep()
+                    + ", '" + organizador.getRua()
+                    + ", '" + organizador.getCidade()
+                    + ", ";
+            sql = sql + ")";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.execute();
+            comando.close();
+            comando.close();*/
         } catch (SQLException e) {
         }
     }
