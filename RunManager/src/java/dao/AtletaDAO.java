@@ -56,7 +56,7 @@ public class AtletaDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into usuario (cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) "
+            /*String sql = "insert into usuario (cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) "
                     + "values(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, atleta.getCpf());
@@ -81,7 +81,23 @@ public class AtletaDAO {
             comando.execute(sql);
             
             comando.close();
-            conexao.close();
+            conexao.close();*/
+            String sql = "insert into atleta (email, senha, cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) values("
+                    + atleta.getEmail() + "', '"
+                    + atleta.getSenha() + "', '"
+                    + atleta.getCpf() + "', '"
+                    + atleta.getNome() + "', '"
+                    + atleta.getDataNascimento() + "', '"
+                    + atleta.getSexo() + "', '"
+                    + atleta.getTelCel() + "', '"
+                    + atleta.getTelRes() + "', '"
+                    + atleta.getCep() + "', '"
+                    + atleta.getRua() + "', '"
+                    + atleta.getCidade() + ") ";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.execute(sql);
+            comando.close();
+            comando.close();
         }
         catch (SQLException e) {
         }

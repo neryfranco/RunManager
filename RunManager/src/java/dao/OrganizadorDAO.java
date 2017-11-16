@@ -57,7 +57,7 @@ public class OrganizadorDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into organizador (cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) "
+            /*String sql = "insert into organizador (cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) "
                     + "values(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, organizador.getCpf());
@@ -80,24 +80,24 @@ public class OrganizadorDAO {
             comando.execute(sql);
 
             comando.close();
-            conexao.close();
+            conexao.close();*/
             
-            /*String sql = "insert into organizador (cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) "
-                    + ", '" + organizador.getCpf()
-                    + ", '" + organizador.getNome()
-                    + ", '" + organizador.getDataNascimento()
-                    + ", '" + organizador.getSexo()
-                    + ", '" + organizador.getTelCel()
-                    + ", '" + organizador.getTelRes()
-                    + ", '" + organizador.getCep()
-                    + ", '" + organizador.getRua()
-                    + ", '" + organizador.getCidade()
-                    + ", ";
-            sql = sql + ")";
+            String sql = "insert into organizador (email, senha, cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) values("
+                    + organizador.getEmail() + "', '"
+                    + organizador.getSenha() + "', '"
+                    + organizador.getCpf() + "', '"
+                    + organizador.getNome() + "', '"
+                    + organizador.getDataNascimento() + "', '"
+                    + organizador.getSexo() + "', '"
+                    + organizador.getTelCel() + "', '"
+                    + organizador.getTelRes() + "', '"
+                    + organizador.getCep() + "', '"
+                    + organizador.getRua() + "', '"
+                    + organizador.getCidade() + ") ";
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.execute();
+            comando.execute(sql);
             comando.close();
-            comando.close();*/
+            comando.close();
         } catch (SQLException e) {
         }
     }

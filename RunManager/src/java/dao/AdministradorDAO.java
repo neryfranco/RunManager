@@ -56,7 +56,7 @@ public class AdministradorDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into administrador (cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) "
+            /*String sql = "insert into administrador (cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) "
                     + "values(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, administrador.getCpf());
@@ -80,7 +80,23 @@ public class AdministradorDAO {
             comando.execute(sql);
 
             comando.close();
-            conexao.close();
+            conexao.close();*/
+            String sql = "insert into administrador (email, senha, cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) values("
+                    + administrador.getEmail() + "', '"
+                    + administrador.getSenha() + "', '"
+                    + administrador.getCpf() + "', '"
+                    + administrador.getNome() + "', '"
+                    + administrador.getDataNascimento() + "', '"
+                    + administrador.getSexo() + "', '"
+                    + administrador.getTelCel() + "', '"
+                    + administrador.getTelRes() + "', '"
+                    + administrador.getCep() + "', '"
+                    + administrador.getRua() + "', '"
+                    + administrador.getCidade() + ") ";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.execute(sql);
+            comando.close();
+            comando.close();
         } catch (SQLException e) {
         }
     }
