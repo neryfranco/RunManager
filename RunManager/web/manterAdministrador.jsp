@@ -11,6 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css.css">
         <title>Manter Administrador</title>
     </head>
     <body>
@@ -26,10 +27,46 @@
                     <td>Senha: </td> 
                     <td><input type="text" name="txtSenha" value="${administrador.senha}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
+                <tr>
+                    <td>Nome: </td> 
+                    <td><input type="text" name="txtNome" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>
+                <tr>
+                    <td>Data Nascimento: </td> 
+                    <td><input type="text" name="txtDataNascimento" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>
+                <tr>
+                    <td>Sexo: </td> 
+                    <td><input type="text" name="txtSexo" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>
+                <tr>
+                    <td>Telefone Celular: </td> 
+                    <td><input type="text" name="txtTelCel" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>
+                <tr>
+                    <td>Telefone Residencial: </td> 
+                    <td><input type="text" name="txtTelRes" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>
+                <tr>
+                    <td>Cep: </td> 
+                    <td><input type="text" name="txtCep" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>
+                <tr>
+                    <td>Rua: </td> 
+                    <td><input type="text" name="txtRua" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>
+                <tr>
+                    <td>UF: </td> 
+                    <td><input type="text" name="txtUf" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>
+                <tr>
+                    <td>Cidade: </td> 
+                    <td><input type="text" name="txtCidade" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>
                 
                 
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
-            </table>
+            </table>            
         </form>
-    </body>
+    </body>    
 </html>
