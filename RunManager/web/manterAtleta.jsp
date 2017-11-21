@@ -31,6 +31,10 @@
                     <td><input type="text" name="txtApelido" value="${atleta.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
+                    <td>Cpf: </td> 
+                    <td><input type="text" name="txtCpf" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                </tr>
+                <tr>
                     <td>Nome: </td> 
                     <td><input type="text" name="txtNome" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
@@ -40,7 +44,8 @@
                 </tr>
                 <tr>
                     <td>Sexo: </td> 
-                    <td><input type="text" name="txtSexo" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input type="radio" name="txtSexo" value="1" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>> Masculino </td>
+                    <td><input type="radio" name="txtSexo" value="2" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>> Feminino </td>
                 </tr>
                 <tr>
                     <td>Telefone Celular: </td> 

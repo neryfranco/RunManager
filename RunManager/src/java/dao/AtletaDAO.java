@@ -34,7 +34,7 @@ public class AtletaDAO {
                         rs.getString("cpf"),
                         rs.getString("nome"),
                         rs.getString("dataNasc"),
-                        rs.getInt("sexo"),
+                        rs.getString("sexo"),
                         rs.getString("tel_cel"),
                         rs.getString("tel_res"),
                         rs.getString("cep"),
@@ -56,8 +56,8 @@ public class AtletaDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into usuario (cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) values('"
-                    + atleta.getCpf() + "', '"
+            String sql = "insert into usuario (cpf, nome, dataNasc, sexo, tel_cel, tel_res, cep, rua, uf, cidade) values ('"
+                    + atleta.getCpf()+ "', '"
                     + atleta.getNome() + "', '"
                     + atleta.getDataNascimento() + "', '"
                     + atleta.getSexo() + "', '"
@@ -65,14 +65,15 @@ public class AtletaDAO {
                     + atleta.getTelRes() + "', '"
                     + atleta.getCep() + "', '"
                     + atleta.getRua() + "', '"
-                    + atleta.getCidade() + ") ";
+                    + atleta.getUf()+ "', '"
+                    + atleta.getCidade() + "') ";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.execute(sql);
             
-            sql = "insert into atleta (email, senha, Usuario_cpf) values("
+            sql = "insert into atleta (email, senha, Usuario_cpf) values('"
                     + atleta.getEmail() + "', '"
                     + atleta.getSenha() + "', '"
-                    + atleta.getCpf() + ") ";
+                    + atleta.getCpf() + "') ";
             comando = conexao.prepareStatement(sql);
             comando.execute(sql);
             comando.close();
@@ -91,7 +92,7 @@ public class AtletaDAO {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, atleta.getNome());
             comando.setString(2, atleta.getDataNascimento());
-            comando.setInt(3, atleta.getSexo());
+            comando.setString(3, atleta.getSexo());
             comando.setString(4, atleta.getTelCel());
             comando.setString(5, atleta.getTelRes());
             comando.setString(6, atleta.getCep());
@@ -137,7 +138,7 @@ public class AtletaDAO {
                     rs.getString("cpf"),
                     rs.getString("nome"),
                     rs.getString("dataNasc"),
-                    rs.getInt("sexo"),
+                    rs.getString("sexo"),
                     rs.getString("tel_cel"),
                     rs.getString("tel_res"),
                     rs.getString("cep"),

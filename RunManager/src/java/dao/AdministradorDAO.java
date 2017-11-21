@@ -35,7 +35,7 @@ public class AdministradorDAO {
                         rs.getString("cpf"),
                         rs.getString("nome"),
                         rs.getString("dataNasc"),
-                        rs.getInt("sexo"),
+                        rs.getString("sexo"),
                         rs.getString("tel_cel"),
                         rs.getString("tel_res"),
                         rs.getString("cep"),
@@ -56,31 +56,7 @@ public class AdministradorDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            /*String sql = "insert into administrador (cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) "
-                    + "values(?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setString(1, administrador.getCpf());
-            comando.setString(2, administrador.getNome());
-            comando.setString(3, administrador.getDataNascimento());
-            comando.setInt(4, administrador.getSexo());
-            comando.setString(5, administrador.getTelCel());
-            comando.setString(6, administrador.getTelRes());
-            comando.setString(7, administrador.getCep());
-            comando.setString(8, administrador.getRua());
-            comando.setString(9, administrador.getRua());
-            comando.setString(10, administrador.getCidade());
-            comando.execute(sql);
-
-            sql = "insert into administrador (email, senha) "
-                    + "values(?,?)";
-
-            comando = conexao.prepareStatement(sql);
-            comando.setString(1, administrador.getEmail());
-            comando.setString(2, administrador.getSenha());
-            comando.execute(sql);
-
-            comando.close();
-            conexao.close();*/
+            
             String sql = "insert into administrador (email, senha, cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) values("
                     + administrador.getEmail() + "', '"
                     + administrador.getSenha() + "', '"
@@ -110,7 +86,7 @@ public class AdministradorDAO {
             comando.setString(1, administrador.getNome());
             comando.setString(2, administrador.getNome());
             comando.setString(3, administrador.getDataNascimento());
-            comando.setInt(4, administrador.getSexo());
+            comando.setString(4, administrador.getSexo());
             comando.setString(5, administrador.getTelCel());
             comando.setString(6, administrador.getTelRes());
             comando.setString(7, administrador.getCep());
@@ -154,7 +130,7 @@ public class AdministradorDAO {
                     rs.getString("cpf"),
                     rs.getString("nome"),
                     rs.getString("dataNasc"),
-                    rs.getInt("sexo"),
+                    rs.getString("sexo"),
                     rs.getString("tel_cel"),
                     rs.getString("tel_res"),
                     rs.getString("cep"),

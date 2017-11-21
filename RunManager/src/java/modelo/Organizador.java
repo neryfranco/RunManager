@@ -25,7 +25,7 @@ public class Organizador extends Usuario{
             String cpf, 
             String nome, 
             String dataNascimento, 
-            int sexo, 
+            String sexo, 
             String telCel, 
             String telRes, 
             String cep, 

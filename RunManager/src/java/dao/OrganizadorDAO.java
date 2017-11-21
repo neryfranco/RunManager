@@ -35,7 +35,7 @@ public class OrganizadorDAO {
                         rs.getString("cpf"),
                         rs.getString("nome"),
                         rs.getString("dataNasc"),
-                        rs.getInt("sexo"),
+                        rs.getString("sexo"),
                         rs.getString("tel_cel"),
                         rs.getString("tel_res"),
                         rs.getString("cep"),
@@ -90,7 +90,7 @@ public class OrganizadorDAO {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, organizador.getNome());
             comando.setString(2, organizador.getDataNascimento());
-            comando.setInt(3, organizador.getSexo());
+            comando.setString(3, organizador.getSexo());
             comando.setString(4, organizador.getTelCel());
             comando.setString(5, organizador.getTelRes());
             comando.setString(6, organizador.getCep());
@@ -135,7 +135,7 @@ public class OrganizadorDAO {
                     rs.getString("cpf"),
                     rs.getString("nome"),
                     rs.getString("dataNasc"),
-                    rs.getInt("sexo"),
+                    rs.getString("sexo"),
                     rs.getString("tel_cel"),
                     rs.getString("tel_res"),
                     rs.getString("cep"),

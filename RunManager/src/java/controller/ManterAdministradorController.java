@@ -54,7 +54,7 @@ public class ManterAdministradorController extends HttpServlet {
         String cpf = request.getParameter("txtCpf");
         String nome = request.getParameter("txtNome");
         String dataNascimento = request.getParameter("txtDataNascimento");
-        int sexo = Integer.parseInt(request.getParameter("txtSexo"));
+        String sexo = request.getParameter("txtSexo");
         String telCel = request.getParameter("txtTelCel");
         String telRes = request.getParameter("txtTelRes");
         String cep = request.getParameter("txtCep");
@@ -88,7 +88,7 @@ public class ManterAdministradorController extends HttpServlet {
         try {
             String email = request.getParameter("txtEmail");
 
-            Administrador administrador = new Administrador(email, null, null, null, null, 0, null, null, null, null, null, null);
+            Administrador administrador = new Administrador(email, null, null, null, null, null, null, null, null, null, null, null);
 
             administrador.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
@@ -120,7 +120,7 @@ public class ManterAdministradorController extends HttpServlet {
             String cpf = request.getParameter("txtCpf");
             String nome = request.getParameter("txtNome");
             String dataNascimento = request.getParameter("txtDataNascimento");
-            int sexo = Integer.parseInt(request.getParameter("txtSexo"));
+            String sexo = request.getParameter("txtSexo");
             String telCel = request.getParameter("txtTelCel");
             String telRes = request.getParameter("txtTelRes");
             String cep = request.getParameter("txtCep");
