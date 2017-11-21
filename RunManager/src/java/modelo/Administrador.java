@@ -6,6 +6,7 @@
 package modelo;
 
 import dao.AdministradorDAO;
+import dao.AdministradorDAO;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -56,5 +57,17 @@ public class Administrador extends Usuario{
     
     public static List<Administrador> obterAdministradores() throws ClassNotFoundException{
         return AdministradorDAO.obterAdministradores();
+    }
+
+   public void gravar() throws SQLException, ClassNotFoundException{
+        AdministradorDAO.gravar(this);
+    }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+        AdministradorDAO.alterar(this);
+    }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+        AdministradorDAO.excluir(this);
     }
 }

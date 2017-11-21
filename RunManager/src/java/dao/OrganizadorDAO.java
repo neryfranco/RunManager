@@ -72,8 +72,8 @@ public class OrganizadorDAO {
             comando.setString(10, organizador.getCidade());
             comando.execute(sql);
 
-            sql = "insert into organizador (email, senha, pace, apelido) "
-                    + "values(?,?,?,?)";
+            sql = "insert into organizador (email, senha) "
+                    + "values(?,?)";
             comando = conexao.prepareStatement(sql);
             comando.setString(1, organizador.getEmail());
             comando.setString(2, organizador.getSenha());
@@ -83,6 +83,74 @@ public class OrganizadorDAO {
             conexao.close();
         } catch (SQLException e) {
         }
+    }
+    public static void alterar(Organizador organizador) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update curso set cpf = ?, nome = ?, dataNascimento = ?, sexo = ?, telCel = ?, telRes = ?, cep = ?, rua = ?, uf = ?, cidade = ?";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, organizador.getNome());
+            comando.setString(2, organizador.getDataNascimento());
+            comando.setInt(3, organizador.getSexo());
+            comando.setString(4, organizador.getTelCel());
+            comando.setString(5, organizador.getTelRes());
+            comando.setString(6, organizador.getCep());
+            comando.setString(7, organizador.getRua());
+            comando.setString(8, organizador.getRua());
+            comando.setString(9, organizador.getCidade());
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        } catch (SQLException e) {
+        }
+    }
+
+    public static void excluir(Organizador organizador) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from curso where email = " + organizador.getEmail();
+            comando.execute(stringSQL);
+        } catch (SQLException e) {
+            throw e;
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+
+    public static Organizador obterOrganizador(String email) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        Organizador organizador = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from Organizador where email = " + email);
+            rs.first();
+            organizador = new Organizador(rs.getString("email"),
+                    rs.getString("senha"),
+                    rs.getString("cpf"),
+                    rs.getString("nome"),
+                    rs.getString("dataNasc"),
+                    rs.getInt("sexo"),
+                    rs.getString("tel_cel"),
+                    rs.getString("tel_res"),
+                    rs.getString("cep"),
+                    rs.getString("rua"),
+                    rs.getString("uf"),
+                    rs.getString("cidade"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+        return organizador;
     }
 
     public static void fecharConexao(Connection conexao, Statement comando) {
