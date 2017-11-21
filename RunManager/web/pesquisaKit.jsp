@@ -10,12 +10,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa Kit</title>
     </head>
     <body>
         <h1>Pesquisa de Kits</h1>
-        <table border=1>
+        <table id="customers">
             <tr>
                 <th>Número de Peito</th>
                 <th>Chip</th>
@@ -33,7 +34,7 @@
             </c:forEach>
         </table>
         <form action="ManterKitController?acao=prepararIncluir" method="post">
-            <input type="submit" name="btnIncluir" value="Incluir">
+            <input id="botao" type="submit" name="btnIncluir" value="Incluir">
         </form>
     </body>
 </html>

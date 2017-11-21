@@ -11,12 +11,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa de Categorias</title>
     </head>
     <body>
         <h1>Pesquisa de Categorias</h1>
-        <table border=1>
+        <table id="customers">
             <tr>
                 <th>ID</th>
                 <th>Sexo</th>
@@ -35,7 +36,7 @@
             </c:forEach>
         </table>
         <form action="ManterCategoriaController?acao=prepararIncluir" method="post">
-            <input type="submit" name="btnIncluir" value="Incluir">
+            <input id="botao" type="submit" name="btnIncluir" value="Incluir">
         </form>
     </body>
 </html>

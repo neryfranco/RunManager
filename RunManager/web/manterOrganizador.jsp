@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manter Organizador</title>
     </head>
@@ -66,9 +67,8 @@
                     <td>Cidade: </td> 
                     <td><input type="text" name="txtCidade" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
-                
-                    <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
             </table>
+            <input id="botao" type="submit" name="btnConfirmar" value="Confirmar">    
         </form>
     </body>
 </html>

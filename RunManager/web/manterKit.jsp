@@ -10,10 +10,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manter Kit</title>
     </head>
-    <body>
+    <body id="principal">
         <h1>Manter Kit - ${operacao}</h1>
 
         <form action="ManterKitController?acao=confirmar${operacao}" method="post" name="frmManterKit" onsubmit="return validarFormulario(this)">
@@ -43,12 +44,9 @@
                         </c:forEach>
                         </select> 
                     </td>
-                </tr>        
-                
-                <tr>
-                    <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
                 </tr>
             </table>
+            <input id="botao" type="submit" name="btnConfirmar" value="Confirmar">            
         </form>
     </body>
 </html>

@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manter Tapete</title>
     </head>
@@ -41,10 +42,11 @@
                 <tr>
                     <td>Refência: </td> 
                     <td><input type="text" name="txtReferencia" value="${tapete.referencia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                </tr>
-                    <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
+                </tr>                   
             </table>
+            <input id="botao" type="submit" name="btnConfirmar" value="Confirmar">
         </form>
+                
         <SCRIPT language="JavaScript">
             <!--
             

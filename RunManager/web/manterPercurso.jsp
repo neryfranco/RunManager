@@ -10,26 +10,27 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manter Percurso</title>
     </head>
-    <body>
+    <body id="principal">
         <h1>Manter Percurso - ${operacao}</h1>
 
         <form action="ManterPercursoController?acao=confirmar${operacao}" method="post" name="frmManterPercurso" >
             <table>
                 <tr>
                     <td>ID:</td> 
-                    <td><input type="text" name="txtID" value="${percurso.id}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtID" value="${percurso.id}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Distância (km):</td> 
-                    <td><input type="text" name="txtDistancia" value="${percurso.distancia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtDistancia" value="${percurso.distancia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Categoria:</td> 
                     <td>
-                        <select name="optCategoria" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                        <select id="caixatexto" name="optCategoria" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
                             <option value="0" <c:if test="${percurso.categoria_id == null}"> selected</c:if>> </option>  
                             <c:forEach items="${categorias}" var="categoria">
                                 <option value="${categoria.id}" <c:if test="${percurso.categoria_id == categoria.id}"> selected</c:if>>${categoria.descricao}</option>  
@@ -39,12 +40,10 @@
                 </tr>
                 <tr>
                     <td>Itinerário:</td> 
-                    <td><input type="text" name="txtItinerario" value="${percurso.itinerario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
-                </tr>
+                    <td><input id="caixatexto" type="text" name="txtItinerario" value="${percurso.itinerario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea></td>
+                </tr>                
             </table>
+            <input id="botao" type="submit" name="btnConfirmar" value="Confirmar">    
         </form>
         <SCRIPT language="JavaScript">
             <!--

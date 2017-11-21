@@ -10,56 +10,58 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manter Corrida</title>
     </head>
-    <body>
+    <body id="principal">
         <h1>Manter Corrida - ${operacao}</h1>
 
         <form action="ManterCorridaController?acao=confirmar${operacao}" method="post" name="frmManterCorrida" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
                     <td>ID: </td> 
-                    <td><input type="text" name="txtID" value="${corrida.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtID" value="${corrida.id}" <c:if test="${operacao != 'Incluir'}"> readonly </c:if>></td>
                 </tr>
                 <tr>
                     <td>Nome: </td> 
-                    <td><input type="text" name="txtNome" value="${corrida.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtNome" value="${corrida.nome}" <c:if test="${operacao == 'Excluir'}"> readonly </c:if>></td>
                 </tr>
                 <tr>
                     <td>Local Largada: </td> 
-                    <td><input type="text" name="txtLocalLargada" value="${corrida.localLargada}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtLocalLargada" value="${corrida.localLargada}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Local Chegada:  </td> 
-                    <td><input type="text" name="txtLocalChegada" value="${corrida.localChegada}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtLocalChegada" value="${corrida.localChegada}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Horário Largada:  </td> 
-                    <td><input type="text" name="txtHorarioLargada" value="${corrida.horaLargada}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtHorarioLargada" value="${corrida.horaLargada}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Data Corrida:  </td> 
-                    <td><input type="text" name="txtDataCorrida" value="${corrida.dataCorrida}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtDataCorrida" value="${corrida.dataCorrida}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Data Retirada Kit:   </td> 
-                    <td><input type="text" name="txtDataRetiradaKit" value="${corrida.dataRetiradaKit}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtDataRetiradaKit" value="${corrida.dataRetiradaKit}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Local Retirada Kit:  </td> 
-                    <td><input type="text" name="txtLocalRetiradaKit" value="${corrida.localRetiradaKit}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtLocalRetiradaKit" value="${corrida.localRetiradaKit}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Duração Limite:  </td> 
-                    <td><input type="text" name="txtDuracaoLimite" value="${corrida.duracaoLimite}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input type="text" id="caixatexto" name="txtDuracaoLimite" value="${corrida.duracaoLimite}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Número Máximo Participantes:  </td> 
-                    <td><input type="text" name="txtNumMaxParticipantes" value="${corrida.numMaxParticipantes}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input type="text" id="caixatexto" name="txtNumMaxParticipantes" value="${corrida.numMaxParticipantes}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
-                    <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
+                    
             </table>
+            <input id="botao" type="submit" name="btnConfirmar" value="Confirmar">    
         </form>
     </body>
 </html>
