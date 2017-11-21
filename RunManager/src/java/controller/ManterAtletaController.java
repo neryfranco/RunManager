@@ -52,7 +52,6 @@ public class ManterAtletaController extends HttpServlet {
     public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("txtEmail");
         String senha = request.getParameter("txtSenha");
-        
         String apelido = request.getParameter("txtSenha");
         String cpf = request.getParameter("txtCpf");
         String nome = request.getParameter("txtNome");
@@ -67,7 +66,7 @@ public class ManterAtletaController extends HttpServlet {
         try {
             Atleta atleta = new Atleta(email, senha, cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade, apelido);
             atleta.gravar();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaAdministradorController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaAtletaController");
             view.forward(request, response);
         } catch (SQLException ex) {
         } catch (ClassNotFoundException ex) {
@@ -80,7 +79,7 @@ public class ManterAtletaController extends HttpServlet {
             request.setAttribute("atleta", Atleta.obterAtletas());
             String email = request.getParameter("txtEmail");
             request.setAttribute("txtEmail", email);
-            RequestDispatcher view = request.getRequestDispatcher("manterAdministrador.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("manterAtleta.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {
 
@@ -111,7 +110,7 @@ public class ManterAtletaController extends HttpServlet {
             request.setAttribute("atleta", Atleta.obterAtletas());
             String email = request.getParameter("txtEmail");
             request.setAttribute("txtEmail", email);
-            RequestDispatcher view = request.getRequestDispatcher("manterAdministrador.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("manterAtleta.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {
 

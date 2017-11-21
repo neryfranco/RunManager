@@ -56,35 +56,7 @@ public class AtletaDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            /*String sql = "insert into usuario (cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) "
-                    + "values(?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setString(1, atleta.getCpf());
-            comando.setString(2, atleta.getNome());
-            comando.setString(3, atleta.getDataNascimento());
-            comando.setInt(4, atleta.getSexo());
-            comando.setString(5, atleta.getTelCel());
-            comando.setString(6, atleta.getTelRes());
-            comando.setString(7, atleta.getCep());
-            comando.setString(8, atleta.getRua());
-            comando.setString(9, atleta.getRua());
-            comando.setString(10, atleta.getCidade());
-            comando.execute(sql);
-            
-            sql = "insert into atleta (email, senha, pace, apelido) "
-                    + "values(?,?,?,?)";
-            comando = conexao.prepareStatement(sql);
-            comando.setString(1, atleta.getEmail());
-            comando.setString(2, atleta.getSenha());
-            comando.setDouble(3, atleta.getPace());
-            comando.setString(4, atleta.getApelido());
-            comando.execute(sql);
-            
-            comando.close();
-            conexao.close();*/
-            String sql = "insert into atleta (email, senha, cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) values("
-                    + atleta.getEmail() + "', '"
-                    + atleta.getSenha() + "', '"
+            String sql = "insert into usuario (cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) values('"
                     + atleta.getCpf() + "', '"
                     + atleta.getNome() + "', '"
                     + atleta.getDataNascimento() + "', '"
@@ -95,6 +67,13 @@ public class AtletaDAO {
                     + atleta.getRua() + "', '"
                     + atleta.getCidade() + ") ";
             PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.execute(sql);
+            
+            sql = "insert into atleta (email, senha, Usuario_cpf) values("
+                    + atleta.getEmail() + "', '"
+                    + atleta.getSenha() + "', '"
+                    + atleta.getCpf() + ") ";
+            comando = conexao.prepareStatement(sql);
             comando.execute(sql);
             comando.close();
             comando.close();
