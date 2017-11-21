@@ -45,11 +45,12 @@ public class CamisaDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into camisa (tamanho, kit)"
+            String sql = "insert into camisa (id, tamanho, kit)"
                     + "values(?,?)";
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setString(1, camisa.getTamanho());
-            comando.setObject(2, camisa.getKit());
+            comando.setInt(1, camisa.getId());
+            comando.setString(2, camisa.getTamanho());
+            comando.setObject(3, camisa.getKit());
             comando.execute(sql);
             comando.close();
             conexao.close();
@@ -60,7 +61,7 @@ public class CamisaDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "update curso set cpf = ?, nome = ?, dataNascimento = ?, sexo = ?, telCel = ?, telRes = ?, cep = ?, rua = ?, uf = ?, cidade = ?";
+            String sql = "update curso set tamanho = ?, kit = ?";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, camisa.getTamanho());
             comando.setObject(2, camisa.getKit());            
@@ -79,7 +80,7 @@ public class CamisaDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from curso where tamanho = " + camisa.getTamanho();
+            stringSQL = "delete from curso where id = " + camisa.getId();
             comando.execute(stringSQL);
         } catch (SQLException e) {
             throw e;
@@ -89,14 +90,14 @@ public class CamisaDAO {
         }
     }
 
-    public static Camisa obterCamisa(String email) throws ClassNotFoundException {
+    public static Camisa obterCamisa(int id) throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         Camisa camisa = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Camisa where email = " + email);
+            ResultSet rs = comando.executeQuery("select * from Camisa where email = " + id);
             rs.first();
             camisa = new Camisa(rs.getString("tamanho"), (Kit) rs.getObject("kit"));
                    

@@ -11,6 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css.css">
         <title>Manter Administrador</title>
     </head>
     <body>
@@ -65,7 +66,7 @@
                 
                 
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
-            </table>
+            </table>            
         </form>
-    </body>
+    </body>    
 </html>

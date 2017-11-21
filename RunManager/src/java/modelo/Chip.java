@@ -71,4 +71,8 @@ public class Chip {
     public static List<Chip> obterChips() throws ClassNotFoundException{
         return ChipDAO.obterChips();
     }
+    
+    public static Chip obterChip(int chip_num) throws ClassNotFoundException{
+        return ChipDAO.obterChip(chip_num);
+    }
 }
