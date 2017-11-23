@@ -37,6 +37,16 @@ public class Administrador extends Usuario{
         this.email = email;
         this.senha = senha;
     }
+       
+    public Administrador
+       (String email, 
+        String senha,
+        String cpf) 
+    {
+        super(cpf, null, null, null, null, null, null, null, null, null);
+        this.email = email;
+        this.senha = senha;
+    }
 
     
     public String getEmail() {
@@ -57,6 +67,10 @@ public class Administrador extends Usuario{
     
     public static List<Administrador> obterAdministradores() throws ClassNotFoundException{
         return AdministradorDAO.obterAdministradores();
+    }
+    
+    public static Administrador obterAdministrador(String email) throws ClassNotFoundException{
+        return AdministradorDAO.obterAdministrador(email);
     }
 
    public void gravar() throws SQLException, ClassNotFoundException{

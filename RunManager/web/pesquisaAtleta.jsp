@@ -17,15 +17,15 @@
         <h1>Pesquisa de Atletas</h1>
         <table border=1>
             <tr>
+                <th>Email</th>                
                 <th>Nome</th>
-                <th>Email</th>
                 <th>Apelido</th>
                 <th colspan=2>Ação</th>
             </tr>
             <c:forEach items="${atletas}" var="atleta">
                 <tr>
-                    <td><c:out value="${atleta.nome}" /></td>
                     <td><c:out value="${atleta.email}" /></td>
+                    <td><c:out value="${atleta.nome}" /></td>
                     <td><c:out value="${atleta.apelido}" /></td>
                         <td><a href="ManterAtletaController?acao=prepararEditar&emailAtleta=<c:out value="${atleta.email}"/>">Editar</a></td>
                         <td><a href="ManterAtletaController?acao=prepararExcluir&emailAtleta=<c:out value="${atleta.email}"/>">Excluir</a></td>

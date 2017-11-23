@@ -66,14 +66,15 @@ public class AtletaDAO {
                     + atleta.getCep() + "', '"
                     + atleta.getRua() + "', '"
                     + atleta.getUf()+ "', '"
-                    + atleta.getCidade() + "') ";
+                    + atleta.getCidade() + "')";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.execute(sql);
             
-            sql = "insert into atleta (email, senha, Usuario_cpf) values('"
+            sql = "insert into atleta (email, senha, Usuario_cpf, apelido) values('"
                     + atleta.getEmail() + "', '"
                     + atleta.getSenha() + "', '"
-                    + atleta.getCpf() + "') ";
+                    + atleta.getCpf() + "', '"
+                    + atleta.getApelido() + "') ";
             comando = conexao.prepareStatement(sql);
             comando.execute(sql);
             comando.close();
@@ -88,17 +89,25 @@ public class AtletaDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "update curso set cpf = ?, nome = ?, dataNascimento = ?, sexo = ?, telCel = ?, telRes = ?, cep = ?, rua = ?, uf = ?, cidade = ?";
+            String sql = "update Atleta set"
+                    + " email = '" + atleta.getEmail() + "'"
+                    + " senha = '" + atleta.getSenha() + "'"
+                    + " apelido = '" + atleta.getApelido() + "'";
+            sql = sql + " where atleta.Usuario_cpf = '" + atleta.getCpf() + "'";
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setString(1, atleta.getNome());
-            comando.setString(2, atleta.getDataNascimento());
-            comando.setString(3, atleta.getSexo());
-            comando.setString(4, atleta.getTelCel());
-            comando.setString(5, atleta.getTelRes());
-            comando.setString(6, atleta.getCep());
-            comando.setString(7, atleta.getRua());
-            comando.setString(8, atleta.getRua());
-            comando.setString(9, atleta.getCidade());
+            comando.execute(sql);
+            
+            sql = "update Usuario set "
+                    + " nome = '" + atleta.getNome() + "'"
+                    + ", dataNasc = '" + atleta.getDataNascimento()+ "'"
+                    + ", sexo = '" + atleta.getSexo() + "'"
+                    + ", tel_cel = '" + atleta.getTelCel() + "'"
+                    + ", tel_res = '" + atleta.getTelRes() + "'"
+                    + ", cep = '" + atleta.getCep() + "'"
+                    + ", rua = '" + atleta.getRua() + "'"
+                    + ", cidade = '" + atleta.getCidade() + "'";
+            sql = sql + " where cpf = '" + atleta.getCpf() + "'";
+            comando = conexao.prepareStatement(sql);
             comando.execute(sql);
             comando.close();
             conexao.close();
@@ -114,7 +123,7 @@ public class AtletaDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from Atleta where email = " + atleta.getEmail();
+            stringSQL = "delete from Atleta where email = '" + atleta.getEmail() + "'";
             comando.execute(stringSQL);
         } catch (SQLException e) {
             throw e;
@@ -127,32 +136,32 @@ public class AtletaDAO {
     public static Atleta obterAtleta(String email) throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
-        Atleta atleta = null;
+        Atleta a = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Atleta where email = " + email);
+            ResultSet rs = comando.executeQuery("select * from Atleta where email = '" + email + "'");
             rs.first();
-            atleta = new Atleta(rs.getString("email"),
-                    rs.getString("senha"),
-                    rs.getString("cpf"),
-                    rs.getString("nome"),
-                    rs.getString("dataNasc"),
-                    rs.getString("sexo"),
-                    rs.getString("tel_cel"),
-                    rs.getString("tel_res"),
-                    rs.getString("cep"),
-                    rs.getString("rua"),
-                    rs.getString("uf"),
-                    rs.getString("cidade"),
-                    rs.getString("apelido"));
+            a = new Atleta(rs.getString("email"), rs.getString("senha"), rs.getString("Usuario_cpf"), rs.getString("apelido"));
+
+            rs = comando.executeQuery("select * from Usuario where cpf = '" + a.getCpf() + "'");
+            rs.first();
+            a.setNome(rs.getString("nome"));
+            a.setDataNascimento(rs.getString("dataNasc"));
+            a.setSexo(rs.getString("sexo"));
+            a.setTelCel(rs.getString("tel_cel"));
+            a.setTelRes(rs.getString("tel_res"));
+            a.setCep(rs.getString("cep"));
+            a.setRua(rs.getString("rua"));
+            a.setUf(rs.getString("uf"));
+            a.setCidade(rs.getString("cidade"));
                     
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             fecharConexao(conexao, comando);
         }
-       return atleta;  
+       return a;  
     }
 
     public static void fecharConexao(Connection conexao, Statement comando) {

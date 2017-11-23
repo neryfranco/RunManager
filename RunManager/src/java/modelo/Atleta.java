@@ -39,6 +39,16 @@ public class Atleta extends Usuario{
         this.apelido = apelido;
     }
 
+    public Atleta(String email, 
+                  String senha, 
+                  String cpf,
+                  String apelido) {
+        super(cpf, null, null, null, null, null, null, null, null, null);
+        this.email = email;
+        this.senha = senha;
+        this.apelido = apelido;
+    }
+
     public String getEmail() {
         return email;
     }

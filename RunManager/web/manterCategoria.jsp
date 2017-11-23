@@ -24,8 +24,8 @@
                 </tr>
                 <tr>
                     <td>Sexo: </td> 
-                    <td><input type="radio" name="txtSexo" value="1" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>> Masculino </td>
-                    <td><input type="radio" name="txtSexo" value="2" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>> Feminino </td>
+                    <td><input type="radio" name="txtSexo" value="1" <c:if test="${operacao == 'Excluir'}"> disabled</c:if>> Masculino </td>
+                    <td><input type="radio" name="txtSexo" value="2" <c:if test="${operacao == 'Excluir'}"> disabled</c:if>> Feminino </td>
                 </tr>
                 <tr>
                     <td>Idade Inicial: </td> 

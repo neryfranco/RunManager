@@ -23,7 +23,7 @@ import modelo.Atleta;
  */
 public class ManterAtletaController extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
         String acao = request.getParameter("acao");
         if (acao.equals("prepararIncluir")) {
             prepararIncluir(request, response);
@@ -73,19 +73,15 @@ public class ManterAtletaController extends HttpServlet {
         }
     }
 
-    public void prepararExcluir(HttpServletRequest request, HttpServletResponse response) {
+    public void prepararExcluir(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException {
         try {
             request.setAttribute("operacao", "Excluir");
-            request.setAttribute("atleta", Atleta.obterAtletas());
-            String email = request.getParameter("txtEmail");
-            request.setAttribute("txtEmail", email);
+            String email = request.getParameter("emailAtleta");
+            Atleta a = Atleta.obterAtleta(email);
+            request.setAttribute("atleta", a);
             RequestDispatcher view = request.getRequestDispatcher("manterAtleta.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {
-
-        } catch (IOException ex) {
-
-        } catch (ClassNotFoundException ex) {
 
         }
     }
@@ -97,29 +93,24 @@ public class ManterAtletaController extends HttpServlet {
             Atleta atleta = new Atleta(email, null, null, null, null, null, null, null, null, null, null, null, null);
 
             atleta.excluir();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaAtletaController");
             view.forward(request, response);
         } catch (SQLException ex) {
         } catch (ClassNotFoundException ex) {
         }
     }
     
-    public void prepararEditar(HttpServletRequest request, HttpServletResponse response){
+    public void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ClassNotFoundException{
         try {
             request.setAttribute("operacao", "Editar");
-            request.setAttribute("atleta", Atleta.obterAtletas());
-            String email = request.getParameter("txtEmail");
-            request.setAttribute("txtEmail", email);
+            String email = request.getParameter("emailAtleta");
+            Atleta a = Atleta.obterAtleta(email);
+            request.setAttribute("atleta", a);
             RequestDispatcher view = request.getRequestDispatcher("manterAtleta.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {
 
-        } catch (IOException ex) {
-
-        } catch (ClassNotFoundException ex) {
-
         }
-        
     }
     
     public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -140,9 +131,8 @@ public class ManterAtletaController extends HttpServlet {
 
 
             Atleta atleta = new Atleta(email, senha, cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade, apelido);
-            atleta.setEmail(email);
             atleta.alterar();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaAtletaController");
             view.forward(request, response);
         } catch (SQLException ex) {
         } catch (ClassNotFoundException ex) {
@@ -164,6 +154,8 @@ public class ManterAtletaController extends HttpServlet {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManterAtletaController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterAtletaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -181,6 +173,8 @@ public class ManterAtletaController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterAtletaController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(ManterAtletaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

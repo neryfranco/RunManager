@@ -41,7 +41,6 @@ public class ManterAdministradorController extends HttpServlet {
 
     public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
         request.setAttribute("operacao", "Incluir");
-        request.setAttribute("administrador", Administrador.obterAdministradores());
         RequestDispatcher view
                 = request.getRequestDispatcher("/manterAdministrador.jsp");
         view.forward(request, response);
@@ -74,9 +73,9 @@ public class ManterAdministradorController extends HttpServlet {
     public void prepararExcluir(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, IOException {
         try {
             request.setAttribute("operacao", "Excluir");
-            request.setAttribute("administrador", Administrador.obterAdministradores());
-            String email = request.getParameter("txtEmail");
-            request.setAttribute("txtEmail", email);
+            String email = request.getParameter("emailAdministrador");
+            Administrador admin = Administrador.obterAdministrador(email);
+            request.setAttribute("administrador", admin);
             RequestDispatcher view = request.getRequestDispatcher("manterAdministrador.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {
@@ -89,9 +88,8 @@ public class ManterAdministradorController extends HttpServlet {
             String email = request.getParameter("txtEmail");
 
             Administrador administrador = new Administrador(email, null, null, null, null, null, null, null, null, null, null, null);
-
             administrador.excluir();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaAdministradorController");
             view.forward(request, response);
         } catch (SQLException ex) {
         } catch (ClassNotFoundException ex) {
@@ -100,11 +98,10 @@ public class ManterAdministradorController extends HttpServlet {
 
     public void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, IOException {
         try {
-
-            request.setAttribute("operacao", "Editar");
-            request.setAttribute("administrador", Administrador.obterAdministradores());
-            String email = request.getParameter("txtEmail");
-            request.setAttribute("txtEmail", email);
+            request.setAttribute("operacao", "Excluir");
+            String email = request.getParameter("emailAdministrador");
+            Administrador admin = Administrador.obterAdministrador(email);
+            request.setAttribute("administrador", admin);
             RequestDispatcher view = request.getRequestDispatcher("manterAdministrador.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {
@@ -114,24 +111,22 @@ public class ManterAdministradorController extends HttpServlet {
     }
 
     public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = request.getParameter("txtEmail");
+        String senha = request.getParameter("txtSenha");
+        String cpf = request.getParameter("txtCpf");
+        String nome = request.getParameter("txtNome");
+        String dataNascimento = request.getParameter("txtDataNascimento");
+        String sexo = request.getParameter("txtSexo");
+        String telCel = request.getParameter("txtTelCel");
+        String telRes = request.getParameter("txtTelRes");
+        String cep = request.getParameter("txtCep");
+        String rua = request.getParameter("txtRua");
+        String uf = request.getParameter("txtUf");
+        String cidade = request.getParameter("txtCidade");
         try {
-            String email = request.getParameter("txtEmail");
-            String senha = request.getParameter("txtSenha");
-            String cpf = request.getParameter("txtCpf");
-            String nome = request.getParameter("txtNome");
-            String dataNascimento = request.getParameter("txtDataNascimento");
-            String sexo = request.getParameter("txtSexo");
-            String telCel = request.getParameter("txtTelCel");
-            String telRes = request.getParameter("txtTelRes");
-            String cep = request.getParameter("txtCep");
-            String rua = request.getParameter("txtRua");
-            String uf = request.getParameter("txtUf");
-            String cidade = request.getParameter("txtCidade");
-
             Administrador administrador = new Administrador(email, senha, cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade);
-            administrador.setEmail(email);
             administrador.alterar();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaAdministradorController");
             view.forward(request, response);
         } catch (SQLException ex) {
         } catch (ClassNotFoundException ex) {

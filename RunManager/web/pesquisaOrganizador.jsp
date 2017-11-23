@@ -17,16 +17,16 @@
         <h1>Pesquisa de Organizadores</h1>
         <table border=1>
             <tr>
-                <th>Nome</th>
                 <th>Email</th>
                 <th>Telefone</th>
+                <th>Nome</th>
                 <th colspan=2>Ação</th>
             </tr>
             <c:forEach items="${organizadores}" var="organizador">
                 <tr>
-                    <td><c:out value="${organizador.nome}" /></td>
                     <td><c:out value="${organizador.email}" /></td>
-                    <td><c:out value="${organizador.telCel}" /></td>
+                    <td><c:out value="${organizador.cpf}" /></td>
+                    <td><c:out value="${organizador.nome}" /></td>
                         <td><a href="ManterOrganizadorController?acao=prepararEditar&emailOrganizador=<c:out value="${organizador.email}"/>">Editar</a></td>
                         <td><a href="ManterOrganizadorController?acao=prepararExcluir&emailOrganizador=<c:out value="${organaziador.email}"/>">Excluir</a></td>
                 </tr>
