@@ -15,7 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa de Categorias</title>
     </head>
-    <body>
+    <body id="principal">
         <h1>Pesquisa de Categorias</h1>
         <table id="customers">
             <tr>

@@ -14,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa Administrador</title>
     </head>
-    <body>
+    <body id="principal">
         <h1>Pesquisa de Administradores</h1>
         <table id="customers">
             <tr>
