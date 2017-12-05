@@ -11,12 +11,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa de Percursos</title>
     </head>
-    <body>
+    <body id="principal" >
         <h1>Pesquisa de Percursos</h1>
-        <table border=1>
+        <table id="customers">
             <tr>
                 <th>ID</th>
                 <th>Categoria</th>
@@ -34,7 +35,7 @@
             </c:forEach>
         </table>
         <form action="ManterPercursoController?acao=prepararIncluir" method="post">
-            <input type="submit" name="btnIncluir" value="Incluir">
+            <input id="botao" type="submit" name="btnIncluir" value="Incluir">
         </form>
     </body>
 </html>

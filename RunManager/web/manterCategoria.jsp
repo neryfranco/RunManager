@@ -10,10 +10,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manter Categoria</title>
     </head>
-    <body>
+    <body id="principal">
         <h1>Manter Categoria - ${operacao}</h1>
 
         <form action="ManterCategoriaController?acao=confirmar${operacao}" method="post" name="frmManterCategoria">
@@ -29,18 +30,19 @@
                 </tr>
                 <tr>
                     <td>Idade Inicial: </td> 
-                    <td><input type="text" name="txtIdadeInicial" value="${categoria.idadeInicial}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtIdadeInicial" value="${categoria.idadeInicial}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Idade Final:  </td> 
-                    <td><input type="text" name="txtIdadeFinal" value="${categoria.idadeFinal}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtLocalChegada" value="${categoria.idadeFinal}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Descrição:  </td> 
-                    <td><input type="text" name="txtDescricao" value="${categoria.descricao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtDescricao" value="${categoria.descricao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
-                <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
+                
             </table>
+            <input id="botao" type="submit" name="btnConfirmar" value="Confirmar">    
         </form>
     </body>
 </html>

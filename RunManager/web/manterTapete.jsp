@@ -10,41 +10,44 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manter Tapete</title>
     </head>
-    <body>
+    <body id="principal">
         <h1>Manter Tapete - ${operacao}</h1>
 
         <form action="ManterTapeteController?acao=confirmar${operacao}" method="post" name="frmManterTapete" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
                     <td>ID: </td> 
-                    <td><input type="text" name="txtID" value="${tapete.id}" readonly></td>
+                    <td><input id="caixatexto" type="text" name="txtID" value="${tapete.id}"></td>
                 </tr>
                 <tr>
                     <td>CEP: </td> 
-                    <td><input type="text" name="txtCEP" value="${tapete.cep}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtCEP" value="${tapete.cep}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Rua: </td> 
-                    <td><input type="text" name="txtRua" value="${tapete.rua}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtRua" value="${tapete.rua}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Cidade: </td> 
-                    <td><input type="text" name="txtCidade" value="${tapete.cidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtCidade" value="${tapete.cidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>UF: </td> 
-                    <td><input type="text" name="txtUF" value="${tapete.uf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtUF" value="${tapete.uf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Referência: </td> 
-                    <td><input type="text" name="txtReferencia" value="${tapete.referencia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtReferencia" value="${tapete.referencia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                     <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
             </table>
+            <input id="botao" type="submit" name="btnConfirmar" value="Confirmar">
         </form>
+                
         <SCRIPT language="JavaScript">
             <!--
             

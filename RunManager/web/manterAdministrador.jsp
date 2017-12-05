@@ -14,30 +14,31 @@
         <link rel="stylesheet" type="text/css" href="css.css">
         <title>Manter Administrador</title>
     </head>
-    <body>
+    <body id="principal">
         <h1>Manter Administrador - ${operacao}</h1>
 
         <form action="ManterAdministradorController?acao=confirmar${operacao}" method="post" name="frmManterAdministrador" onsubmit="return validarFormulario(this)">
-            <table>
-                <tr>
-                    <td>Cpf: </td> 
-                    <td><input type="text" name="txtCpf" value="${administrador.cpf}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+            
+                <table>
+                    <tr>
+                        <td>Cpf: </td> 
+                        <td><input type="text" name="txtCpf" value="${administrador.cpf}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Email: </td> 
-                        <td><input type="text" name="txtEmail" value="${administrador.email}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtEmail" value="${administrador.email}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Senha: </td> 
-                        <td><input type="text" name="txtSenha" value="${administrador.senha}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtSenha" value="${administrador.senha}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Nome: </td> 
-                        <td><input type="text" name="txtNome" value="${administrador.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtNome" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Data Nascimento: </td> 
-                        <td><input type="text" name="txtDataNascimento" value="${administrador.dataNascimento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtDataNascimento" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Sexo: </td> 
@@ -50,32 +51,30 @@
                     </tr>
                     <tr>
                         <td>Telefone Celular: </td> 
-                        <td><input type="text" name="txtTelCel" value="${administrador.telCel}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input  id="caixatexto" type="text" name="txtTelCel" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Telefone Residencial: </td> 
-                        <td><input type="text" name="txtTelRes" value="${administrador.telRes}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtTelRes" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Cep: </td> 
-                        <td><input type="text" name="txtCep" value="${administrador.cep}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtCep" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Rua: </td> 
-                        <td><input type="text" name="txtRua" value="${administrador.rua}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtRua" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>UF: </td> 
-                        <td><input type="text" name="txtUf" value="${administrador.uf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtUf" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Cidade: </td> 
-                        <td><input type="text" name="txtCidade" value="${administrador.cidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtCidade" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
-
-
-                <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
-            </table>            
+            </table>
+            <input id="botao" type="submit" name="btnConfirmar" value="Confirmar">    
         </form>
     </body>    
 </html>
