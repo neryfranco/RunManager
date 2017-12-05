@@ -21,7 +21,7 @@
             <table>
                 <tr>
                     <td>ID: </td> 
-                    <td><input id="caixatexto" type="text" name="txtID" value="${tapete.id}"></td>
+                    <td><input id="caixatexto" type="text" name="txtID" value="${tapete.id}" readonly></td>
                 </tr>
                 <tr>
                     <td>CEP: </td> 

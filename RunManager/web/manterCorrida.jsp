@@ -21,7 +21,7 @@
             <table>
                 <tr>
                     <td>ID: </td> 
-                    <td><input id="caixatexto" type="text" name="txtID" value="${corrida.id}" readonly </c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtID" value="${corrida.id}" readonly ></td>
                 </tr>
                 <tr>
                     <td>Nome: </td> 

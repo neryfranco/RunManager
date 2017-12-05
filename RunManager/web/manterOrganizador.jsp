@@ -21,7 +21,7 @@
             <table>
                 <tr>
                     <td>CPF: </td> 
-                    <td><input type="text" name="txtCpf" value="${organizador.cpf}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtCpf" value="${organizador.cpf}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Email: </td> 

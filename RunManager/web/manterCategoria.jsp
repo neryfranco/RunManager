@@ -21,26 +21,30 @@
             <table>
                 <tr>
                     <td>ID: </td> 
-                    <td><input type="text" name="txtID" value="${categoria.id}" readonly></td>
+                    <td><input id="caixatexto" type="text" name="txtID" value="${categoria.id}" readonly></td>
                 </tr>
                 <tr>
                     <td>Sexo: </td> 
-                    <td><input type="radio" name="txtSexo" value="1" <c:if test="${operacao == 'Excluir'}"> disabled</c:if>> Masculino </td>
-                    <td><input type="radio" name="txtSexo" value="2" <c:if test="${operacao == 'Excluir'}"> disabled</c:if>> Feminino </td>
+                    <td><input type="radio" name="txtSexo" value="1" 
+                               <c:if test="${atleta.sexo == '1'}"> checked</c:if>
+                               <c:if test="${operacao == 'Excluir'}"> disabled </c:if>> Masculino </td>
+                        <td><input type="radio" name="txtSexo" value="2" 
+                            <c:if test="${atleta.sexo == '2'}"> checked</c:if>
+                            <c:if test="${operacao == 'Excluir'}"> disabled </c:if>> Feminino </td>
+                    </tr>
+                    <tr>
+                        <td>Idade Inicial: </td> 
+                        <td><input id="caixatexto" type="text" name="txtIdadeInicial" value="${categoria.idadeInicial}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    </tr>
+                    <tr>
+                        <td>Idade Final:  </td> 
+                        <td><input id="caixatexto" type="text" name="txtLocalChegada" value="${categoria.idadeFinal}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    </tr>
+                    <tr>
+                        <td>Descrição:  </td> 
+                        <td><input id="caixatexto" type="text" name="txtDescricao" value="${categoria.descricao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
-                <tr>
-                    <td>Idade Inicial: </td> 
-                    <td><input id="caixatexto" type="text" name="txtIdadeInicial" value="${categoria.idadeInicial}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                </tr>
-                <tr>
-                    <td>Idade Final:  </td> 
-                    <td><input id="caixatexto" type="text" name="txtLocalChegada" value="${categoria.idadeFinal}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                </tr>
-                <tr>
-                    <td>Descrição:  </td> 
-                    <td><input id="caixatexto" type="text" name="txtDescricao" value="${categoria.descricao}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                </tr>
-                
+
             </table>
             <input id="botao" type="submit" name="btnConfirmar" value="Confirmar">    
         </form>

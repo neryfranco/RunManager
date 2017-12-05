@@ -98,7 +98,7 @@ public class ManterAdministradorController extends HttpServlet {
 
     public void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, IOException {
         try {
-            request.setAttribute("operacao", "Excluir");
+            request.setAttribute("operacao", "Editar");
             String email = request.getParameter("emailAdministrador");
             Administrador admin = Administrador.obterAdministrador(email);
             request.setAttribute("administrador", admin);
