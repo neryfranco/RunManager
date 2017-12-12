@@ -91,9 +91,9 @@ public class AtletaDAO {
             conexao = BD.getConexao();
             String sql = "update Atleta set"
                     + " email = '" + atleta.getEmail() + "'"
-                    + " senha = '" + atleta.getSenha() + "'"
-                    + " apelido = '" + atleta.getApelido() + "'";
-            sql = sql + " where atleta.Usuario_cpf = '" + atleta.getCpf() + "'";
+                    + ", senha = '" + atleta.getSenha() + "'"
+                    + ", apelido = '" + atleta.getApelido() + "'"
+                    + " where Usuario_cpf = '" + atleta.getCpf() + "'";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.execute(sql);
             

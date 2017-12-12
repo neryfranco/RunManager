@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Categoria;
@@ -72,7 +73,7 @@ public class CategoriaDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from curso where email = " + categoria.getId();
+            stringSQL = "delete from categoria where id = " + categoria.getId();
             comando.execute(stringSQL);
         } catch (SQLException e) {
             throw e;
@@ -85,13 +86,13 @@ public class CategoriaDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "update curso set id = ?, sexo = ?, idadeIni = ?, descricao = ?";
+            String sql = "update Categoria set "
+                    + "sexo = '" + categoria.getSexo() + "'"
+                    + ", idadeIni = " + categoria.getIdadeIni()
+                    + ", idadeFim = "  + categoria.getIdadeFim()
+                    + ", descricao = '"  + categoria.getDescricao()
+                    + "' where id = " + categoria.getId();
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setInt(1, categoria.getId());
-            comando.setString(2, categoria.getSexo());
-            comando.setString(3, categoria.getIdadeIni());
-            comando.setString(4, categoria.getIdadeFim());
-            comando.setString(5, categoria.getDescricao());            
             comando.execute(sql);
             comando.close();
             conexao.close();
