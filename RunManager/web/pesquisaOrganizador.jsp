@@ -25,11 +25,11 @@
             </tr>
             <c:forEach items="${organizadores}" var="organizador">
                 <tr>
-                    <td><c:out value="${organizador.email}" /></td>
                     <td><c:out value="${organizador.cpf}" /></td>
+                    <td><c:out value="${organizador.email}" /></td>
                     <td><c:out value="${organizador.nome}" /></td>
-                        <td><a href="ManterOrganizadorController?acao=prepararEditar&emailOrganizador=<c:out value="${organizador.email}"/>">Editar</a></td>
-                        <td><a href="ManterOrganizadorController?acao=prepararExcluir&emailOrganizador=<c:out value="${organaziador.email}"/>">Excluir</a></td>
+                        <td><a href="ManterOrganizadorController?acao=prepararEditar&cpfOrganizador=<c:out value="${organizador.cpf}"/>">Editar</a></td>
+                        <td><a href="ManterOrganizadorController?acao=prepararExcluir&cpfOrganizador=<c:out value="${organizador.cpf}"/>">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>

@@ -123,7 +123,7 @@ public class AtletaDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from Atleta where email = '" + atleta.getEmail() + "'";
+            stringSQL = "delete from Atleta where Usuario_cpf = '" + atleta.getCpf() + "'";
             comando.execute(stringSQL);
         } catch (SQLException e) {
             throw e;
@@ -133,16 +133,20 @@ public class AtletaDAO {
         }
     }
 
-    public static Atleta obterAtleta(String email) throws ClassNotFoundException {
+    public static Atleta obterAtleta(String cpf) throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         Atleta a = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Atleta where email = '" + email + "'");
+            
+            ResultSet rs = comando.executeQuery("select * from Atleta where Usuario_cpf = '" + cpf + "'");
             rs.first();
-            a = new Atleta(rs.getString("email"), rs.getString("senha"), rs.getString("Usuario_cpf"), rs.getString("apelido"));
+            a = new Atleta(rs.getString("email"), 
+                    rs.getString("senha"), 
+                    rs.getString("Usuario_cpf"), 
+                    rs.getString("apelido"));
 
             rs = comando.executeQuery("select * from Usuario where cpf = '" + a.getCpf() + "'");
             rs.first();

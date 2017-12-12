@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/PercursoDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Categoria.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterAtletaController.java</file>
             <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/AtletaDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterCategoriaController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/CategoriaDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/manterCategoria.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Atleta.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaAtleta.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/AdministradorDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/manterAtleta.jsp</file>
         </group>
     </open-files>
 </project-private>

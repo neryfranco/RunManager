@@ -88,8 +88,9 @@ public class AdministradorDAO {
         try {
             conexao = BD.getConexao();
             String sql = "update Administrador set "
-                    + " senha = '" + administrador.getSenha() + "'";
-            sql = sql + " where email = '" + administrador.getEmail() + "'";
+                    + " email = '" + administrador.getEmail() + "'"
+                    + ", senha = '" + administrador.getSenha() + "'"
+                    + " where Usuario_cpf = '" + administrador.getCpf() + "'";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.execute(sql);
             
@@ -101,8 +102,8 @@ public class AdministradorDAO {
                     + ", tel_res = '" + administrador.getTelRes() + "'"
                     + ", cep = '" + administrador.getCep() + "'"
                     + ", rua = '" + administrador.getRua() + "'"
-                    + ", cidade = '" + administrador.getCidade() + "'";
-            sql = sql + " where cpf = '" + administrador.getCpf() + "'";
+                    + ", cidade = '" + administrador.getCidade() + "'"
+                    + " where cpf = '" + administrador.getCpf() + "'";
             comando = conexao.prepareStatement(sql);
             
             comando.execute(sql);
@@ -119,7 +120,7 @@ public class AdministradorDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from Administrador where email = '" + administrador.getEmail() + "'"; 
+            stringSQL = "delete from Administrador where email = '" + administrador.getCpf() + "'"; 
             comando.execute(stringSQL);
         } catch (SQLException e) {
             throw e;
@@ -129,7 +130,7 @@ public class AdministradorDAO {
         }
     }
 
-    public static Administrador obterAdministrador(String email) throws ClassNotFoundException {
+    public static Administrador obterAdministrador(String cpf) throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         Administrador a = null;
@@ -137,9 +138,11 @@ public class AdministradorDAO {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
             
-            ResultSet rs = comando.executeQuery("select * from Administrador where email = '" + email + "'");
+            ResultSet rs = comando.executeQuery("select * from Administrador where Usuario_cpf = '" + cpf + "'");
             rs.first();
-            a = new Administrador(rs.getString("email"), rs.getString("senha"), rs.getString("Usuario_cpf"));
+            a = new Administrador(rs.getString("email"), 
+                    rs.getString("senha"), 
+                    rs.getString("Usuario_cpf"));
 
             rs = comando.executeQuery("select * from Usuario where cpf = '" + a.getCpf() + "'");
             rs.first();

@@ -98,8 +98,8 @@ public class Atleta extends Usuario{
         AtletaDAO.excluir(this);
     }
     
-    public static Atleta obterAtleta(String email) throws SQLException,ClassNotFoundException{
-       return AtletaDAO.obterAtleta(email);
+    public static Atleta obterAtleta(String cpf) throws SQLException,ClassNotFoundException{
+       return AtletaDAO.obterAtleta(cpf);
     }
        
     

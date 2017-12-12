@@ -76,8 +76,8 @@ public class ManterAtletaController extends HttpServlet {
     public void prepararExcluir(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException {
         try {
             request.setAttribute("operacao", "Excluir");
-            String email = request.getParameter("emailAtleta");
-            Atleta a = Atleta.obterAtleta(email);
+            String cpf = request.getParameter("cpfAtleta");
+            Atleta a = Atleta.obterAtleta(cpf);
             request.setAttribute("atleta", a);
             RequestDispatcher view = request.getRequestDispatcher("manterAtleta.jsp");
             view.forward(request, response);
@@ -88,9 +88,9 @@ public class ManterAtletaController extends HttpServlet {
 
     public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
         try {
-            String email = request.getParameter("txtEmail");
+            String cpf = request.getParameter("txtCpf");
 
-            Atleta atleta = new Atleta(email, null, null, null, null, null, null, null, null, null, null, null, null);
+            Atleta atleta = new Atleta(null, null, cpf, null, null, null, null, null, null, null, null, null, null);
 
             atleta.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaAtletaController");
@@ -103,8 +103,8 @@ public class ManterAtletaController extends HttpServlet {
     public void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ClassNotFoundException{
         try {
             request.setAttribute("operacao", "Editar");
-            String email = request.getParameter("emailAtleta");
-            Atleta a = Atleta.obterAtleta(email);
+            String cpf = request.getParameter("cpfAtleta");
+            Atleta a = Atleta.obterAtleta(cpf);
             request.setAttribute("atleta", a);
             RequestDispatcher view = request.getRequestDispatcher("manterAtleta.jsp");
             view.forward(request, response);

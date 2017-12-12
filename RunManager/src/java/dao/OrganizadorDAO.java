@@ -86,17 +86,25 @@ public class OrganizadorDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "update curso set cpf = ?, nome = ?, dataNascimento = ?, sexo = ?, telCel = ?, telRes = ?, cep = ?, rua = ?, uf = ?, cidade = ?";
+            String sql = "update Organizador set "
+                    + " email = '" + organizador.getEmail() + "',"
+                    + " senha = '" + organizador.getSenha() + "'"
+                    + " where Usuario_cpf = '" + organizador.getCpf() + "'";
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setString(1, organizador.getNome());
-            comando.setString(2, organizador.getDataNascimento());
-            comando.setString(3, organizador.getSexo());
-            comando.setString(4, organizador.getTelCel());
-            comando.setString(5, organizador.getTelRes());
-            comando.setString(6, organizador.getCep());
-            comando.setString(7, organizador.getRua());
-            comando.setString(8, organizador.getRua());
-            comando.setString(9, organizador.getCidade());
+            comando.execute(sql);
+            
+            sql = "update Usuario set "
+                    + " nome = '" + organizador.getNome() + "'"
+                    + ", dataNasc = '" + organizador.getDataNascimento()+ "'"
+                    + ", sexo = '" + organizador.getSexo() + "'"
+                    + ", tel_cel = '" + organizador.getTelCel() + "'"
+                    + ", tel_res = '" + organizador.getTelRes() + "'"
+                    + ", cep = '" + organizador.getCep() + "'"
+                    + ", rua = '" + organizador.getRua() + "'"
+                    + ", cidade = '" + organizador.getCidade() + "'"
+                    + " where cpf = '" + organizador.getCpf() + "'";
+            comando = conexao.prepareStatement(sql);
+            
             comando.execute(sql);
             comando.close();
             conexao.close();
@@ -111,7 +119,7 @@ public class OrganizadorDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from curso where email = " + organizador.getEmail();
+            stringSQL = "delete from Organizador where Usuario_cpf = " + organizador.getCpf();
             comando.execute(stringSQL);
         } catch (SQLException e) {
             throw e;
@@ -121,14 +129,14 @@ public class OrganizadorDAO {
         }
     }
 
-    public static Organizador obterOrganizador(String email) throws ClassNotFoundException {
+    public static Organizador obterOrganizador(String cpf) throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
         Organizador organizador = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Organizador where email = " + email);
+            ResultSet rs = comando.executeQuery("select * from Organizador, Usuario where Organizador.Usuario_cpf = Usuario.cpf");
             rs.first();
             organizador = new Organizador(rs.getString("email"),
                     rs.getString("senha"),

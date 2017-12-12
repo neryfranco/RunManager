@@ -69,8 +69,8 @@ public class Administrador extends Usuario{
         return AdministradorDAO.obterAdministradores();
     }
     
-    public static Administrador obterAdministrador(String email) throws ClassNotFoundException{
-        return AdministradorDAO.obterAdministrador(email);
+    public static Administrador obterAdministrador(String cpf) throws ClassNotFoundException{
+        return AdministradorDAO.obterAdministrador(cpf);
     }
 
    public void gravar() throws SQLException, ClassNotFoundException{

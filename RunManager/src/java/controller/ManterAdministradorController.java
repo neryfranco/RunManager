@@ -73,8 +73,8 @@ public class ManterAdministradorController extends HttpServlet {
     public void prepararExcluir(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, IOException {
         try {
             request.setAttribute("operacao", "Excluir");
-            String email = request.getParameter("emailAdministrador");
-            Administrador admin = Administrador.obterAdministrador(email);
+            String cpf = request.getParameter("cpfAdministrador");
+            Administrador admin = Administrador.obterAdministrador(cpf);
             request.setAttribute("administrador", admin);
             RequestDispatcher view = request.getRequestDispatcher("manterAdministrador.jsp");
             view.forward(request, response);
@@ -85,9 +85,9 @@ public class ManterAdministradorController extends HttpServlet {
 
     public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            String email = request.getParameter("txtEmail");
+            String cpf = request.getParameter("txtEmail");
 
-            Administrador administrador = new Administrador(email, null, null, null, null, null, null, null, null, null, null, null);
+            Administrador administrador = new Administrador(null, null, cpf, null, null, null, null, null, null, null, null, null);
             administrador.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaAdministradorController");
             view.forward(request, response);
@@ -99,8 +99,8 @@ public class ManterAdministradorController extends HttpServlet {
     public void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, IOException {
         try {
             request.setAttribute("operacao", "Editar");
-            String email = request.getParameter("emailAdministrador");
-            Administrador admin = Administrador.obterAdministrador(email);
+            String cpf = request.getParameter("cpfAdministrador");
+            Administrador admin = Administrador.obterAdministrador(cpf);
             request.setAttribute("administrador", admin);
             RequestDispatcher view = request.getRequestDispatcher("manterAdministrador.jsp");
             view.forward(request, response);

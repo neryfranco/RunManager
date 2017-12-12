@@ -38,11 +38,11 @@
                     </tr>
                     <tr>
                         <td>Nome: </td> 
-                        <td><input id="caixatexto" type="text" name="txtNome" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtNome" value="${atleta.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Data Nascimento: </td> 
-                        <td><input id="caixatexto" type="text" name="txtDataNascimento" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtDataNascimento" value="${atleta.dataNascimento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Sexo: </td> 
@@ -55,27 +55,27 @@
                     </tr>
                     <tr>
                         <td>Telefone Celular: </td> 
-                        <td><input id="caixatexto" type="text" name="txtTelCel" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtTelCel" value="${atleta.telCel}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Telefone Residencial: </td> 
-                        <td><input id="caixatexto" type="text" name="txtTelRes" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtTelRes" value="${atleta.telRes}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Cep: </td> 
-                        <td><input id="caixatexto" type="text" name="txtCep" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtCep" value="${atleta.cep}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Rua: </td> 
-                        <td><input id="caixatexto" type="text" name="txtRua" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtRua" value="${atleta.rua}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>UF: </td> 
-                        <td><input id="caixatexto" type="text" name="txtUf" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtUf" value="${atleta.uf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Cidade: </td> 
-                        <td><input id="caixatexto" type="text" name="txtCidade" value="${organizador.apelido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtCidade" value="${atleta.cidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
             </table>
             <input id="botao" type="submit" name="btnConfirmar" value="Confirmar">    

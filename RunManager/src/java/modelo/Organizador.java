@@ -69,8 +69,8 @@ public class Organizador extends Usuario{
         OrganizadorDAO.excluir(this);
     }
     
-    public static Organizador obterOrganizador(String email) throws SQLException,ClassNotFoundException{
-       return OrganizadorDAO.obterOrganizador(email);
+    public static Organizador obterOrganizador(String cpf) throws SQLException,ClassNotFoundException{
+       return OrganizadorDAO.obterOrganizador(cpf);
     }
     
 }
