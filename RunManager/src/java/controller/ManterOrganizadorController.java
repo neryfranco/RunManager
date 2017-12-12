@@ -93,7 +93,7 @@ public class ManterOrganizadorController extends HttpServlet {
 
             Organizador organizador = new Organizador(null, null, cpf, null, null, null, null, null, null, null, null, null);
             organizador.excluir();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaController");
             view.forward(request, response);
         } catch (SQLException ex) {
         } catch (ClassNotFoundException ex) {
@@ -129,7 +129,7 @@ public class ManterOrganizadorController extends HttpServlet {
 
             Organizador organizador = new Organizador(email, senha, cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade);
             organizador.alterar();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaOrganizadorController");
             view.forward(request, response);
         } catch (SQLException ex) {
         } catch (ClassNotFoundException ex) {
