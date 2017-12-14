@@ -49,10 +49,6 @@
         <servlet-class>controller.PesquisaKitController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisaPagamentoController</servlet-name>
-        <servlet-class>controller.PesquisaPagamentoController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ManterCorridaController</servlet-name>
         <servlet-class>controller.ManterCorridaController</servlet-class>
     </servlet>
@@ -91,6 +87,14 @@
     <servlet>
         <servlet-name>ManterChipController</servlet-name>
         <servlet-class>controller.ManterChipController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisaPagamentoController</servlet-name>
+        <servlet-class>controller.PesquisaPagamentoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterPagamentoController</servlet-name>
+        <servlet-class>controller.ManterPagamentoController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaPercursoController</servlet-name>
@@ -141,10 +145,6 @@
         <url-pattern>/PesquisaKitController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisaPagamentoController</servlet-name>
-        <url-pattern>/PesquisaPagamentoController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>ManterCorridaController</servlet-name>
         <url-pattern>/ManterCorridaController</url-pattern>
     </servlet-mapping>
@@ -183,6 +183,14 @@
     <servlet-mapping>
         <servlet-name>ManterChipController</servlet-name>
         <url-pattern>/ManterChipController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaPagamentoController</servlet-name>
+        <url-pattern>/PesquisaPagamentoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterPagamentoController</servlet-name>
+        <url-pattern>/ManterPagamentoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

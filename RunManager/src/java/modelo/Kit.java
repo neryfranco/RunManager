@@ -6,6 +6,7 @@
 package modelo;
 
 import dao.KitDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -70,4 +71,16 @@ public class Kit {
     public static List<Kit> obterKits() throws ClassNotFoundException{
         return KitDAO.obterKits();
     }
+
+     public void gravar() throws SQLException,ClassNotFoundException{
+        KitDAO.gravar(this);
+    }
+    
+    /*public void alterar() throws SQLException,ClassNotFoundException{
+        KitDAO.alterar(this);
+    }
+    
+    public void excluir() throws SQLException,ClassNotFoundException{
+        KitDAO.excluir(this);
+    }*/
 }

@@ -36,7 +36,7 @@ public class AdministradorDAO {
                         rs.getString("cpf"),
                         rs.getString("nome"),
                         rs.getString("dataNasc"),
-                        rs.getInt("sexo"),
+                        rs.getString("sexo"),
                         rs.getString("tel_cel"),
                         rs.getString("tel_res"),
                         rs.getString("cep"),
@@ -57,54 +57,60 @@ public class AdministradorDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into administrador (cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) "
-                    + "values(?,?,?,?,?,?,?,?,?,?)";
+
+            String sql = "insert into usuario (cpf, nome, dataNasc, sexo, tel_cel, tel_res, cep, rua, uf, cidade) values('"
+                    + administrador.getCpf() + "', '"
+                    + administrador.getNome() + "', '"
+                    + administrador.getDataNascimento() + "', '"
+                    + administrador.getSexo() + "', '"
+                    + administrador.getTelCel() + "', '"
+                    + administrador.getTelRes() + "', '"
+                    + administrador.getCep() + "', '"
+                    + administrador.getRua() + "', '"
+                    + administrador.getUf() + "', '"
+                    + administrador.getCidade() + "') ";
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setString(1, administrador.getCpf());
-            comando.setString(2, administrador.getNome());
-            comando.setString(3, administrador.getDataNascimento());
-            comando.setInt(4, administrador.getSexo());
-            comando.setString(5, administrador.getTelCel());
-            comando.setString(6, administrador.getTelRes());
-            comando.setString(7, administrador.getCep());
-            comando.setString(8, administrador.getRua());
-            comando.setString(9, administrador.getRua());
-            comando.setString(10, administrador.getCidade());
             comando.execute(sql);
 
-            sql = "insert into administrador (email, senha) "
-                    + "values(?,?,)";
+            sql = "insert into administrador (Usuario_cpf, email, senha) values('"
+                    + administrador.getCpf() + "', '"
+                    + administrador.getEmail() + "', '"
+                    + administrador.getSenha() + "') ";
             comando = conexao.prepareStatement(sql);
-            comando.setString(1, administrador.getEmail());
-            comando.setString(2, administrador.getSenha());
             comando.execute(sql);
-
             comando.close();
-            conexao.close();
+            comando.close();
         } catch (SQLException e) {
         }
     }
-    
+
     public static void alterar(Administrador administrador) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "update curso set cpf = ?, nome = ?, dataNascimento = ?, sexo = ?, telCel = ?, telRes = ?, cep = ?, rua = ?, uf = ?, cidade = ?";
+            String sql = "update Administrador set "
+                    + " email = '" + administrador.getEmail() + "'"
+                    + ", senha = '" + administrador.getSenha() + "'"
+                    + " where Usuario_cpf = '" + administrador.getCpf() + "'";
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setString(1, administrador.getNome());
-            comando.setString(2, administrador.getDataNascimento());
-            comando.setInt(3, administrador.getSexo());
-            comando.setString(4, administrador.getTelCel());
-            comando.setString(5, administrador.getTelRes());
-            comando.setString(6, administrador.getCep());
-            comando.setString(7, administrador.getRua());
-            comando.setString(8, administrador.getRua());
-            comando.setString(9, administrador.getCidade());
+            comando.execute(sql);
+            
+            sql = "update Usuario set "
+                    + " nome = '" + administrador.getNome() + "'"
+                    + ", dataNasc = '" + administrador.getDataNascimento()+ "'"
+                    + ", sexo = '" + administrador.getSexo() + "'"
+                    + ", tel_cel = '" + administrador.getTelCel() + "'"
+                    + ", tel_res = '" + administrador.getTelRes() + "'"
+                    + ", cep = '" + administrador.getCep() + "'"
+                    + ", rua = '" + administrador.getRua() + "'"
+                    + ", cidade = '" + administrador.getCidade() + "'"
+                    + " where cpf = '" + administrador.getCpf() + "'";
+            comando = conexao.prepareStatement(sql);
+            
             comando.execute(sql);
             comando.close();
             conexao.close();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
         }
     }
 
@@ -115,7 +121,7 @@ public class AdministradorDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from curso where email = " + administrador.getEmail();
+            stringSQL = "delete from Administrador where email = '" + administrador.getCpf() + "'"; 
             comando.execute(stringSQL);
         } catch (SQLException e) {
             throw e;
@@ -125,34 +131,38 @@ public class AdministradorDAO {
         }
     }
 
-    public static Administrador obterAdministrador(String email) throws ClassNotFoundException {
+    public static Administrador obterAdministrador(String cpf) throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
-        Administrador administrador = null;
+        Administrador a = null;
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Administrador where email = " + email);
+            
+            ResultSet rs = comando.executeQuery("select * from Administrador where Usuario_cpf = '" + cpf + "'");
             rs.first();
-            administrador = new Administrador(rs.getString("email"),
-                    rs.getString("senha"),
-                    rs.getString("cpf"),
-                    rs.getString("nome"),
-                    rs.getString("dataNasc"),
-                    rs.getInt("sexo"),
-                    rs.getString("tel_cel"),
-                    rs.getString("tel_res"),
-                    rs.getString("cep"),
-                    rs.getString("rua"),
-                    rs.getString("uf"),
-                    rs.getString("cidade"));
-                    
+            a = new Administrador(rs.getString("email"), 
+                    rs.getString("senha"), 
+                    rs.getString("Usuario_cpf"));
+
+            rs = comando.executeQuery("select * from Usuario where cpf = '" + a.getCpf() + "'");
+            rs.first();
+            a.setNome(rs.getString("nome"));
+            a.setDataNascimento(rs.getString("dataNasc"));
+            a.setSexo(rs.getString("sexo"));
+            a.setTelCel(rs.getString("tel_cel"));
+            a.setTelRes(rs.getString("tel_res"));
+            a.setCep(rs.getString("cep"));
+            a.setRua(rs.getString("rua"));
+            a.setUf(rs.getString("uf"));
+            a.setCidade(rs.getString("cidade"));
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             fecharConexao(conexao, comando);
         }
-       return administrador;  
+        return a;
     }
 
     public static void fecharConexao(Connection conexao, Statement comando) {

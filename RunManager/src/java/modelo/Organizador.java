@@ -6,6 +6,8 @@
 package modelo;
 
 import dao.OrganizadorDAO;
+import dao.OrganizadorDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -23,7 +25,7 @@ public class Organizador extends Usuario{
             String cpf, 
             String nome, 
             String dataNascimento, 
-            int sexo, 
+            String sexo, 
             String telCel, 
             String telRes, 
             String cep, 
@@ -53,6 +55,22 @@ public class Organizador extends Usuario{
     
     public static List obterOrganizadores() throws ClassNotFoundException{
         return OrganizadorDAO.obterOrganizadores();
+    }
+    
+    public void gravar() throws SQLException,ClassNotFoundException{
+        OrganizadorDAO.gravar(this);
+    }
+    
+    public void alterar() throws SQLException,ClassNotFoundException{
+        OrganizadorDAO.alterar(this);
+    }
+    
+    public void excluir() throws SQLException,ClassNotFoundException{
+        OrganizadorDAO.excluir(this);
+    }
+    
+    public static Organizador obterOrganizador(String cpf) throws SQLException,ClassNotFoundException{
+       return OrganizadorDAO.obterOrganizador(cpf);
     }
     
 }

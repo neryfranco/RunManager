@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import dao.IngressoDAO;
+import java.util.List;
+
 /**
  *
  * @author Nery
@@ -101,5 +104,11 @@ public class Ingresso {
         this.pagamento_id = pagamento_id;
     }
     
+    public static List<Ingresso> obterIngressos() throws ClassNotFoundException{
+        return IngressoDAO.obterIngressos();
+    }
     
+    public static Ingresso obterIngresso(int ingresso_id) {
+        return null;
+    }
 }

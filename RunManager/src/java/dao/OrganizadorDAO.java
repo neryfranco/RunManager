@@ -28,14 +28,14 @@ public class OrganizadorDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            ResultSet rs = comando.executeQuery("select * from Organizador");
+            ResultSet rs = comando.executeQuery("select * from Organizador, Usuario where Organizador.Usuario_cpf = Usuario.cpf");
             while (rs.next()) {
                 Organizador organizador = new Organizador(rs.getString("email"),
                         rs.getString("senha"),
                         rs.getString("cpf"),
                         rs.getString("nome"),
                         rs.getString("dataNasc"),
-                        rs.getInt("sexo"),
+                        rs.getString("sexo"),
                         rs.getString("tel_cel"),
                         rs.getString("tel_res"),
                         rs.getString("cep"),
@@ -56,33 +56,107 @@ public class OrganizadorDAO {
     public static void gravar(Organizador organizador) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         try {
-            conexao = BD.getConexao();
-            String sql = "insert into organizador (cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade) "
-                    + "values(?,?,?,?,?,?,?,?,?,?)";
+            conexao = BD.getConexao();            
+            String sql = "insert into usuario (cpf, nome, dataNasc, sexo, tel_cel, tel_res, cep, rua, uf, cidade) values('"
+                    + organizador.getCpf()+ "', '"
+                    + organizador.getNome() + "', '"
+                    + organizador.getDataNascimento() + "', '"
+                    + organizador.getSexo() + "', '"
+                    + organizador.getTelCel() + "', '"
+                    + organizador.getTelRes() + "', '"
+                    + organizador.getCep() + "', '"
+                    + organizador.getRua() + "', '"
+                    + organizador.getUf()+ "', '"
+                    + organizador.getCidade() + "') ";
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setString(1, organizador.getCpf());
-            comando.setString(2, organizador.getNome());
-            comando.setString(3, organizador.getDataNascimento());
-            comando.setInt(4, organizador.getSexo());
-            comando.setString(5, organizador.getTelCel());
-            comando.setString(6, organizador.getTelRes());
-            comando.setString(7, organizador.getCep());
-            comando.setString(8, organizador.getRua());
-            comando.setString(9, organizador.getRua());
-            comando.setString(10, organizador.getCidade());
             comando.execute(sql);
-
-            sql = "insert into organizador (email, senha, pace, apelido) "
-                    + "values(?,?,?,?)";
+            
+            sql = "insert into organizador (Usuario_cpf, email, senha) values('"
+                    + organizador.getCpf()+ "', '"
+                    + organizador.getEmail() + "', '"
+                    + organizador.getSenha() +  "') ";
             comando = conexao.prepareStatement(sql);
-            comando.setString(1, organizador.getEmail());
-            comando.setString(2, organizador.getSenha());
             comando.execute(sql);
-
+            comando.close();
+            comando.close();
+        } catch (SQLException e) {
+        }
+    }
+    public static void alterar(Organizador organizador) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "update Organizador set "
+                    + " email = '" + organizador.getEmail() + "',"
+                    + " senha = '" + organizador.getSenha() + "'"
+                    + " where Usuario_cpf = '" + organizador.getCpf() + "'";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.execute(sql);
+            
+            sql = "update Usuario set "
+                    + " nome = '" + organizador.getNome() + "'"
+                    + ", dataNasc = '" + organizador.getDataNascimento()+ "'"
+                    + ", sexo = '" + organizador.getSexo() + "'"
+                    + ", tel_cel = '" + organizador.getTelCel() + "'"
+                    + ", tel_res = '" + organizador.getTelRes() + "'"
+                    + ", cep = '" + organizador.getCep() + "'"
+                    + ", rua = '" + organizador.getRua() + "'"
+                    + ", cidade = '" + organizador.getCidade() + "'"
+                    + " where cpf = '" + organizador.getCpf() + "'";
+            comando = conexao.prepareStatement(sql);
+            
+            comando.execute(sql);
             comando.close();
             conexao.close();
         } catch (SQLException e) {
         }
+    }
+
+    public static void excluir(Organizador organizador) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        String stringSQL;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            stringSQL = "delete from Organizador where Usuario_cpf = " + organizador.getCpf();
+            comando.execute(stringSQL);
+        } catch (SQLException e) {
+            throw e;
+
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+    }
+
+    public static Organizador obterOrganizador(String cpf) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        Organizador organizador = null;
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            ResultSet rs = comando.executeQuery("select * from Organizador, Usuario where Organizador.Usuario_cpf = Usuario.cpf");
+            rs.first();
+            organizador = new Organizador(rs.getString("email"),
+                    rs.getString("senha"),
+                    rs.getString("cpf"),
+                    rs.getString("nome"),
+                    rs.getString("dataNasc"),
+                    rs.getString("sexo"),
+                    rs.getString("tel_cel"),
+                    rs.getString("tel_res"),
+                    rs.getString("cep"),
+                    rs.getString("rua"),
+                    rs.getString("uf"),
+                    rs.getString("cidade"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+        return organizador;
     }
 
     public static void fecharConexao(Connection conexao, Statement comando) {

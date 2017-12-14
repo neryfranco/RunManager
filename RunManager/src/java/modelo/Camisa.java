@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class Camisa {
     
+    private int id;
     private String tamanho;
     private Kit kit;
 
@@ -38,9 +39,22 @@ public class Camisa {
     public void setKit(Kit kit) {
         this.kit = kit;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     
     public static List<Camisa> obterCamisas() throws ClassNotFoundException{
         return CamisaDAO.obterCamisas();
+    }
+    
+    public static Camisa obterCamisa(int id) throws ClassNotFoundException{
+        return CamisaDAO.obterCamisa(id);
     }
 }
 

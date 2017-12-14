@@ -10,30 +10,31 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa Organizador</title>
     </head>
-    <body>
+    <body id="principal">
         <h1>Pesquisa de Organizadores</h1>
-        <table border=1>
+        <table id="customers">
             <tr>
-                <th>Nome</th>
                 <th>Email</th>
-                <th>telefone</th>
+                <th>Telefone</th>
+                <th>Nome</th>
                 <th colspan=2>Ação</th>
             </tr>
             <c:forEach items="${organizadores}" var="organizador">
                 <tr>
-                    <td><c:out value="${organizador.nome}" /></td>
+                    <td><c:out value="${organizador.cpf}" /></td>
                     <td><c:out value="${organizador.email}" /></td>
-                    <td><c:out value="${organizador.telCel}" /></td>
-                        <td><a href="ManterOrganizadorController?acao=prepararEditar&emailOrganizador=<c:out value="${organizador.email}"/>">Editar</a></td>
-                        <td><a href="ManterOrganizadorController?acao=prepararExcluir&emailOrganizador=<c:out value="${organaziador.email}"/>">Excluir</a></td>
+                    <td><c:out value="${organizador.nome}" /></td>
+                        <td><a href="ManterOrganizadorController?acao=prepararEditar&cpfOrganizador=<c:out value="${organizador.cpf}"/>">Editar</a></td>
+                        <td><a href="ManterOrganizadorController?acao=prepararExcluir&cpfOrganizador=<c:out value="${organizador.cpf}"/>">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>
         <form action="ManterOrganizadorController?acao=prepararIncluir" method="post">
-            <input type="submit" name="btnIncluir" value="Incluir">
+            <input id="botao" type="submit" name="btnIncluir" value="Incluir">
         </form>
     </body>
 </html>

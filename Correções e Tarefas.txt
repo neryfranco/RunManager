@@ -1,0 +1,5 @@
+- Edição/Versão de Corrida
+- Adicionar Filtros e Campo de Pesquisa
+- Login: Filtrar o que cada um pode fazer
+- Consultas:
+	Resultado da Corrida / Ranking

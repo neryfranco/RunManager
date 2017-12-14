@@ -57,14 +57,13 @@ public class ManterTapeteController extends HttpServlet {
     }
     
     private void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(request.getParameter("txtID"));
         String cep = request.getParameter("txtCEP");
         String rua = request.getParameter("txtRua");
         String cidade = request.getParameter("txtCidade");
         String uf = request.getParameter("txtUF");
         String referencia = request.getParameter("txtReferencia");
         try{
-            Tapete tapete = new Tapete(id,cep,rua,cidade,uf,referencia);
+            Tapete tapete = new Tapete(0,cep,rua,cidade,uf,referencia);
             tapete.gravar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaTapeteController");
             view.forward(request, response);
@@ -99,12 +98,29 @@ public class ManterTapeteController extends HttpServlet {
         view.forward(request, response); 
     }
 
-    private void prepararEditar(HttpServletRequest request, HttpServletResponse response) {
-        
+    private void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, IOException {
+        try{
+            request.setAttribute("operacao", "Editar");
+            int idTapete = Integer.parseInt(request.getParameter("codTapete"));
+            Tapete tapete = Tapete.obterTapete(idTapete);
+            request.setAttribute("tapete",tapete);
+            RequestDispatcher view = request.getRequestDispatcher("/manterTapete.jsp");
+            view.forward(request, response);
+        }
+        catch (ServletException e){}
     }
 
-    private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) {
-        
+    private void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
+        int id = Integer.parseInt(request.getParameter("txtID"));
+        String cep = request.getParameter("txtCEP");
+        String rua = request.getParameter("txtRua");
+        String cidade = request.getParameter("txtCidade");
+        String uf = request.getParameter("txtUF");
+        String referencia = request.getParameter("txtReferencia");
+        Tapete tapete = new Tapete(id,cep,rua,cidade,uf,referencia);
+        tapete.editar();
+        RequestDispatcher view = request.getRequestDispatcher("PesquisaTapeteController");
+        view.forward(request, response); 
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

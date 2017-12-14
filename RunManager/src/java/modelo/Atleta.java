@@ -25,7 +25,7 @@ public class Atleta extends Usuario{
                   String cpf, 
                   String nome, 
                   String dataNascimento, 
-                  int sexo, 
+                  String sexo, 
                   String telCel, 
                   String telRes, 
                   String cep, 
@@ -34,6 +34,16 @@ public class Atleta extends Usuario{
                   String cidade, 
                   String apelido) {
         super(cpf, nome, dataNascimento, sexo, telCel, telRes, cep, rua, uf, cidade);
+        this.email = email;
+        this.senha = senha;
+        this.apelido = apelido;
+    }
+
+    public Atleta(String email, 
+                  String senha, 
+                  String cpf,
+                  String apelido) {
+        super(cpf, null, null, null, null, null, null, null, null, null);
         this.email = email;
         this.senha = senha;
         this.apelido = apelido;
@@ -88,8 +98,8 @@ public class Atleta extends Usuario{
         AtletaDAO.excluir(this);
     }
     
-    public static Atleta obterAtleta(String email) throws SQLException,ClassNotFoundException{
-       return AtletaDAO.obterAtleta(email);
+    public static Atleta obterAtleta(String cpf) throws SQLException,ClassNotFoundException{
+       return AtletaDAO.obterAtleta(cpf);
     }
        
     
