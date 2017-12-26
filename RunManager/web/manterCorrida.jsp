@@ -52,7 +52,7 @@
                     <td><input id="caixatexto" type="text" name="txtLocalRetiradaKit" value="${corrida.localRetiradaKit}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
-                    <td>Duração Limite:  </td> 
+                    <td>Duração Limite (min):  </td> 
                     <td><input type="text" id="caixatexto" name="txtDuracaoLimite" value="${corrida.duracaoLimite}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>

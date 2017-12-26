@@ -6,6 +6,7 @@
 package modelo;
 
 import dao.LoteDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -82,6 +83,10 @@ public class Lote {
     
     public static List<Lote> obterLotes() throws ClassNotFoundException{
         return LoteDAO.obterLotes();
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException {
+        LoteDAO.gravar(this);
     }
 }
     

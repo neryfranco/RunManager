@@ -17,13 +17,13 @@
         <a href="PesquisaOrganizadorController">Organizador</a>
         <a href="PesquisaAtletaController">Atleta</a>
         <a href="PesquisaTapeteController">Tapete</a>
+        <a href="PesquisaCategoriaController">Categoria</a>
         <a href="PesquisaPercursoController">Percurso</a>
         <a href="PesquisaCorridaController">Corrida</a>
-        <a href="PesquisaCategoriaController">Categoria</a>
         <a href="PesquisaRankingController">Ranking</a>
-        <a href="PesquisaChipController">Chip</a>
-        <a href="PesquisaKitController">Kit</a>
+        <%-- <a href="PesquisaChipController">Chip</a> --%>
         <a href="PesquisaLoteController">Lote</a>
+        <a href="PesquisaInscricaoController">Inscrição</a>
         <a href="PesquisaPagamentoController">Pagamento</a>
     </body>
 </html>

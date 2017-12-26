@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Corrida;
 import modelo.Lote;
 
 /**
@@ -34,6 +35,7 @@ public class PesquisaLoteController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try {
             request.setAttribute("lotes", Lote.obterLotes());
+            request.setAttribute("corridas", Corrida.obterCorridas());
             RequestDispatcher view=
                     request.getRequestDispatcher("/pesquisaLote.jsp");
             view.forward(request, response);

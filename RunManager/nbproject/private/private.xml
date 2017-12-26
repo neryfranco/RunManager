@@ -3,12 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterAtletaController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/AtletaDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Atleta.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaAtleta.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/AdministradorDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/manterAtleta.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterKitController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/LoteDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/PercursoDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/manterPercurso.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaKit.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterLoteController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterPercursoController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/PesquisaLoteController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/manterLote.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Percurso.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaLote.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Lote.java</file>
         </group>
     </open-files>
 </project-private>

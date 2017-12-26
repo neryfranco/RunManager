@@ -21,7 +21,7 @@
             <table>
                 <tr>
                     <td>ID: </td> 
-                    <td><input id="caixatexto" type="text" name="txtId" value="${lote.id}" readonly</c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtId" value="${lote.id}" readonly></td>
                 </tr>
                 <tr>
                     <td>Corrida: </td> 
@@ -29,13 +29,13 @@
                         <select  id="caixatexto" name="optCorrida" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         <option value="0" <c:if test="${lote.corrida.id == null}"> selected</c:if>> </option>  
                         <c:forEach items="${corridas}" var="corrida">
-                            <option value="${corrida.nome}" <c:if test="${lote.corrida.id == corrida.id}"> selected</c:if>>${corrida.nome}</option>  
+                            <option value="${corrida.id}" <c:if test="${lote.corrida.id == corrida.id}"> selected</c:if>>${corrida.nome}</option>  
                         </c:forEach>
                         </select> 
                     </td>
                 </tr>
                 <tr>
-                    <td>Preço: </td> 
+                    <td>Preço (R$): </td> 
                     <td><input id="caixatexto" type="text" name="txtPreco" value="${lote.preco}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>

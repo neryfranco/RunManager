@@ -75,19 +75,9 @@ public class TapeteDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            /*
-            String sql = "insert into tapete (id, cep, rua, cidade, uf, referencia) "
-                    + "values(?,?,?,?,?,?)";
-            PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setInt(1, tapete.getId());
-            comando.setString(2, tapete.getCep());
-            comando.setString(3, tapete.getRua());
-            comando.setString(4, tapete.getCidade());
-            comando.setString(5, tapete.getUf());
-            comando.setString(6, tapete.getReferencia()); */
-            String sql = "insert into tapete (cep, rua, cidade, uf, referencia) values ("
+            String sql = "insert into tapete (cep, rua, cidade, uf, referencia) values ('"
                     + tapete.getCep()
-                    + ", '" + tapete.getRua()
+                    + "', '" + tapete.getRua()
                     + "', '" + tapete.getCidade()
                     + "', '" + tapete.getUf()
                     + "', '" + tapete.getReferencia()

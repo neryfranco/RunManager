@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -23,7 +24,7 @@ import modelo.Lote;
  */
 public class ManterLoteController extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
         String acao = request.getParameter("acao");
         if (acao.equals("prepararIncluir")) {
             prepararIncluir(request, response);
@@ -50,8 +51,23 @@ public class ManterLoteController extends HttpServlet {
         view.forward(request, response);
     }
 
-    public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) {
+    public void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        int corrida_id = Integer.parseInt(request.getParameter("optCorrida"));
+        double preco = Double.parseDouble(request.getParameter("txtPreco"));
+        String dataLim = request.getParameter("txtDataLimite");
+        try {
+            Corrida corrida = null;
+            if (corrida_id != 0) {
+                corrida = Corrida.obterCorrida(corrida_id);
+            }
 
+            Lote lote = new Lote(0, preco, corrida, dataLim);
+            lote.gravar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaLoteController");
+            view.forward(request, response);
+
+        } catch (ClassNotFoundException ex) {
+        }
     }
 
     public void prepararExcluir(HttpServletRequest request, HttpServletResponse response) {
@@ -112,6 +128,8 @@ public class ManterLoteController extends HttpServlet {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManterLoteController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterLoteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -129,6 +147,8 @@ public class ManterLoteController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterLoteController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(ManterLoteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

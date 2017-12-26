@@ -6,12 +6,14 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.Lote;
+import modelo.Lote;;
 
 /**
  *
@@ -38,6 +40,29 @@ public class LoteDAO {
             fecharConexao(conexao,comando);
         }
         return lotes;
+    }
+    
+    public static void gravar(Lote Lote) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "insert into Lote (preco, dataLimite, Corrida_id) values ("
+                    + Lote.getPreco()
+                    + ", '" + Lote.getDataLimite()
+                    + "', ";
+            if (Lote.getCorrida()== null) {
+                sql = sql + Types.NULL;
+            } else {
+                sql = sql + Lote.getCorrida().getId();
+            }
+            sql = sql + ")";
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.execute(sql);
+            comando.close();
+            conexao.close();
+        } catch (SQLException e) {
+            throw e;
+        }
     }
     
     public static void fecharConexao(Connection conexao ,Statement comando){
