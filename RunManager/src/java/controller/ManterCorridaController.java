@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Corrida;
+import modelo.Percurso;
 
 /**
  *
@@ -40,8 +41,9 @@ public class ManterCorridaController extends HttpServlet {
         }
     }
     
-    public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
         request.setAttribute("operacao", "Incluir");
+        request.setAttribute("percursos", Percurso.obterPercursos());
         RequestDispatcher view=
                 request.getRequestDispatcher("/manterCorrida.jsp");
         view.forward(request, response);
@@ -92,6 +94,7 @@ public class ManterCorridaController extends HttpServlet {
     private void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, IOException, SQLException {
         try {
             request.setAttribute("operacao", "Editar");
+            request.setAttribute("percursos", Percurso.obterPercursos());
             int idCorrida = Integer.parseInt(request.getParameter("codCorrida"));
             Corrida corrida = Corrida.obterCorrida(idCorrida);
             request.setAttribute("corrida", corrida);

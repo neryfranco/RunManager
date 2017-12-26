@@ -7,6 +7,7 @@ package modelo;
 
 import dao.PercursoDAO;
 import java.sql.SQLException;
+import static java.sql.Types.NULL;
 import java.util.List;
 
 /**
@@ -30,6 +31,7 @@ public class Percurso {
         this.itinerario = itinerario;
         this.distancia = distancia;
         this.tapetes = tapetes;
+        this.categoria_id = 0;
     }
     
     public Percurso(int id, Categoria categoria, String itinerario, int distancia) {
@@ -37,6 +39,7 @@ public class Percurso {
         this.categoria = categoria;
         this.itinerario = itinerario;
         this.distancia = distancia;
+        this.categoria_id = 0;
     }
 
     public int getId() {
@@ -48,8 +51,9 @@ public class Percurso {
     }
     
     
-    public Categoria getCategoria() {
-        return categoria;
+    public Categoria getCategoria() throws ClassNotFoundException {
+        if(categoria == null && categoria_id != 0) return Categoria.obterCategoria(categoria_id);
+        else return categoria;
     }
 
     public void setCategoria(Categoria categoria) {
