@@ -31,12 +31,8 @@ public class PercursoDAO {
             ResultSet rs = comando.executeQuery("select * from Percurso");
             while (rs.next()) {
                 Percurso percurso = new Percurso(rs.getInt("id"),
-                        null,
                         rs.getString("itinerario"),
-                        rs.getInt("distancia"),
-                        null);
-
-                percurso.setCategoria_id(rs.getInt("Categoria_id"));
+                        rs.getInt("distancia"));
                 percursos.add(percurso);
             }
         } catch (SQLException e) {
@@ -57,12 +53,9 @@ public class PercursoDAO {
             ResultSet rs = comando.executeQuery("select * from Percurso where id = " + id);
             rs.first();
             percurso = new Percurso(rs.getInt("id"),
-                    null,
                     rs.getString("itinerario"),
                     rs.getInt("distancia"),
                     null);
-
-            percurso.setCategoria_id(rs.getInt("Categoria_id"));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -71,44 +64,16 @@ public class PercursoDAO {
         return percurso;
     }
 
-    public static void fecharConexao(Connection conexao, Statement comando) {
-        try {
-            if (comando != null) {
-                comando.close();
-            }
-            if (conexao != null) {
-                conexao.close();
-            }
-        } catch (SQLException e) {
-        }
-    }
-
     public static void gravar(Percurso percurso) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-          /*String sql = "insert into percurso (id, itinerario, distancia, Categoria_id) values (?, ?, ?, ?)";
-            PreparedStatement comando = conexao.prepareStatement(sql);
-            
-            comando.setInt(1,percurso.getId());
-            comando.setString(2,percurso.getItinerario());
-            comando.setInt(3,percurso.getDistancia());
-            if(percurso.getCategoria() == null)
-                comando.setNull(4, Types.NULL);
-            else
-                comando.setInt(4, percurso.getCategoria().getId()); */
 
-            String sql = "insert into percurso (id, itinerario, distancia, Categoria_id) values ("
+            String sql = "insert into percurso (id, itinerario, distancia) values ("
                     + percurso.getId()
                     + ", '" + percurso.getItinerario()
                     + "', " + percurso.getDistancia()
-                    + ", ";
-            if (percurso.getCategoria() == null) {
-                sql = sql + Types.NULL;
-            } else {
-                sql = sql + percurso.getCategoria().getId();
-            }
-            sql = sql + ")";
+                    + ") ";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.execute(sql);
             comando.close();
@@ -125,13 +90,7 @@ public class PercursoDAO {
             String sql = "update Percurso set "
                     + "itinerario = '" + percurso.getItinerario() + "'"
                     + ", distancia = " + percurso.getDistancia()
-                    + ", Categoria_id = ";
-            if (percurso.getCategoria_id() == 0) {
-                sql = sql + Types.NULL;
-            } else {
-                sql = sql + percurso.getCategoria_id();
-            }
-            sql = sql + " where id = " + percurso.getId();
+                    + " where id = " + percurso.getId();
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.execute(sql);
             comando.close();
@@ -154,6 +113,18 @@ public class PercursoDAO {
             throw e;
         } finally {
             fecharConexao(conexao, comando);
+        }
+    }
+    
+    public static void fecharConexao(Connection conexao, Statement comando) {
+        try {
+            if (comando != null) {
+                comando.close();
+            }
+            if (conexao != null) {
+                conexao.close();
+            }
+        } catch (SQLException e) {
         }
     }
 }

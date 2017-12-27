@@ -17,7 +17,6 @@ import java.util.List;
 public class Percurso {
     
     private int id;
-    private Categoria categoria;
     private String itinerario;
     private int distancia;
     private List<Tapete> tapetes;
@@ -25,18 +24,16 @@ public class Percurso {
     private int categoria_id;
     private List<Integer> tapetes_id;
 
-    public Percurso(int id,Categoria categoria, String itinerario, int distancia, List<Tapete> tapetes) {
+    public Percurso(int id, String itinerario, int distancia, List<Tapete> tapetes) {
         this.id = id;
-        this.categoria = categoria;
         this.itinerario = itinerario;
         this.distancia = distancia;
         this.tapetes = tapetes;
         this.categoria_id = 0;
     }
     
-    public Percurso(int id, Categoria categoria, String itinerario, int distancia) {
+    public Percurso(int id, String itinerario, int distancia) {
         this.id = id;
-        this.categoria = categoria;
         this.itinerario = itinerario;
         this.distancia = distancia;
         this.categoria_id = 0;
@@ -48,16 +45,6 @@ public class Percurso {
 
     public void setId(int id) {
         this.id = id;
-    }
-    
-    
-    public Categoria getCategoria() throws ClassNotFoundException {
-        if(categoria == null && categoria_id != 0) return Categoria.obterCategoria(categoria_id);
-        else return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
     }
 
     public String getItinerario() {

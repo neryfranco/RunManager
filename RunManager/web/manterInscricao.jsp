@@ -1,7 +1,7 @@
 <%-- 
-    Document   : manterCorrida
-    Created on : 18/10/2017, 16:31:28
-    Author     : vicdo
+    Document   : manterInscricao
+    Created on : 27/12/2017, 12:29:56
+    Author     : Nery
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,47 +25,47 @@
                 </tr>
                 <tr>
                     <td>Nome: </td> 
-                    <td><input id="caixatexto" type="text" name="txtNome" value="${corrida.nome}" <c:if test="${operacao == 'Excluir' }"> readonly </c:if>></td>
+                    <td><input id="caixatexto" type="text" name="txtNome" value="${corrida.nome}" <c:if test="${operacao == 'Informacoes'}"> readonly </c:if>></td>
                     </tr>
                     <tr>
                         <td>Local Largada: </td> 
-                        <td><input id="caixatexto" type="text" name="txtLocalLargada" value="${corrida.localLargada}" <c:if test="${operacao == 'Excluir' }"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtLocalLargada" value="${corrida.localLargada}" <c:if test="${operacao == 'Informacoes'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Local Chegada:  </td> 
-                        <td><input id="caixatexto" type="text" name="txtLocalChegada" value="${corrida.localChegada}" <c:if test="${operacao == 'Excluir' }"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtLocalChegada" value="${corrida.localChegada}" <c:if test="${operacao == 'Informacoes'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Horário Largada:  </td> 
-                        <td><input id="caixatexto" type="text" name="txtHorarioLargada" value="${corrida.horaLargada}" <c:if test="${operacao == 'Excluir' }"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtHorarioLargada" value="${corrida.horaLargada}" <c:if test="${operacao == 'Informacoes'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Data Corrida:  </td> 
-                        <td><input id="caixatexto" type="text" name="txtDataCorrida" value="${corrida.dataCorrida}" <c:if test="${operacao == 'Excluir' }"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtDataCorrida" value="${corrida.dataCorrida}" <c:if test="${operacao == 'Informacoes'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Data Retirada Kit:   </td> 
-                        <td><input id="caixatexto" type="text" name="txtDataRetiradaKit" value="${corrida.dataRetiradaKit}" <c:if test="${operacao == 'Excluir' }"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtDataRetiradaKit" value="${corrida.dataRetiradaKit}" <c:if test="${operacao == 'Informacoes'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Local Retirada Kit:  </td> 
-                        <td><input id="caixatexto" type="text" name="txtLocalRetiradaKit" value="${corrida.localRetiradaKit}" <c:if test="${operacao == 'Excluir' }"> readonly</c:if>></td>
+                        <td><input id="caixatexto" type="text" name="txtLocalRetiradaKit" value="${corrida.localRetiradaKit}" <c:if test="${operacao == 'Informacoes'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Duração Limite (min):  </td> 
-                        <td><input type="text" id="caixatexto" name="txtDuracaoLimite" value="${corrida.duracaoLimite}" <c:if test="${operacao == 'Excluir' }"> readonly</c:if>></td>
+                        <td><input type="text" id="caixatexto" name="txtDuracaoLimite" value="${corrida.duracaoLimite}" <c:if test="${operacao == 'Informacoes'}"> readonly</c:if>></td>
                     </tr>
                     <tr>
                         <td>Número Máximo Participantes:  </td> 
-                        <td><input type="text" id="caixatexto" name="txtNumMaxParticipantes" value="${corrida.numMaxParticipantes}" <c:if test="${operacao == 'Excluir' }"> readonly</c:if>></td>
+                        <td><input type="text" id="caixatexto" name="txtNumMaxParticipantes" value="${corrida.numMaxParticipantes}" <c:if test="${operacao == 'Informacoes'}"> readonly</c:if>></td>
                     </tr>
                 <tr>
                     <td>Percurso: </td> 
                     <td>
                         <form>
-                            <select id="caixatexto" name="optPercurso" <c:if test="${operacao == 'Excluir' }"> disabled</c:if> >
+                            <select id="caixatexto" name="optPercursos" <c:if test="${operacao == 'Informacoes'}"> disabled</c:if> >
                                 <c:forEach items="${percursos}" var="percurso">
-                                    <option value="${percurso.id}" > ${percurso.id} - ${percurso.itinerario}</option>  
+                                    <option value="${percurso.id}" <c:if test="${percurso.categoria_id == categoria.id}"> selected</c:if>> ${percurso.id} - ${percurso.itinerario} - ${percurso.categoria.descricao}</option>  
                                 </c:forEach>
                             </select>
                         </form>

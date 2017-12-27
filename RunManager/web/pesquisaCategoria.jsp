@@ -27,7 +27,10 @@
             <c:forEach items="${categorias}" var="categoria">
                 <tr>
                     <td><c:out value="${categoria.id}" /></td>
-                    <td><c:out value="${categoria.sexo}" /></td>
+                    <td>
+                        <c:if test="${categoria.sexo == '1'}"> <c:out value="Masculino" /> </c:if>
+                        <c:if test="${categoria.sexo == '2'}"> <c:out value="Feminino" /> </c:if>
+                    </td>
                     <td><c:out value="${categoria.idadeIni}" /></td>
                     <td><c:out value="${categoria.idadeFim}" /></td>  
                     <td><a href="ManterCategoriaController?acao=prepararEditar&codCategoria=<c:out value="${categoria.id}"/>">Editar</a></td>

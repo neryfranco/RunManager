@@ -97,8 +97,12 @@
         <servlet-class>controller.ManterPagamentoController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ManterIngressoController</servlet-name>
-        <servlet-class>controller.ManterIngressoController</servlet-class>
+        <servlet-name>ManterInscricaoController</servlet-name>
+        <servlet-class>controller.ManterInscricaoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisaInscricaoController</servlet-name>
+        <servlet-class>controller.PesquisaInscricaoController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaPercursoController</servlet-name>
@@ -197,8 +201,12 @@
         <url-pattern>/ManterPagamentoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ManterIngressoController</servlet-name>
-        <url-pattern>/ManterIngressoController</url-pattern>
+        <servlet-name>ManterInscricaoController</servlet-name>
+        <url-pattern>/ManterInscricaoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaInscricaoController</servlet-name>
+        <url-pattern>/PesquisaInscricaoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
