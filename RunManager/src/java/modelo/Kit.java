@@ -17,12 +17,12 @@ public class Kit {
     
     private int numPeito;
     private Chip chip;
-    private Camisa camisa;
+    private String camisa;
     
     private int chip_num;
     private int camisa_id;
 
-    public Kit(int numPeito, Chip chip, Camisa camisa) {
+    public Kit(int numPeito, Chip chip, String camisa) {
         this.numPeito = numPeito;
         this.chip = chip;
         this.camisa = camisa;
@@ -44,11 +44,11 @@ public class Kit {
         this.chip = chip;
     }
 
-    public Camisa getCamisa() {
+    public String getString() {
         return camisa;
     }
 
-    public void setCamisa(Camisa camisa) {
+    public void setString(String camisa) {
         this.camisa = camisa;
     }
 
@@ -60,11 +60,11 @@ public class Kit {
         this.chip_num = chip_num;
     }
 
-    public int getCamisa_id() {
+    public int getString_id() {
         return camisa_id;
     }
 
-    public void setCamisa_id(int camisa_id) {
+    public void setString_id(int camisa_id) {
         this.camisa_id = camisa_id;
     }
     
