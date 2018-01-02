@@ -16,7 +16,7 @@
         <a href="PesquisaAdministradorController">Administrador</a>
         <a href="PesquisaOrganizadorController">Organizador</a>
         <a href="PesquisaAtletaController">Atleta</a>
-        <a href="PesquisaTapeteController">Tapete</a>
+        <%-- <a href="PesquisaTapeteController">Tapete</a> --%>
         <a href="PesquisaCategoriaController">Categoria</a>
         <a href="PesquisaPercursoController">Percurso</a>
         <a href="PesquisaCorridaController">Corrida</a>
