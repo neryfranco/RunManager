@@ -29,8 +29,7 @@ public class KitDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from Kit");
             while (rs.next()) {
-                Kit kit = new Kit(rs.getInt("numPeito"), null, null);
-                kit.setCamisa_id(rs.getInt("Camisa_id"));
+                Kit kit = new Kit(rs.getInt("numPeito"), null, rs.getString("Camisa"));
                 kit.setChip_num(rs.getInt("Chip_numero"));
                 kits.add(kit);
             }
@@ -51,9 +50,9 @@ public class KitDAO {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setInt(1, kit.getNumPeito());
             comando.setObject(2, kit.getChip());
-            comando.setObject(3, kit.getCamisa());
+            //comando.setObject(3, kit.getCamisa());
             comando.setInt(4, kit.getChip_num());
-            comando.setInt(5, kit.getCamisa_id());
+            //comando.setInt(5, kit.getCamisa_id());
             comando.execute(sql);
             comando.close();
             conexao.close();

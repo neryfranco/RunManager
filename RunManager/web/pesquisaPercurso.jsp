@@ -20,14 +20,14 @@
         <table id="customers">
             <tr>
                 <th>ID</th>
-                <th>Categoria</th>
+                <th>Distancia (km)</th>
                 <th>Itinerario</th>
                 <th colspan=2>Ação</th>
             </tr>
             <c:forEach items="${percursos}" var="percurso">
                 <tr>
                     <td><c:out value="${percurso.id}" /></td>
-                    <td><c:out value="${percurso.categoria_id}" /></td>
+                    <td><c:out value="${percurso.distancia}" /></td>
                     <td><c:out value="${percurso.itinerario}" /></td>
                         <td><a href="ManterPercursoController?acao=prepararEditar&codPercurso=<c:out value="${percurso.id}"/>">Editar</a></td>
                         <td><a href="ManterPercursoController?acao=prepararExcluir&codPercurso=<c:out value="${percurso.id}"/>">Excluir</a></td>
@@ -37,5 +37,6 @@
         <form action="ManterPercursoController?acao=prepararIncluir" method="post">
             <input id="botao" type="submit" name="btnIncluir" value="Incluir">
         </form>
+        <button onclick="location.href = '/RunManager';" id="botao" >Voltar ao Menu</button>
     </body>
 </html>

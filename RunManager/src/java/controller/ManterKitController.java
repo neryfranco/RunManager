@@ -15,7 +15,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Camisa;
 import modelo.Chip;
 import modelo.Kit;
 
@@ -53,16 +52,11 @@ public class ManterKitController extends HttpServlet {
 
         int numPeito = Integer.parseInt(request.getParameter("txtEmail"));
         int chip_num = Integer.parseInt(request.getParameter("txtSenha"));
-        int camisa_id = Integer.parseInt(request.getParameter("txtSenha"));
+        String camisa = request.getParameter("txtSenha");
         try {
             Chip chip = null;
             if (chip_num != 0) {
                 chip = Chip.obterChip(chip_num);
-            }
-
-            Camisa camisa = null;
-            if (camisa_id != 0) {
-                camisa = Camisa.obterCamisa(camisa_id);
             }
 
             Kit kit = new Kit(numPeito, chip, camisa);
@@ -127,16 +121,11 @@ public class ManterKitController extends HttpServlet {
         try {
             int numPeito = Integer.parseInt(request.getParameter("txtId"));
             int chip_num = Integer.parseInt(request.getParameter("txtSenha"));
-            int camisa_id = Integer.parseInt(request.getParameter("txtCpf"));
+            String camisa = request.getParameter("txtCpf");
 
             Chip chip = null;
             if (chip_num != 0) {
                 chip = Chip.obterChip(chip_num);
-            }
-
-            Camisa camisa = null;
-            if (camisa_id != 0) {
-                camisa = Camisa.obterCamisa(camisa_id);
             }
             Kit kit = new Kit(numPeito, chip, camisa);
             kit.setNumPeito(numPeito);

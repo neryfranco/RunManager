@@ -65,7 +65,7 @@ public class CorridaDAO {
             conexao = BD.getConexao();
             String sql = "insert into corrida (id, nome, localLargada, "
                     + "localChegada, horaLargada, dataCorrida, dataRetiradaKit, "
-                    + "localRetiradaKit, duracaoLim, numMaxInscritos) values("
+                    + "localRetiradaKit, duracaoLim, numMaxInscritos, percurso_id) values("
                     + corrida.getId() + ", '"
                     + corrida.getNome() + "', '"
                     + corrida.getLocalLargada() + "', '"
@@ -75,27 +75,40 @@ public class CorridaDAO {
                     + corrida.getDataRetiradaKit() + "', '"
                     + corrida.getLocalRetiradaKit() + "', "
                     + corrida.getDuracaoLimite() + ", "
-                    + corrida.getNumMaxParticipantes() + ") ";
+                    + corrida.getNumMaxParticipantes();
+            if (corrida.getPercurso() == null) {
+                sql = sql + Types.NULL;
+            } else {
+                sql = sql + ", " + corrida.getPercurso().getId();
+            }
+            sql = sql + ")";
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.execute(sql);
             comando.close();
             conexao.close();
         } catch (SQLException e) {
+            throw e;
         }
     }
-public static void alterar(Corrida corrida) throws SQLException, ClassNotFoundException {
+
+    public static void alterar(Corrida corrida) throws SQLException, ClassNotFoundException {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
             String sql = "update Corrida set "
                     + " nome = '" + corrida.getNome() + "'"
-                    + ", localLargada = '" + corrida.getLocalLargada()+ "'"
+                    + ", localLargada = '" + corrida.getLocalLargada() + "'"
                     + ", localChegada = '" + corrida.getLocalChegada() + "'"
                     + ", horaLargada = '" + corrida.getHoraLargada() + "'"
                     + ", duracaoLim = " + corrida.getDuracaoLimite()
                     + ", dataRetiradaKit = '" + corrida.getDataRetiradaKit() + "'"
                     + ", localRetiradaKit = '" + corrida.getLocalRetiradaKit() + "'"
                     + ", numMaxInscritos = " + corrida.getNumMaxParticipantes();
+            if (corrida.getPercurso() == null) {
+                sql = sql + Types.NULL;
+            } else {
+                sql = sql + ", percurso_id = " + corrida.getPercurso().getId();
+            }
             sql = sql + " where id = " + corrida.getId();
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.execute(sql);
@@ -142,14 +155,15 @@ public static void alterar(Corrida corrida) throws SQLException, ClassNotFoundEx
                     rs.getString("localRetiradaKit"),
                     rs.getInt("duracaoLim"),
                     rs.getInt("numMaxInscritos"));
-                    
+            corrida.setPercurso_id(rs.getInt("percurso_id"));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             fecharConexao(conexao, comando);
         }
-       return corrida;  
+        return corrida;
     }
+
     public static void fecharConexao(Connection conexao, Statement comando) {
         try {
             if (comando != null) {

@@ -17,7 +17,7 @@ public class Corrida {
     
     private int id;
     private String nome;
-    private List<Percurso> percursos;
+    private Percurso percurso;
     private String localLargada;
     private String localChegada;
     private String horaLargada;
@@ -27,12 +27,12 @@ public class Corrida {
     private int duracaoLimite;
     private int numMaxParticipantes;
     
-    private List<Integer> percursos_id;
+    private int percurso_id;
 
-    public Corrida(int id, String nome, List<Percurso> percursos, String localLargada, String localChegada, String horaLargada, String dataCorrida, String dataRetiradaKit, String localRetiradaKit, int duracaoLimite, int numMaxParticipantes) {
+    public Corrida(int id, String nome, Percurso percurso, String localLargada, String localChegada, String horaLargada, String dataCorrida, String dataRetiradaKit, String localRetiradaKit, int duracaoLimite, int numMaxParticipantes) {
         this.id = id;
         this.nome = nome;
-        this.percursos = percursos;
+        this.percurso = percurso;
         this.localLargada = localLargada;
         this.localChegada = localChegada;
         this.horaLargada = horaLargada;
@@ -59,12 +59,12 @@ public class Corrida {
         this.nome = nome;
     }
 
-    public List<Percurso> getPercursos() {
-        return percursos;
+    public Percurso getPercurso() {
+        return percurso;
     }
 
-    public void setPercursos(List<Percurso> percursos) {
-        this.percursos = percursos;
+    public void setPercurso(Percurso percurso) {
+        this.percurso = percurso;
     }
 
     public String getLocalLargada() {
@@ -131,16 +131,12 @@ public class Corrida {
         this.numMaxParticipantes = numMaxParticipantes;
     }
 
-    public List<Integer> getPercursos_id() {
-        return percursos_id;
+    public int getPercurso_id() {
+        return percurso_id;
     }
 
-    public void setPercursos_id(List<Integer> percursos_id) {
-        this.percursos_id = percursos_id;
-    }
-    
-    public void addPercursoID(int id){
-        percursos_id.add(id);
+    public void setPercurso_id(int percurso_id) {
+        this.percurso_id = percurso_id;
     }
     
     public static List obterCorridas() throws ClassNotFoundException{

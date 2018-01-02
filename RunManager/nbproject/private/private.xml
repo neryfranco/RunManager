@@ -3,12 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterAtletaController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/AtletaDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Atleta.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaAtleta.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/AdministradorDAO.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/manterAtleta.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Ingresso.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterKitController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Kit.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/manterPagamento.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaInscricao.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/KitDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterInscricaoController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/manterLote.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/manterKit.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/manterInscricao.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaLote.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Lote.java</file>
         </group>
     </open-files>
 </project-private>

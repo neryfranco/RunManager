@@ -26,7 +26,6 @@
             <c:forEach items="${kits}" var="kit">
                 <tr>
                     <td><c:out value="${kit.numPeito}" /></td>
-                    <td><c:out value="${kit.chip_num}" /></td>
                     <td><c:out value="${kit.camisa_id}" /></td>
                         <td><a href="ManterKitController?acao=prepararEditar&numPeitoKit=<c:out value="${kit.numPeito}"/>">Editar</a></td>
                         <td><a href="ManterKitController?acao=prepararExcluir&numPeitoKit=<c:out value="${kit.numPeito}"/>">Excluir</a></td>
@@ -36,5 +35,6 @@
         <form action="ManterKitController?acao=prepararIncluir" method="post">
             <input id="botao" type="submit" name="btnIncluir" value="Incluir">
         </form>
+        <button onclick="location.href = '/RunManager';" id="botao" >Voltar ao Menu</button>
     </body>
 </html>

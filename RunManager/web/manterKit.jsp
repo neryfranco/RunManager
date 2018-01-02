@@ -21,18 +21,7 @@
             <table>
                 <tr>
                     <td>Número de Peito: </td> 
-                    <td><input id="caixatexto" type="text" name="txtEmail" value="${kit.numPeito}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
-                </tr>
-                <tr>
-                    <td>Chip: </td> 
-                    <td>
-                        <select id="caixatexto" name="optChip" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <option value="0" <c:if test="${kit.chip.numero == null}"> selected</c:if>> </option>  
-                        <c:forEach items="${chips}" var="chip">
-                            <option value="${chip.numero}" <c:if test="${kit.chip.numero == chip.numero}"> selected</c:if>>${chip.numero}</option>  
-                        </c:forEach>
-                        </select> 
-                    </td>
+                    <td><input id="caixatexto" type="text" name="txtEmail" value="${ingresso.numInscricao}" readonly></td>
                 </tr>
                 <tr>
                     <td>Camisa: </td> 
