@@ -55,12 +55,17 @@
                     <td>Número Máximo Participantes:  </td> 
                     <td><input type="text" id="caixatexto" name="txtNumMaxParticipantes" value="${corrida.numMaxParticipantes}"  readonly></td>
                 </tr>
-                <tr>
-                    <td>Percurso: </td> 
+                <td>Percurso: </td> 
                     <td>
-                        <input type="text" id="caixatexto" name="txtNumMaxParticipantes" value="${corrida.percurso.id} - ${corrida.percurso.itinerario}"  readonly></td>
+                        <form>
+                            <select  id="caixatexto" name="optPercurso" disabled>
+                            <option value="0" <c:if test="${corrida.percurso.id == null}"> selected</c:if>> </option>  
+                            <c:forEach items="${percursos}" var="percurso">
+                                <option value="${percurso.id}" <c:if test="${corrida.percurso_id == percurso.id}"> selected</c:if>>${percurso.id} - ${percurso.itinerario}</option>  
+                            </c:forEach>
+                        </select> 
+                        </form>
                     </td>
-                </tr>
             </table>
             <table>
                 <h3>Lote:</h3>
@@ -70,7 +75,7 @@
                         <form>
                             <select id="caixatexto" name="optLote">
                                 <c:forEach items="${lotes}" var="lote">
-                                    <option value="${lote.id}" <c:if test="${lote.corrida.id == corrida.id}"> selected </c:if> > R$ ${lote.preco}</option>  
+                                    <option value="${lote.id}" <c:if test="${lote.corrida.id == corrida.id}"> </c:if>> R$ ${lote.preco} </option>
                                 </c:forEach>
                             </select>
                         </form>

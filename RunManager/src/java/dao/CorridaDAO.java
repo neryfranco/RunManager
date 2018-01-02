@@ -155,7 +155,7 @@ public class CorridaDAO {
                     rs.getString("localRetiradaKit"),
                     rs.getInt("duracaoLim"),
                     rs.getInt("numMaxInscritos"));
-
+            corrida.setPercurso_id(rs.getInt("percurso_id"));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

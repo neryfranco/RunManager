@@ -73,10 +73,11 @@ public class ManterLoteController extends HttpServlet {
     public void prepararExcluir(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setAttribute("operacao", "Excluir");
-            request.setAttribute("lote", Lote.obterLotes());
-            String id = request.getParameter("idLote");
+            request.setAttribute("corridas", Corrida.obterCorridas());
+            int id = Integer.parseInt(request.getParameter("idLote"));
             request.setAttribute("idLote", id);
-            RequestDispatcher view = request.getRequestDispatcher("manterLote.jsp");
+            request.setAttribute("lote", Lote.obterLote(id));
+            RequestDispatcher view = request.getRequestDispatcher("/manterLote.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {
 
@@ -87,16 +88,29 @@ public class ManterLoteController extends HttpServlet {
         }
     }
 
-    public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) {       
+    public void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {       
+        try {
+            int corrida = Integer.parseInt(request.getParameter("optCorrida"));
+            int id = Integer.parseInt(request.getParameter("txtID"));
+            Lote lote = new Lote(id, 0, null, null);
+            lote.setCorrida_id(corrida);
+            lote.excluir();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaLoteController");
+            view.forward(request, response);
+        } catch (SQLException ex) {
+        } catch (ClassNotFoundException ex) {
+        }
+    
     }
     
     public void prepararEditar(HttpServletRequest request, HttpServletResponse response){
         try {
             request.setAttribute("operacao", "Editar");
-            request.setAttribute("lote", Lote.obterLotes());
-            String id = request.getParameter("idLote");
+            request.setAttribute("corridas", Corrida.obterCorridas());
+            int id = Integer.parseInt(request.getParameter("idLote"));
             request.setAttribute("idLote", id);
-            RequestDispatcher view = request.getRequestDispatcher("manterLote.jsp");
+            request.setAttribute("lote", Lote.obterLote(id));
+            RequestDispatcher view = request.getRequestDispatcher("/manterLote.jsp");
             view.forward(request, response);
         } catch (ServletException ex) {
 
@@ -108,8 +122,24 @@ public class ManterLoteController extends HttpServlet {
         
     }
     
-    public void confirmarEditar(HttpServletRequest request, HttpServletResponse response){
-        
+    public void confirmarEditar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+        int corrida_id = Integer.parseInt(request.getParameter("optCorrida"));
+        int id = Integer.parseInt(request.getParameter("txtID"));
+        double preco = Double.parseDouble(request.getParameter("txtPreco"));
+        String dataLim = request.getParameter("txtDataLimite");
+        try {
+            Corrida corrida = null;
+            if (corrida_id != 0) {
+                corrida = Corrida.obterCorrida(corrida_id);
+            }
+
+            Lote lote = new Lote(id, preco, corrida, dataLim);
+            lote.alterar();
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaLoteController");
+            view.forward(request, response);
+
+        } catch (ClassNotFoundException ex) {
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

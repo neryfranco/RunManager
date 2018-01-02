@@ -21,24 +21,23 @@
                 <th>Corrida</th>
                 <th>ID</th>
                 <th>Preço</th>
-                <%-- <th>Quantidade de Ingressos</th> --%>
                 <th colspan=3>Ação</th>
             </tr>
             <c:forEach items="${lotes}" var="lote">
                 <tr>
                     <c:forEach items="${corridas}" var="corrida">
-                        <td> <c:if test="${lote.corrida_id == corrida.id}"> <c:out value="${corrida.nome}"/> </c:if></td>
+                        <c:if test="${lote.corrida_id == corrida.id}"> <td> <c:out value="${corrida.nome}"/> </td> </c:if>
                     </c:forEach>
                     <td><c:out value="${lote.id}" /></td>
                     <td><c:out value="${lote.preco}" /></td>
-                        <%-- <td><a href="PesquisaIngressoController?acao=prepararExcluir&idLote=<c:out value="${lote.id}"/>">Ingressos</a></td> --%>
-                        <td><a href="ManterLoteController?acao=prepararEditar&idLote=<c:out value="${lote.id}"/>">Editar</a></td>
-                        <td><a href="ManterLoteController?acao=prepararExcluir&idLote=<c:out value="${lote.id}"/>">Excluir</a></td>
+                    <td><a href="ManterLoteController?acao=prepararEditar&idLote=<c:out value="${lote.id}"/>">Editar</a></td>
+                    <td><a href="ManterLoteController?acao=prepararExcluir&idLote=<c:out value="${lote.id}"/>">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>
         <form action="ManterLoteController?acao=prepararIncluir" method="post">
             <input id="botao" type="submit" name="btnIncluir" value="Incluir">
         </form>
+        <button onclick="location.href = '/RunManager';" id="botao" >Voltar ao Menu</button>
     </body>
 </html>

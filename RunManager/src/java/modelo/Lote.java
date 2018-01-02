@@ -85,8 +85,20 @@ public class Lote {
         return LoteDAO.obterLotes();
     }
 
+    public static Lote obterLote(int id) throws ClassNotFoundException{
+        return LoteDAO.obterLote(id);
+    }
+    
     public void gravar() throws SQLException, ClassNotFoundException {
         LoteDAO.gravar(this);
+    }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+        LoteDAO.alterar(this);
+    }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+        LoteDAO.excluir(this);
     }
 }
     

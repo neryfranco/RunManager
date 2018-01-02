@@ -36,5 +36,6 @@
                 </tr>
             </c:forEach>
         </table>
+        <button onclick="location.href = '/RunManager';" id="botao" >Voltar ao Menu</button>
     </body>
 </html>

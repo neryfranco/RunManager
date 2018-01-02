@@ -43,5 +43,6 @@
         <form action="ManterTapeteController?acao=prepararIncluir" method="post">
             <input id="botao" type="submit" name="btnIncluir" value="Incluir">
         </form>
+        <button onclick="location.href = '/RunManager';" id="botao" >Voltar ao Menu</button>
     </body>
 </html>

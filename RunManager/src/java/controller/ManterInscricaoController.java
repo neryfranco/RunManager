@@ -34,13 +34,18 @@ public class ManterInscricaoController extends HttpServlet {
         }
     }
     
-    public void prepararInscricao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
-        request.setAttribute("operacao", "Inscrever");
-        request.setAttribute("corridas", Corrida.obterCorridas());
-        request.setAttribute("percursos", Percurso.obterPercursos());
-        RequestDispatcher view=
-                request.getRequestDispatcher("/manterInscricao.jsp");
-        view.forward(request, response);
+    public void prepararInscricao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
+        try {
+            request.setAttribute("operacao", "Informacoes");
+            request.setAttribute("percursos", Percurso.obterPercursos());
+            request.setAttribute("lotes", Lote.obterLotes());
+            int idCorrida = Integer.parseInt(request.getParameter("codCorrida"));
+            Corrida corrida = Corrida.obterCorrida(idCorrida);
+            request.setAttribute("corrida", corrida);
+            RequestDispatcher view = request.getRequestDispatcher("/manterInscricao.jsp");
+            view.forward(request, response);
+        } catch (ServletException e) {
+        }
     }
 
     private void prepararInformacoes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {

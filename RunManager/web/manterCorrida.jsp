@@ -63,11 +63,12 @@
                     <td>Percurso: </td> 
                     <td>
                         <form>
-                            <select id="caixatexto" name="optPercurso" <c:if test="${operacao == 'Excluir' }"> disabled</c:if> >
-                                <c:forEach items="${percursos}" var="percurso">
-                                    <option value="${percurso.id}" > ${percurso.id} - ${percurso.itinerario}</option>  
-                                </c:forEach>
-                            </select>
+                            <select  id="caixatexto" name="optPercurso" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
+                            <option value="0" <c:if test="${corrida.percurso.id == null}"> selected</c:if>> </option>  
+                            <c:forEach items="${percursos}" var="percurso">
+                                <option value="${percurso.id}" <c:if test="${corrida.percurso_id == percurso.id}"> selected</c:if>>${percurso.id} - ${percurso.itinerario}</option>  
+                            </c:forEach>
+                        </select> 
                         </form>
                     </td>
                 </tr>
