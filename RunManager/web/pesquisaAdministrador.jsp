@@ -8,34 +8,49 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
-<html>
+<html ng-app="testApp">
     <head>
         <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa Administrador</title>
+        <script src="angular.min.js"></script>
     </head>
-    <body id="principal">
+    <body id="principal" ng-controller="testController" ng-init="getRequest()">
         <h1>Pesquisa de Administradores</h1>
         <table id="customers">
+            <input ng-model="search.nome" placeholder="Filtrar por Nome: " id="caixatexto">
             <tr>
-                <th>CPF</th>
                 <th>Email</th>
+                <th>CPF</th>
                 <th>Nome</th>
                 <th colspan=2>Ação</th>
             </tr>
-            <c:forEach items="${administradores}" var="administrador">
-                <tr>
-                    <td><c:out value="${administrador.cpf}" /></td>
-                    <td><c:out value="${administrador.email}" /></td>
-                    <td><c:out value="${administrador.nome}" /></td>
-                        <td><a href="ManterAdministradorController?acao=prepararEditar&cpfAdministrador=<c:out value="${administrador.cpf}"/>">Editar</a></td>
-                        <td><a href="ManterAdministradorController?acao=prepararExcluir&cpfAdministrador=<c:out value="${administrador.cpf}"/>">Excluir</a></td>
-                </tr>
-            </c:forEach>
+            <tr ng-repeat="administrador in administradores|filter:search:strict">
+                <td>{{administrador.email}}</td>
+                <td>{{administrador.cpf}}</td>
+                <td>{{administrador.nome}}</td>
+                <td><a href="ManterAdministradorController?acao=prepararEditar&cpfAdministrador={{administrador.cpf}}"/>Editar</a></td>
+                <td><a href="ManterAdministradorController?acao=prepararExcluir&cpfAdministrador={{administrador.cpf}}"/>Excluir</a></td>
+            </tr>
+
         </table>
         <form action="ManterAdministradorController?acao=prepararIncluir" method="post">
             <input id="botao" type="submit" name="btnIncluir" value="Incluir">
+            <a href="index.jsp" id="link">Voltar</a>
         </form>
-        <button onclick="location.href = '/RunManager';" id="botao" >Voltar ao Menu</button>
+        <script>
+                    var testApp = angular.module('testApp', []);
+                    testApp.controller('testController', function ($scope, $http) {
+                        $scope.getRequest = function () {
+                            console.log("I've been pressed!");
+                            $http.get("AdministradorApi")
+                                    .then(function successCallback(response) {
+                                        $scope.administradores = response.data;
+                                    }, function errorCallback(response) {
+                                        console.log("Unable to perform get request");
+                                    });
+                        };
+                    });
+        </script>
     </body>
 </html>
