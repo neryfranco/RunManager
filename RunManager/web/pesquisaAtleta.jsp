@@ -35,7 +35,7 @@
         </table>
         <form action="ManterAtletaController?acao=prepararIncluir" method="post">
             <input id="botao" type="submit" name="btnIncluir" value="Incluir">
-            <a href="index.jsp" id="link">Voltar</a>
+            <button onclick="location.href = '/RunManager';" id="botao" >Voltar</button>
         </form>
         <script>
             var testApp = angular.module('testApp', []);

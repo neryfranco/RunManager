@@ -158,6 +158,44 @@ public class OrganizadorDAO {
         }
         return organizador;
     }
+    
+    public static Organizador logar(String email, String senha) throws ClassNotFoundException {
+        Connection conexao = null;
+        Organizador organizador = null;
+        PreparedStatement comando = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "SELECT * FROM organizador WHERE email = ? AND senha = ?";
+            comando = conexao.prepareStatement(sql);
+            comando.setString(1, email);
+            comando.setString(2, senha);
+            ResultSet rs = comando.executeQuery();
+            if (rs.first()) {
+                organizador = new Organizador(rs.getString("email"),
+                        rs.getString("senha"),
+                        rs.getString("cpf"),
+                        rs.getString("nome"),
+                        rs.getString("dataNasc"),
+                        rs.getString("sexo"),
+                        rs.getString("tel_cel"),
+                        rs.getString("tel_res"),
+                        rs.getString("cep"),
+                        rs.getString("rua"),
+                        rs.getString("uf"),
+                        rs.getString("cidade"));
+                        
+ 
+            }
+
+            comando.close();
+            conexao.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+        return organizador;
+    }
 
     public static void fecharConexao(Connection conexao, Statement comando) {
         try {

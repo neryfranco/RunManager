@@ -25,5 +25,17 @@
         <a href="PesquisaLoteController">Lote</a>
         <a href="PesquisaInscricaoController">Inscrição</a>
         <a href="PesquisaPagamentoController">Pagamento</a>
+        <div>
+            <form action="LoginController?acao=logar" method="post" name="frmManterAtleta">
+            <label for="email">Email:</label>
+            <input type="email" placeholder="email@gmail.com" id="email" name="email" >
+            <label for="senha">Senha:</label>
+            <input type="password" required class="form-control" placeholder="******" id="senha" name="senha">
+            <label><input type="radio" name="optUsuario" value="administrador">Administrador</label>
+            <label><input type="radio" name="optUsuario" value="organizador" >Organizador</label>
+            <label><input type="radio" name="optUsuario" checked="checked" value="atleta">Atleta</label>
+            <button type="submit">Entrar</button>
+            </form>
+        </div>
     </body>
 </html>
