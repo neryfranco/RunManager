@@ -104,6 +104,54 @@
         <servlet-name>PesquisaInscricaoController</servlet-name>
         <servlet-class>controller.PesquisaInscricaoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdministradorApi</servlet-name>
+        <servlet-class>controller.api.AdministradorApi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtletaApi</servlet-name>
+        <servlet-class>controller.api.AtletaApi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CategoriaApi</servlet-name>
+        <servlet-class>controller.api.CategoriaApi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChipApi</servlet-name>
+        <servlet-class>controller.api.ChipApi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CorridaApi</servlet-name>
+        <servlet-class>controller.api.CorridaApi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>KitApi</servlet-name>
+        <servlet-class>controller.api.KitApi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoteApi</servlet-name>
+        <servlet-class>controller.api.LoteApi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrganizadorApi</servlet-name>
+        <servlet-class>controller.api.OrganizadorApi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PagamentoApi</servlet-name>
+        <servlet-class>controller.api.PagamentoApi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PercursoApi</servlet-name>
+        <servlet-class>controller.api.PercursoApi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RankingApi</servlet-name>
+        <servlet-class>controller.api.RankingApi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TapeteApi</servlet-name>
+        <servlet-class>controller.api.TapeteApi</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaPercursoController</servlet-name>
         <url-pattern>/PesquisaPercursoController</url-pattern>
@@ -207,6 +255,54 @@
     <servlet-mapping>
         <servlet-name>PesquisaInscricaoController</servlet-name>
         <url-pattern>/PesquisaInscricaoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdministradorApi</servlet-name>
+        <url-pattern>/AdministradorApi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtletaApi</servlet-name>
+        <url-pattern>/AtletaApi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoriaApi</servlet-name>
+        <url-pattern>/CategoriaApi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChipApi</servlet-name>
+        <url-pattern>/ChipApi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CorridaApi</servlet-name>
+        <url-pattern>/CorridaApi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KitApi</servlet-name>
+        <url-pattern>/KitApi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoteApi</servlet-name>
+        <url-pattern>/LoteApi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrganizadorApi</servlet-name>
+        <url-pattern>/OrganizadorApi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PagamentoApi</servlet-name>
+        <url-pattern>/PagamentoApi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PercursoApi</servlet-name>
+        <url-pattern>/PercursoApi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RankingApi</servlet-name>
+        <url-pattern>/RankingApi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TapeteApi</servlet-name>
+        <url-pattern>/TapeteApi</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

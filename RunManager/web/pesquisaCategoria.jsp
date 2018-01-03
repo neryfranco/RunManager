@@ -9,38 +9,50 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
-<html>
+<html ng-app="testApp">
     <head>
         <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa de Categorias</title>
+        <script src="angular.min.js"></script>
     </head>
-    <body id="principal">
+    <body id="principal" ng-controller="testController" ng-init="getRequest()">
         <h1>Pesquisa de Categorias</h1>
         <table id="customers">
+            <input ng-model="search.idadeIni" placeholder="Filtrar por Idade Inicial: " id="caixatexto">
             <tr>
                 <th>ID</th>
                 <th>Sexo</th>
                 <th colspan=2>Faixa Etária</th>
                 <th colspan=2>Ação</th>
             </tr>
-            <c:forEach items="${categorias}" var="categoria">
-                <tr>
-                    <td><c:out value="${categoria.id}" /></td>
-                    <td>
-                        <c:if test="${categoria.sexo == '1'}"> <c:out value="Masculino" /> </c:if>
-                        <c:if test="${categoria.sexo == '2'}"> <c:out value="Feminino" /> </c:if>
-                    </td>
-                    <td><c:out value="${categoria.idadeIni}" /></td>
-                    <td><c:out value="${categoria.idadeFim}" /></td>  
-                    <td><a href="ManterCategoriaController?acao=prepararEditar&codCategoria=<c:out value="${categoria.id}"/>">Editar</a></td>
-                    <td><a href="ManterCategoriaController?acao=prepararExcluir&codCategoria=<c:out value="${categoria.id}"/>">Excluir</a></td>
-                </tr>
-            </c:forEach>
+            <tr  ng-repeat="categoria in categorias|filter:search:strict">
+                <td>{{categoria.id}}</td>
+                <td>{{categoria.sexo}}</td>
+                <td>{{categoria.idadeIni}}</td>
+                <td>{{categoria.idadeFim}}</td>  
+                <td><a href="ManterCategoriaController?acao=prepararEditar&codCategoria={{categoria.id}}"/>Editar</a></td>
+                <td><a href="ManterCategoriaController?acao=prepararExcluir&codCategoria={{categoria.id}}"/>Excluir</a></td>
+            </tr>
+
         </table>
         <form action="ManterCategoriaController?acao=prepararIncluir" method="post">
             <input id="botao" type="submit" name="btnIncluir" value="Incluir">
+            <a href="index.jsp" id="link">Voltar</a>
         </form>
-        <button onclick="location.href = '/RunManager';" id="botao" >Voltar ao Menu</button>
+        <script>
+            var testApp = angular.module('testApp', []);
+                    testApp.controller('testController', function ($scope, $http) {
+                        $scope.getRequest = function () {
+                            console.log("I've been pressed!");
+                            $http.get("CategoriaApi")
+                                    .then(function successCallback(response) {
+                                        $scope.categorias = response.data;
+                                    }, function errorCallback(response) {
+                                        console.log("Unable to perform get request");
+                                    });
+                        };
+                    });
+        </script>
     </body>
 </html>
