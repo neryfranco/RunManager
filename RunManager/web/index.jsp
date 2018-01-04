@@ -13,18 +13,19 @@
         <title>RunManager</title>
     </head>
     <body class="principal" background-image="img.jpg">
-        <h2>Pesquisas: </h2>
+        <h2>Pesquisas: </h2>       
+        
         <a href="PesquisaAdministradorController" class="link">Administrador</a>
-        <a href="PesquisaOrganizadorController" class="link">Organizador</a>
-        <a href="PesquisaAtletaController" class="link">Atleta</a>
-        <a href="PesquisaTapeteController" class="link">Tapete</a>
-        <a href="PesquisaPercursoController"class="link">Percurso</a>
-        <a href="PesquisaCorridaController" class="link">Corrida</a>
+        <a href="PesquisaOrganizadorController" class=" link">Organizador</a>
+        <a href="PesquisaAtletaController"class="link">Atleta</a>
+        <%-- <a href="PesquisaTapeteController">Tapete</a> --%>
         <a href="PesquisaCategoriaController" class="link">Categoria</a>
+        <a href="PesquisaPercursoController" class="link">Percurso</a>
+        <a href="PesquisaCorridaController" class="link">Corrida</a>
         <a href="PesquisaRankingController" class="link">Ranking</a>
-        <a href="PesquisaChipController" class="link">Chip</a>
-        <a href="PesquisaKitController" class="link">Kit</a>
+        <%-- <a href="PesquisaChipController">Chip</a> --%>
         <a href="PesquisaLoteController" class="link">Lote</a>
+        <a href="PesquisaInscricaoController" class="link">Inscrição</a>
         <a href="PesquisaPagamentoController" class="link">Pagamento</a>
     </body>
 </html>
