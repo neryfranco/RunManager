@@ -17,7 +17,7 @@
     <body id="principal">
         <h1>Manter Inscrição - ${operacao}</h1>
 
-        <form action="ManterCorridaController?acao=confirmar${operacao}" method="post" name="frmManterCorrida">
+        <form action="ManterInscricaoController?acao=confirmar${operacao}" method="post" name="frmManterInscricao">
             <table>
                 <h3>Corrida:</h3>
                 <tr>
@@ -70,12 +70,13 @@
             <table>
                 <h3>Lote:</h3>
                 <tr>
-                    <td>Ingresso: </td> 
+                    <td>Valor do Ingresso: </td> 
                     <td>
                         <form>
                             <select id="caixatexto" name="optLote">
+                                <option value="0"> </option>
                                 <c:forEach items="${lotes}" var="lote">
-                                    <option value="${lote.id}" <c:if test="${lote.corrida.id == corrida.id}"> </c:if>> R$ ${lote.preco} </option>
+                                    <option value="${lote.id}"> R$ ${lote.preco} </option>
                                 </c:forEach>
                             </select>
                         </form>
@@ -88,7 +89,7 @@
                     <td>Tamanho da Camisa: </td> 
                     <td>
                         <form>
-                            <select id="caixatexto" name="optPercursos">
+                            <select id="caixatexto" name="optCamisa">
                                 <option value="P"> P </option>
                                 <option value="M"> M </option>
                                 <option value="G"> G </option>
@@ -109,7 +110,8 @@
                     </td>
                 </tr>
             </table>
-            <input id="botao" type="button" value="Voltar" onClick="history.go(-1)">
+            <c:if test="${operacao == 'Inscricao' }"> <input id="botao" type="submit" name="btnConfirmar" value="Confirmar"> </c:if>     
+            <input id="botao" type="button" value="Voltar" onclick="location.href = '/RunManager/PesquisaInscricaoController'">
         </form>
     </body>
 </html>

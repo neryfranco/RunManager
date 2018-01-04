@@ -6,6 +6,7 @@
 package modelo;
 
 import dao.IngressoDAO;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -17,19 +18,17 @@ public class Ingresso {
     private long numInscricao;
     private Kit kit;
     private Atleta atleta;
-    private Pagamento pagamento;
     
     private int lote_id;
     private int kit_numPeito;
     private String atleta_cpf;
     private int pagamento_id;
 
-    public Ingresso(Lote lote, long numInscricao, Kit kit, Atleta atleta, Pagamento pagamento) {
+    public Ingresso(Lote lote, long numInscricao, Kit kit, Atleta atleta) {
         this.lote = lote;
         this.numInscricao = numInscricao;
         this.kit = kit;
         this.atleta = atleta;
-        this.pagamento = pagamento;
     }
 
     public Lote getLote() {
@@ -64,14 +63,6 @@ public class Ingresso {
         this.atleta = atleta;
     }
 
-    public Pagamento getPagamento() {
-        return pagamento;
-    }
-
-    public void setPagamento(Pagamento pagamento) {
-        this.pagamento = pagamento;
-    }
-
     public int getLote_id() {
         return lote_id;
     }
@@ -96,11 +87,11 @@ public class Ingresso {
         this.atleta_cpf = atleta_cpf;
     }
 
-    public int getPagamento_id() {
+    public int get_id() {
         return pagamento_id;
     }
 
-    public void setPagamento_id(int pagamento_id) {
+    public void set_id(int pagamento_id) {
         this.pagamento_id = pagamento_id;
     }
     
@@ -110,5 +101,9 @@ public class Ingresso {
     
     public static Ingresso obterIngresso(int ingresso_id) {
         return null;
+    }
+    
+    public void gravar() throws SQLException, ClassNotFoundException{
+        IngressoDAO.gravar(this);
     }
 }

@@ -15,8 +15,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Chip;
 import modelo.Corrida;
+import modelo.Ingresso;
+import modelo.Kit;
 import modelo.Lote;
+import modelo.Pagamento;
 import modelo.Percurso;
 
 /**
@@ -31,12 +35,14 @@ public class ManterInscricaoController extends HttpServlet {
             prepararInscricao(request, response);
         } else if (acao.equals("prepararInformacoes")) {
             prepararInformacoes(request, response);
+        //} else if (acao.equals("confirmarInscricao")) {
+        //    confirmarInscricao(request, response);
         }
     }
     
     public void prepararInscricao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
         try {
-            request.setAttribute("operacao", "Informacoes");
+            request.setAttribute("operacao", "Inscricao");
             request.setAttribute("percursos", Percurso.obterPercursos());
             request.setAttribute("lotes", Lote.obterLotes());
             int idCorrida = Integer.parseInt(request.getParameter("codCorrida"));
@@ -60,6 +66,34 @@ public class ManterInscricaoController extends HttpServlet {
             view.forward(request, response);
         } catch (ServletException e) {
         }
+    }
+    
+    public void confirmarInscricao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
+        String camisa = request.getParameter("optCamisa");
+        String metodo = request.getParameter("optMetodo");
+        int lote_id = Integer.parseInt(request.getParameter("optLote"));
+        int percurso_id = Integer.parseInt(request.getParameter("optPercurso"));
+        
+        Percurso percurso = null;
+        if (percurso_id != 0) {
+            percurso = Percurso.obterPercurso(percurso_id);
+        }
+        
+        Lote lote = null;
+        if (lote_id != 0) {
+            lote = Lote.obterLote(lote_id);
+        }
+        
+        Chip chip = new Chip (0, 0, percurso);
+        Kit kit = new Kit (0, chip, camisa);
+        Ingresso ingresso = new Ingresso(lote, 1, kit, null);
+        Pagamento pagamento = new Pagamento(0, metodo, lote.getPreco(), ingresso);
+        //chip.gravar();
+        //kit.gravar();
+        ingresso.gravar();
+        pagamento.gravar();
+        RequestDispatcher view = request.getRequestDispatcher("PesquisaCorridaController");
+        view.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

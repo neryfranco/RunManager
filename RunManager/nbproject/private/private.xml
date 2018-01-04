@@ -4,16 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Ingresso.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterKitController.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Pagamento.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/IngressoDAO.java</file>
             <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Kit.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/manterPagamento.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaInscricao.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/KitDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/CorridaDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Chip.java</file>
             <file>file:/D:/GitHub/RunManager/RunManager/src/java/controller/ManterInscricaoController.java</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/manterLote.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/manterKit.jsp</file>
             <file>file:/D:/GitHub/RunManager/RunManager/web/manterInscricao.jsp</file>
-            <file>file:/D:/GitHub/RunManager/RunManager/web/pesquisaLote.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/web/manterCorrida.jsp</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/dao/PagamentoDAO.java</file>
+            <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Corrida.java</file>
             <file>file:/D:/GitHub/RunManager/RunManager/src/java/modelo/Lote.java</file>
         </group>
     </open-files>

@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Ingresso;
@@ -29,7 +30,7 @@ public class IngressoDAO {
             comando = conexao.createStatement();
             ResultSet rs = comando.executeQuery("select * from Ingresso");
             while (rs.next()) {
-                Ingresso ingresso = new Ingresso(null, rs.getInt("num_inscricao"), null, null, null);
+                Ingresso ingresso = new Ingresso(null, rs.getInt("num_inscricao"), null, null);
                 ingresso.setAtleta_cpf(rs.getString("Ingresso_Usuario_cpf"));
                 ingresso.setKit_numPeito(rs.getInt("Kit_numPeito"));
                 ingresso.setLote_id(rs.getInt("Lote_id"));
@@ -47,23 +48,32 @@ public class IngressoDAO {
         Connection conexao = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into ingresso (lote, numInscricao, kit, Ingresso, "
-                    + "pagamento, lote_id, pagamento_id, kit_numPeito, ingresso_cpf) "
-                    + "values(?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into ingresso (Lote_id, Atleta_Usuario_cpf, Kit_id) values(";
+            
+            if (ingresso.getLote() == null) {
+                sql = sql + Types.NULL;
+            } else {
+                sql = sql + ", " + ingresso.getLote().getId();
+            }
+            
+            if (ingresso.getAtleta() == null) {
+                sql = sql + Types.NULL;
+            } else {
+                sql = sql + ", " + ingresso.getAtleta().getCpf();
+            }
+            
+            if (ingresso.getKit() == null) {
+                sql = sql + Types.NULL;
+            } else {
+                sql = sql + ", " + ingresso.getKit().getNumPeito();
+            }
+            sql = sql + ")";
             PreparedStatement comando = conexao.prepareStatement(sql);
-            comando.setInt(1, ingresso.getLote().getId());
-            comando.setLong(2, ingresso.getNumInscricao());
-            comando.setObject(3, ingresso.getKit());
-            //comando.setObject(4, ingresso.getAtleta());
-            comando.setObject(5, ingresso.getPagamento());
-            comando.setInt(6, ingresso.getLote_id());
-            comando.setInt(7, ingresso.getPagamento_id());
-            comando.setInt(8, ingresso.getKit_numPeito());
-            //comando.setString(9, ingresso.getIngresso_cpf());
             comando.execute(sql);
             comando.close();
             conexao.close();
         } catch (SQLException e) {
+            throw e;
         }
     }
 public static void alterar(Ingresso ingresso) throws SQLException, ClassNotFoundException {
@@ -74,8 +84,7 @@ public static void alterar(Ingresso ingresso) throws SQLException, ClassNotFound
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setObject(1, ingresso.getLote());
             comando.setObject(2, ingresso.getKit());
-            comando.setObject(3, ingresso.getAtleta());
-            comando.setObject(4, ingresso.getPagamento());            
+            comando.setObject(3, ingresso.getAtleta());            
             comando.execute(sql);
             comando.close();
             conexao.close();
@@ -113,12 +122,10 @@ public static void alterar(Ingresso ingresso) throws SQLException, ClassNotFound
             ingresso = new Ingresso(null,
                     rs.getLong("numInscricao"),
                     null,
-                    null,
                     null);
             ingresso.setLote_id(rs.getInt("lote"));
             ingresso.setKit_numPeito(rs.getInt("kit"));
             ingresso.setAtleta_cpf(rs.getString("atleta"));
-            ingresso.setPagamento_id(rs.getInt("pagamento"));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
