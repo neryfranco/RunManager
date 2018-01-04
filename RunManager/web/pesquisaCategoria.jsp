@@ -16,10 +16,10 @@
         <title>Pesquisa de Categorias</title>
         <script src="angular.min.js"></script>
     </head>
-    <body id="principal" ng-controller="testController" ng-init="getRequest()">
+    <body class="principal" ng-controller="testController" ng-init="getRequest()">
         <h1>Pesquisa de Categorias</h1>
-        <table id="customers">
-            <input ng-model="search.idadeIni" placeholder="Filtrar por Idade Inicial: " id="caixatexto">
+        <table class="customers">
+            <input ng-model="search.idadeIni" placeholder="Filtrar por Idade Inicial: " class="caixatexto">
             <tr>
                 <th>ID</th>
                 <th>Sexo</th>
@@ -37,8 +37,8 @@
 
         </table>
         <form action="ManterCategoriaController?acao=prepararIncluir" method="post">
-            <input id="botao" type="submit" name="btnIncluir" value="Incluir">
-            <button onclick="location.href = '/RunManager';" id="botao" >Voltar</button>
+            <input class="botao" type="submit" name="btnIncluir" value="Incluir">
+            <button onclick="location.href = '/RunManager';" class="botao" >Voltar</button>
         </form>
         <script>
             var testApp = angular.module('testApp', []);

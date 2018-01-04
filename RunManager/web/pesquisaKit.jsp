@@ -15,10 +15,10 @@
         <title>Pesquisa Kit</title>
         <script src="angular.min.js"></script>
     </head>
-    <body id="principal" ng-controller="testController" ng-init="getRequest()">
+    <body class="principal" ng-controller="testController" ng-init="getRequest()">
         <h1>Pesquisa de Kits</h1>
-        <table id="customers">
-            <input ng-model="search.numPeito" placeholder="Filtrar por Número: " id="caixatexto">
+        <table class="customers">
+            <input ng-model="search.numPeito" placeholder="Filtrar por Número: " class="caixatexto">
             <tr>
                 <th>Número de Peito</th>
                 <th>Chip</th>
@@ -36,8 +36,8 @@
             
         </table>
         <form action="ManterKitController?acao=prepararIncluir" method="post">
-            <input id="botao" type="submit" name="btnIncluir" value="Incluir">
-            <button onclick="location.href = '/RunManager';" id="botao" >Voltar</button>
+            <input class="botao" type="submit" name="btnIncluir" value="Incluir">
+            <button onclick="location.href = '/RunManager';" class="botao" >Voltar</button>
         </form>
         <script>
                     var testApp = angular.module('testApp', []);

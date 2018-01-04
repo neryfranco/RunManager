@@ -15,10 +15,10 @@
         <title>Pesquisa Ranking</title>
         <script src="angular.min.js"></script>
     </head>
-    <body id="principal" ng-controller="testController" ng-init="getRequest()">
+    <body class="principal" ng-controller="testController" ng-init="getRequest()">
         <h1>Pesquisa de Ranking</h1>
-        <table id="customers">
-            <input ng-model="search.id" placeholder="Filtrar por ID: " id="caixatexto">
+        <table class="customers">
+            <input ng-model="search.id" placeholder="Filtrar por ID: " class="caixatexto">
             <tr>
                 <th>ID</th>
                 <th>Corrida</th>
@@ -36,8 +36,8 @@
             
         </table>
         <form action="ManterRankingController?acao=prepararIncluir" method="post">
-            <input id="botao" type="submit" name="btnIncluir" value="Incluir">
-            <button onclick="location.href = '/RunManager';" id="botao" >Voltar</button>
+            <input class="botao" type="submit" name="btnIncluir" value="Incluir">
+            <button onclick="location.href = '/RunManager';" class="botao" >Voltar</button>
         </form>
         <script>
                     var testApp = angular.module('testApp', []);

@@ -6,6 +6,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +22,7 @@ import modelo.Organizador;
 
 /**
  *
- * @author jjti
+ * @author Victor Domingos
  */
 public class LoginController extends HttpServlet {
 
@@ -57,11 +58,11 @@ public class LoginController extends HttpServlet {
                         HttpSession session = request.getSession(true);
                         session.setAttribute("administrador", administrador);
                         session.setAttribute("usuario", "administrador");
-                        RequestDispatcher view = request.getRequestDispatcher("/dashboard.jsp");
+                        RequestDispatcher view = request.getRequestDispatcher("/TelaAdministrador.jsp");
                         view.forward(request, response);
                     } else {
                         request.setAttribute("mensagemErro", "Usuário não encontrado");
-                        RequestDispatcher view = request.getRequestDispatcher("/login.jsp");
+                        RequestDispatcher view = request.getRequestDispatcher("/TelaErro.jsp");
                         view.forward(request, response);
                     }
 
@@ -74,11 +75,11 @@ public class LoginController extends HttpServlet {
                         HttpSession session = request.getSession(true);
                         session.setAttribute("organizador", organizador);
                         session.setAttribute("usuario", "organizador");
-                        RequestDispatcher view = request.getRequestDispatcher("/dashboard.jsp");
+                        RequestDispatcher view = request.getRequestDispatcher("/TelaOrganizador.jsp");
                         view.forward(request, response);
                     } else {
                         request.setAttribute("mensagemErro", "Usuário não encontrado");
-                        RequestDispatcher view = request.getRequestDispatcher("/login.jsp");
+                        RequestDispatcher view = request.getRequestDispatcher("/TelaErro.jsp");
                         view.forward(request, response);
                     }
 
@@ -91,11 +92,11 @@ public class LoginController extends HttpServlet {
                         HttpSession session = request.getSession(true);
                         session.setAttribute("atleta", atleta);
                         session.setAttribute("usuario", "atleta");
-                        RequestDispatcher view = request.getRequestDispatcher("PesquisaHomeController");
+                        RequestDispatcher view = request.getRequestDispatcher("/TelaAtleta");
                         view.forward(request, response);
                     } else {
                         request.setAttribute("mensagemErro", "Usuário não encontrado");
-                        RequestDispatcher view = request.getRequestDispatcher("/login.jsp");
+                        RequestDispatcher view = request.getRequestDispatcher("/TelaErro.jsp");
                         view.forward(request, response);
                     }
 
@@ -119,6 +120,7 @@ public class LoginController extends HttpServlet {
         } catch (IOException ex) {
         }
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

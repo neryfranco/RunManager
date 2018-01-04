@@ -14,25 +14,25 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manter Percurso</title>
     </head>
-    <body id="principal">
+    <body class="principal">
         <h1>Manter Percurso - ${operacao}</h1>
 
         <form action="ManterPercursoController?acao=confirmar${operacao}" method="post" name="frmManterPercurso" >
             <table>
                 <tr>
                     <td>ID:</td> 
-                    <td><input id="caixatexto" type="text" name="txtID" value="${percurso.id}" readonly ></td>
+                    <td><input class="caixatexto" type="text" name="txtID" value="${percurso.id}" readonly ></td>
                 </tr>
                 <tr>
                     <td>Distância (km):</td> 
-                    <td><input id="caixatexto" type="text" name="txtDistancia" value="${percurso.distancia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    <td><input class="caixatexto" type="text" name="txtDistancia" value="${percurso.distancia}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                 </tr>
                 <tr>
                     <td>Itinerário:</td> 
-                    <td><input id="caixatexto" type="text" name="txtItinerario" value="${percurso.itinerario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea></td>
+                    <td><input class="caixatexto" type="text" name="txtItinerario" value="${percurso.itinerario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></textarea></td>
                 </tr>                
             </table>
-            <input id="botao" type="submit" name="btnConfirmar" value="Confirmar">    
+            <input class="botao" type="submit" name="btnConfirmar" value="Confirmar">    
         </form>
         <SCRIPT language="JavaScript">
             <!--

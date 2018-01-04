@@ -9,32 +9,33 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css.css">
         <title>RunManager</title>
     </head>
-    <body>
-        <h2>Pesquisas: </h2>
+    <body class="principal">
+        <%--<h2>Pesquisas: </h2>
         <a href="PesquisaAdministradorController">Administrador</a>
         <a href="PesquisaOrganizadorController">Organizador</a>
         <a href="PesquisaAtletaController">Atleta</a>
-        <%-- <a href="PesquisaTapeteController">Tapete</a> --%>
+        <a href="PesquisaTapeteController">Tapete</a>
         <a href="PesquisaCategoriaController">Categoria</a>
         <a href="PesquisaPercursoController">Percurso</a>
         <a href="PesquisaCorridaController">Corrida</a>
         <a href="PesquisaRankingController">Ranking</a>
-        <%-- <a href="PesquisaChipController">Chip</a> --%>
+        <a href="PesquisaChipController">Chip</a>
         <a href="PesquisaLoteController">Lote</a>
         <a href="PesquisaInscricaoController">Inscrição</a>
-        <a href="PesquisaPagamentoController">Pagamento</a>
-        <div>
+        <a href="PesquisaPagamentoController">Pagamento</a> --%>
+        <div class="divLayout">
             <form action="LoginController?acao=logar" method="post" name="frmManterAtleta">
             <label for="email">Email:</label>
-            <input type="email" placeholder="email@gmail.com" id="email" name="email" >
+            <input type="email" placeholder="email@gmail.com" id="email" name="email" class="caixatexto">
             <label for="senha">Senha:</label>
-            <input type="password" required class="form-control" placeholder="******" id="senha" name="senha">
+            <input type="password"placeholder="******" id="senha" name="senha" class="caixatexto">
             <label><input type="radio" name="optUsuario" value="administrador">Administrador</label>
             <label><input type="radio" name="optUsuario" value="organizador" >Organizador</label>
             <label><input type="radio" name="optUsuario" checked="checked" value="atleta">Atleta</label>
-            <button type="submit">Entrar</button>
+            <button class="botao" type="submit">Entrar</button>
             </form>
         </div>
     </body>

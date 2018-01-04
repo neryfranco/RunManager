@@ -15,10 +15,10 @@
         <title>Pesquisa Organizador</title>
         <script src="angular.min.js"></script>
     </head>
-    <body id="principal" ng-controller="testController" ng-init="getRequest()">
+    <body class="principal" ng-controller="testController" ng-init="getRequest()">
         <h1>Pesquisa de Organizadores</h1>
-        <table id="customers">
-            <input ng-model="search.nome" placeholder="Filtrar por Nome: " id="caixatexto">
+        <table class="customers">
+            <input ng-model="search.nome" placeholder="Filtrar por Nome: " class="caixatexto">
             <tr>
                 <th>Email</th>
                 <th>Telefone</th>
@@ -36,8 +36,8 @@
             
         </table>
         <form action="ManterOrganizadorController?acao=prepararIncluir" method="post">
-            <input id="botao" type="submit" name="btnIncluir" value="Incluir">
-            <button onclick="location.href = '/RunManager';" id="botao" >Voltar</button>
+            <input class="botao" type="submit" name="btnIncluir" value="Incluir">
+            <button onclick="location.href = '/RunManager';" class="botao" >Voltar</button>
         </form>
         <script>
                     var testApp = angular.module('testApp', []);

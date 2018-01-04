@@ -152,6 +152,10 @@
         <servlet-name>TapeteApi</servlet-name>
         <servlet-class>controller.api.TapeteApi</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>controller.LoginController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaPercursoController</servlet-name>
         <url-pattern>/PesquisaPercursoController</url-pattern>
@@ -303,6 +307,10 @@
     <servlet-mapping>
         <servlet-name>TapeteApi</servlet-name>
         <url-pattern>/TapeteApi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/LoginController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

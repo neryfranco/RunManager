@@ -13,22 +13,22 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manter Pagamento</title>
     </head>
-    <body>
+    <body class="principal">
         <h1>Manter Pagamento - ${operacao}</h1>
 
         <form action="ManterPagamentoController?acao=confirmar${operacao}" method="post" name="frmManterPagamento" >
             <table>
                 <tr>
                     <td>ID: </td> 
-                    <td><input type="text" name="txtID" value="${pagamento.id}" readonly></td>
+                    <td><input class="caixatexto" type="text" name="txtID" value="${pagamento.id}" readonly></td>
                 </tr>
                 <tr>
                     <td>Ingresso:</td> 
                     <td>
                         <select name="optIngresso" <c:if test="${operacao == 'Excluir'}"> disabled </c:if>>
-                            <option value="0" <c:if test="${pagamento.ingresso_id == null}"> selected</c:if>> </option>  
+                            <option class="caixatexto" value="0" <c:if test="${pagamento.ingresso_id == null}"> selected</c:if>> </option>  
                             <c:forEach items="${ingressos}" var="ingresso">
-                                <option value="${ingresso.id}" <c:if test="${pagamento.ingresso_id == ingresso.id}"> selected</c:if>>${ingresso.id}</option>  
+                                <option class="caixatexto" value="${ingresso.id}" <c:if test="${pagamento.ingresso_id == ingresso.id}"> selected</c:if>>${ingresso.id}</option>  
                             </c:forEach>
                         </select>
                     </td>
@@ -43,7 +43,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><input type="submit" name="btnConfirmar" value="Confirmar"></td>
+                    <td><input class="botao" type="submit" name="btnConfirmar" value="Confirmar"></td>
                 </tr>
             </table>
         </form>
