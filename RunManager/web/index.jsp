@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="css.css">
         <title>RunManager</title>
     </head>
-    <body class="principal">
+    <body class="principal" background-image="img.jpg">
         <%--<h2>Pesquisas: </h2>
         <a href="PesquisaAdministradorController">Administrador</a>
         <a href="PesquisaOrganizadorController">Organizador</a>
