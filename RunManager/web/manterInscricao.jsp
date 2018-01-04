@@ -73,9 +73,7 @@
                     <td>Valor do Ingresso: </td> 
                     <td>
                         <form>
-                            <select id="caixatexto" name="optLote">
-                                <option value="0"> </option>
-
+                            <select class="caixatexto" name="optLote">
                                 <c:forEach items="${lotes}" var="lote">
                                     <option value="${lote.id}"> R$ ${lote.preco} </option>
                                 </c:forEach>
@@ -90,7 +88,7 @@
                     <td>Tamanho da Camisa: </td> 
                     <td>
                         <form>
-                            <select id="caixatexto" name="optCamisa">
+                            <select class="caixatexto" name="optCamisa">
                                 <option value="P"> P </option>
                                 <option value="M"> M </option>
                                 <option value="G"> G </option>
@@ -111,8 +109,8 @@
                     </td>
                 </tr>
             </table>
-            <c:if test="${operacao == 'Inscricao' }"> <input id="botao" type="submit" name="btnConfirmar" value="Confirmar"> </c:if>     
-            <input id="botao" type="button" value="Voltar" onclick="location.href = '/RunManager/PesquisaInscricaoController'">
+            <c:if test="${operacao == 'Inscricao' }"> <input class="botao" type="submit" name="btnConfirmar" value="Confirmar"> </c:if>     
+            <input class="botao" type="button" value="Voltar" onclick="location.href = '/RunManager/PesquisaInscricaoController'">
         </form>
     </body>
 </html>
