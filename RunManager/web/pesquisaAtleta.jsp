@@ -8,33 +8,48 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
-<html>
+<html ng-app="testApp">
     <head>
         <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa Atleta</title>
+        <script src="angular.min.js"></script>        
     </head>
-    <body id="principal">
+    <body class="principal" ng-controller="testController" ng-init="getRequest()">
         <h1>Pesquisa de Atletas</h1>
-        <table id="customers">
+        <table class="customers">
+            <input ng-model="search.nome" placeholder="Filtrar por Nome: " class="caixatexto">
             <tr>
-                <th>CPF</th>                
-                <th>Email</th>
+                <th>Email</th>                
+                <th>CPF</th>
                 <th>Nome</th>
                 <th colspan=2>Ação</th>
             </tr>
-            <c:forEach items="${atletas}" var="atleta">
-                <tr>
-                    <td><c:out value="${atleta.cpf}" /></td>
-                    <td><c:out value="${atleta.email}" /></td>
-                    <td><c:out value="${atleta.nome}" /></td>
-                        <td><a href="ManterAtletaController?acao=prepararEditar&cpfAtleta=<c:out value="${atleta.cpf}"/>">Editar</a></td>
-                        <td><a href="ManterAtletaController?acao=prepararExcluir&cpfAtleta=<c:out value="${atleta.cpf}"/>">Excluir</a></td>
-                </tr>
-            </c:forEach>
+            <tr ng-repeat="atleta in atletas|filter:search:strict">                
+                <td>{{atleta.email}}</td>
+                <td>{{atleta.cpf}}</td>
+                <td>{{atleta.nome}}</td>
+                <td><a href="ManterAtletaController?acao=prepararEditar&cpfAtleta={{atleta.cpf}}"/>Editar</a></td>
+                <td><a href="ManterAtletaController?acao=prepararExcluir&cpfAtleta={{atleta.cpf}}"/>Excluir</a></td>
+            </tr>
         </table>
         <form action="ManterAtletaController?acao=prepararIncluir" method="post">
-            <input id="botao" type="submit" name="btnIncluir" value="Incluir">
+            <input class="botao" type="submit" name="btnIncluir" value="Incluir">
         </form>
+        <button onclick="location.href = '/RunManager';" class="botao" >Voltar</button>
+        <script>
+            var testApp = angular.module('testApp', []);
+            testApp.controller('testController', function ($scope, $http) {
+            $scope.getRequest = function () {
+            console.log("I've been pressed!");
+            $http.get("AtletaApi")
+                    .then(function successCallback(response) {
+                    $scope.atletas = response.data;
+                    }, function errorCallback(response) {
+                    console.log("Unable to perform get request");
+                    });
+            };
+            });
+        </script>
     </body>
 </html>

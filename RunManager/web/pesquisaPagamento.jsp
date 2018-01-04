@@ -11,12 +11,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa de Pagamentos</title>
     </head>
-    <body>
+    <body class="principal">
         <h1>Pesquisa de Pagamentos</h1>
-        <table border=1>
+        <table border=1 class="customers">
             <tr>
                 <th>ID</th>
                 <th>Método de Pagamento</th>
@@ -36,8 +37,9 @@
             </c:forEach>
         </table>
         <form action="ManterPagamentoController?acao=prepararIncluir" method="post">
-            <input type="submit" name="btnIncluir" value="Incluir">
-        </form>
+            <input class="botao" type="submit" name="btnIncluir" value="Incluir">
+        </form>       
+        <button onclick="location.href = '/RunManager'" class="botao" >Voltar</button>
     </body>
 </html>
 

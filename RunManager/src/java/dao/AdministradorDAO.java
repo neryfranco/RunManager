@@ -14,7 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Administrador;
-import modelo.Organizador;
+import modelo.Administrador;
 
 /**
  *
@@ -163,6 +163,43 @@ public class AdministradorDAO {
             fecharConexao(conexao, comando);
         }
         return a;
+    }
+    
+    public static Administrador logar(String email, String senha) throws ClassNotFoundException {
+        Connection conexao = null;
+        Administrador administrador = null;
+        PreparedStatement comando = null;
+        try {
+            conexao = BD.getConexao();
+            String sql = "SELECT * FROM administrador WHERE email = ? AND senha = ?";
+            comando = conexao.prepareStatement(sql);
+            comando.setString(1, email);
+            comando.setString(2, senha);
+            ResultSet rs = comando.executeQuery();
+            if (rs.first()) {
+                administrador = new Administrador(rs.getString("email"),
+                        rs.getString("senha"),
+                        rs.getString("cpf"),
+                        rs.getString("nome"),
+                        rs.getString("dataNasc"),
+                        rs.getString("sexo"),
+                        rs.getString("tel_cel"),
+                        rs.getString("tel_res"),
+                        rs.getString("cep"),
+                        rs.getString("rua"),
+                        rs.getString("uf"),
+                        rs.getString("cidade"));                       
+ 
+            }
+
+            comando.close();
+            conexao.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            fecharConexao(conexao, comando);
+        }
+        return administrador;
     }
 
     public static void fecharConexao(Connection conexao, Statement comando) {

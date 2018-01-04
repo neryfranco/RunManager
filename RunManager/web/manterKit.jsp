@@ -14,30 +14,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manter Kit</title>
     </head>
-    <body id="principal">
+    <body class="principal">
         <h1>Manter Kit - ${operacao}</h1>
 
         <form action="ManterKitController?acao=confirmar${operacao}" method="post" name="frmManterKit" onsubmit="return validarFormulario(this)">
             <table>
                 <tr>
                     <td>Número de Peito: </td> 
-                    <td><input id="caixatexto" type="text" name="txtEmail" value="${kit.numPeito}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
-                </tr>
-                <tr>
-                    <td>Chip: </td> 
-                    <td>
-                        <select id="caixatexto" name="optChip" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                        <option value="0" <c:if test="${kit.chip.numero == null}"> selected</c:if>> </option>  
-                        <c:forEach items="${chips}" var="chip">
-                            <option value="${chip.numero}" <c:if test="${kit.chip.numero == chip.numero}"> selected</c:if>>${chip.numero}</option>  
-                        </c:forEach>
-                        </select> 
-                    </td>
+                    <td><input class="caixatexto" type="text" name="txtEmail" value="${ingresso.numInscricao}" readonly></td>
                 </tr>
                 <tr>
                     <td>Camisa: </td> 
                     <td>
-                        <select id="caixatexto" name="optCamisa" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <select class="caixatexto" name="optCamisa" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         <option value="0" <c:if test="${kit.camisa.tamanho == null}"> selected</c:if>> </option>  
                         <c:forEach items="${camisas}" var="camisa">
                             <option value="${camisa.tamanho}" <c:if test="${kit.camisa.tamanho == camisa.tamanho}"> selected</c:if>>${camisa.tamanho}</option>  
@@ -46,7 +35,7 @@
                     </td>
                 </tr>
             </table>
-            <input id="botao" type="submit" name="btnConfirmar" value="Confirmar">            
+            <input class="botao" type="submit" name="btnConfirmar" value="Confirmar">            
         </form>
     </body>
 </html>

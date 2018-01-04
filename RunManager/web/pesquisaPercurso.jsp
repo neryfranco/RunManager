@@ -9,33 +9,50 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
-<html>
+<html ng-app="testApp">
     <head>
         <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa de Percursos</title>
+        <script src="angular.min.js"></script>
     </head>
-    <body id="principal" >
+    <body class="principal" ng-controller="testController" ng-init="getRequest()">
         <h1>Pesquisa de Percursos</h1>
-        <table id="customers">
+        <table class="customers">
+            <input ng-model="search.itinerario" placeholder="Filtrar por Nome: " class="caixatexto">
             <tr>
                 <th>ID</th>
-                <th>Categoria</th>
+                <th>Distancia (KM)</th>
                 <th>Itinerario</th>
                 <th colspan=2>Ação</th>
             </tr>
-            <c:forEach items="${percursos}" var="percurso">
-                <tr>
-                    <td><c:out value="${percurso.id}" /></td>
-                    <td><c:out value="${percurso.categoria_id}" /></td>
-                    <td><c:out value="${percurso.itinerario}" /></td>
-                        <td><a href="ManterPercursoController?acao=prepararEditar&codPercurso=<c:out value="${percurso.id}"/>">Editar</a></td>
-                        <td><a href="ManterPercursoController?acao=prepararExcluir&codPercurso=<c:out value="${percurso.id}"/>">Excluir</a></td>
+           
+                <tr ng-repeat="percurso in percursos|filter:search:strict">
+                    <td>{{percurso.id}}</td>
+                    <td>{{percurso.distancia}}</td>
+                    <td>{{percurso.itinerario}}</td>
+                        <td><a href="ManterPercursoController?acao=prepararEditar&codPercurso={{percurso.id}}"/>Editar</a></td>
+                        <td><a href="ManterPercursoController?acao=prepararExcluir&codPercurso={{percurso.id}}"/>Excluir</a></td>
                 </tr>
-            </c:forEach>
+            
         </table>
         <form action="ManterPercursoController?acao=prepararIncluir" method="post">
-            <input id="botao" type="submit" name="btnIncluir" value="Incluir">
+            <input class="botao" type="submit" name="btnIncluir" value="Incluir">
         </form>
+        <button onclick="location.href = '/RunManager';" class="botao" >Voltar</button>
+        <script>
+                    var testApp = angular.module('testApp', []);
+                    testApp.controller('testController', function ($scope, $http) {
+                        $scope.getRequest = function () {
+                            console.log("I've been pressed!");
+                            $http.get("PercursoApi")
+                                    .then(function successCallback(response) {
+                                        $scope.percursos = response.data;
+                                    }, function errorCallback(response) {
+                                        console.log("Unable to perform get request");
+                                    });
+                        };
+                    });
+        </script>
     </body>
 </html>

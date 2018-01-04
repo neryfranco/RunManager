@@ -15,7 +15,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Categoria;
 import modelo.Percurso;
 
 /**
@@ -42,26 +41,17 @@ public class ManterPercursoController extends HttpServlet {
     }
 
     public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            request.setAttribute("operacao", "Incluir");
-            request.setAttribute("categorias", Categoria.obterCategorias());
-            RequestDispatcher view
-                    = request.getRequestDispatcher("/manterPercurso.jsp");
-            view.forward(request, response);
-        } catch (ClassNotFoundException ex) {
-        }
+        request.setAttribute("operacao", "Incluir");
+        RequestDispatcher view
+                = request.getRequestDispatcher("/manterPercurso.jsp");
+        view.forward(request, response);
     }
 
     private void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         int distancia = Integer.parseInt(request.getParameter("txtDistancia"));
-        int categoria_id = Integer.parseInt(request.getParameter("optCategoria"));
         String itinerario = request.getParameter("txtItinerario");
         try {
-            Categoria categoria = null;
-            if (categoria_id != 0) {
-                categoria = Categoria.obterCategoria(categoria_id);
-            }
-            Percurso percurso = new Percurso(0, categoria, itinerario, distancia);
+            Percurso percurso = new Percurso(0, itinerario, distancia);
             percurso.gravar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
             view.forward(request, response);
@@ -73,7 +63,6 @@ public class ManterPercursoController extends HttpServlet {
     private void prepararExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         try {
             request.setAttribute("operacao", "Excluir");
-            request.setAttribute("categorias", Categoria.obterCategorias());
             int idPercurso = Integer.parseInt(request.getParameter("codPercurso"));
             Percurso percurso = Percurso.obterPercurso(idPercurso);
             request.setAttribute("percurso", percurso);
@@ -87,15 +76,7 @@ public class ManterPercursoController extends HttpServlet {
     private void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             int id = Integer.parseInt(request.getParameter("txtID"));
-            //int distancia = Integer.parseInt(request.getParameter("txtDistancia"));
-            //int categoria_id = Integer.parseInt(request.getParameter("optCategoria"));
-            //String itinerario = request.getParameter("txtItinerario");
-            /*
-            Categoria categoria = null;
-            if (categoria_id != 0) {
-                categoria = Categoria.obterCategoria(categoria_id);
-            } */
-            Percurso percurso = new Percurso(id, null, null, 0);
+            Percurso percurso = new Percurso(id, null, 0);
             percurso.excluir();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
             view.forward(request, response);
@@ -107,7 +88,6 @@ public class ManterPercursoController extends HttpServlet {
     private void prepararEditar(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException {
         try {
             request.setAttribute("operacao", "Editar");
-            request.setAttribute("categorias", Categoria.obterCategorias());
             int idPercurso = Integer.parseInt(request.getParameter("codPercurso"));
             Percurso percurso = Percurso.obterPercurso(idPercurso);
             request.setAttribute("percurso", percurso);
@@ -121,15 +101,8 @@ public class ManterPercursoController extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("txtID"));
             int distancia = Integer.parseInt(request.getParameter("txtDistancia"));
-            int categoria_id = Integer.parseInt(request.getParameter("optCategoria"));
             String itinerario = request.getParameter("txtItinerario");
-            
-            Categoria categoria = null;
-            if (categoria_id != 0) {
-                categoria = Categoria.obterCategoria(categoria_id);
-            }
-            Percurso percurso = new Percurso(id, null, itinerario, distancia);
-            percurso.setCategoria_id(categoria_id);
+            Percurso percurso = new Percurso(id, itinerario, distancia);
             percurso.alterar();
             RequestDispatcher view = request.getRequestDispatcher("PesquisaPercursoController");
             view.forward(request, response);

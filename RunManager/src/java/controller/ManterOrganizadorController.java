@@ -93,7 +93,7 @@ public class ManterOrganizadorController extends HttpServlet {
 
             Organizador organizador = new Organizador(null, null, cpf, null, null, null, null, null, null, null, null, null);
             organizador.excluir();
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaOrganizadorController");
             view.forward(request, response);
         } catch (SQLException ex) {
         } catch (ClassNotFoundException ex) {
