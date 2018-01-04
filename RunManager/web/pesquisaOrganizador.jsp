@@ -20,8 +20,8 @@
         <table class="customers">
             <input ng-model="search.nome" placeholder="Filtrar por Nome: " class="caixatexto">
             <tr>
+                <th>CPF</th>
                 <th>Email</th>
-                <th>Telefone</th>
                 <th>Nome</th>
                 <th colspan=2>Ação</th>
             </tr>
