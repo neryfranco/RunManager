@@ -9,21 +9,23 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css.css">
         <title>RunManager</title>
     </head>
-    <body>
-        <h2>Pesquisas: </h2>
-        <a href="PesquisaAdministradorController">Administrador</a>
-        <a href="PesquisaOrganizadorController">Organizador</a>
-        <a href="PesquisaAtletaController">Atleta</a>
+    <body class="principal" background-image="img.jpg">
+        <h2>Pesquisas: </h2>       
+        
+        <a href="PesquisaAdministradorController" class="link">Administrador</a>
+        <a href="PesquisaOrganizadorController" class=" link">Organizador</a>
+        <a href="PesquisaAtletaController"class="link">Atleta</a>
         <%-- <a href="PesquisaTapeteController">Tapete</a> --%>
-        <a href="PesquisaCategoriaController">Categoria</a>
-        <a href="PesquisaPercursoController">Percurso</a>
-        <a href="PesquisaCorridaController">Corrida</a>
-        <a href="PesquisaRankingController">Ranking</a>
+        <a href="PesquisaCategoriaController" class="link">Categoria</a>
+        <a href="PesquisaPercursoController" class="link">Percurso</a>
+        <a href="PesquisaCorridaController" class="link">Corrida</a>
+        <a href="PesquisaRankingController" class="link">Ranking</a>
         <%-- <a href="PesquisaChipController">Chip</a> --%>
-        <a href="PesquisaLoteController">Lote</a>
-        <a href="PesquisaInscricaoController">Inscrição</a>
-        <a href="PesquisaPagamentoController">Pagamento</a>
+        <a href="PesquisaLoteController" class="link">Lote</a>
+        <a href="PesquisaInscricaoController" class="link">Inscrição</a>
+        <a href="PesquisaPagamentoController" class="link">Pagamento</a>
     </body>
 </html>

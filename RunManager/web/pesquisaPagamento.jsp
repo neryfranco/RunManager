@@ -15,9 +15,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa de Pagamentos</title>
     </head>
-    <body id="principal">
+    <body class="principal">
         <h1>Pesquisa de Pagamentos</h1>
-        <table border=1 id="customers">
+        <table border=1 class="customers">
             <tr>
                 <th>ID</th>
                 <th>Método de Pagamento</th>
@@ -37,9 +37,9 @@
             </c:forEach>
         </table>
         <form action="ManterPagamentoController?acao=prepararIncluir" method="post">
-            <input id="botao" type="submit" name="btnIncluir" value="Incluir">
-        </form>
-        <button onclick="location.href = '/RunManager'" id="botao" >Voltar ao Menu</button>
+            <input class="botao" type="submit" name="btnIncluir" value="Incluir">
+        </form>       
+        <button onclick="location.href = '/RunManager'" class="botao" >Voltar</button>
     </body>
 </html>
 

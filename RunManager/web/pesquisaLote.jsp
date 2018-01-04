@@ -14,9 +14,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa Lote</title>
     </head>
-    <body id="principal">
+    <body class="principal">
         <h1>Pesquisa de Lotes</h1>
-        <table id="customers">
+        <table class="customers">
             <tr>
                 <th>Corrida</th>
                 <th>ID</th>
@@ -36,8 +36,8 @@
             </c:forEach>
         </table>
         <form action="ManterLoteController?acao=prepararIncluir" method="post">
-            <input id="botao" type="submit" name="btnIncluir" value="Incluir">
+            <input class="botao" type="submit" name="btnIncluir" value="Incluir">
         </form>
-        <button onclick="location.href = '/RunManager';" id="botao" >Voltar ao Menu</button>
+        <button onclick="location.href = '/RunManager';" class="botao" >Voltar ao Menu</button>
     </body>
 </html>

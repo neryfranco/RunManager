@@ -15,9 +15,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inscrição</title>
     </head>
-    <body id="principal">
+    <body class="principal">
         <h1>Inscrição</h1>
-        <table id="customers">
+        <table class="customers">
             <tr>
                 <th>Corrida</th>
                 <th>Local Largada</th>
@@ -36,6 +36,6 @@
                 </tr>
             </c:forEach>
         </table>
-        <button onclick="location.href = '/RunManager';" id="botao" >Voltar ao Menu</button>
+        <button onclick="location.href = '/RunManager';" class="botao" >Voltar ao Menu</button>
     </body>
 </html>

@@ -8,34 +8,50 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
-<html>
+<html ng-app="testApp">
     <head>
         <link rel="stylesheet" type="text/css" href="css.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisa Ranking</title>
+        <script src="angular.min.js"></script>
     </head>
-    <body id="principal">
+    <body class="principal" ng-controller="testController" ng-init="getRequest()">
         <h1>Pesquisa de Ranking</h1>
-        <table id="customers">
+        <table class="customers">
+            <input ng-model="search.id" placeholder="Filtrar por ID: " class="caixatexto">
             <tr>
                 <th>ID</th>
                 <th>Corrida</th>
                 <th>Categoria</th>
                 <th colspan=2>Ação</th>
             </tr>
-            <c:forEach items="${rankings}" var="ranking">
-                <tr>
-                    <td><c:out value="${ranking.id}" /></td>
-                    <td><c:out value="${ranking.corrida_id}" /></td>
-                    <td><c:out value="${ranking.categoria_id}" /></td>
-                        <td><a href="ManterRankingController?acao=prepararEditar&idRanking=<c:out value="${ranking.id}"/>">Editar</a></td>
-                        <td><a href="ManterRankingController?acao=prepararExcluir&idRanking=<c:out value="${ranking.id}"/>">Excluir</a></td>
+            
+                <tr ng-repeat="ranking in rankings|filter:search:strict">
+                    <td>{{ranking.id}}</td>
+                    <td>{{ranking.corrida_id}}</td>
+                    <td>{{ranking.categoria_id}}</td>
+                        <td><a href="ManterRankingController?acao=prepararEditar&idRanking={{ranking.id}}"/>Editar</a></td>
+                        <td><a href="ManterRankingController?acao=prepararExcluir&idRanking={{ranking.id}}"/>Excluir</a></td>
                 </tr>
-            </c:forEach>
+            
         </table>
         <form action="ManterRankingController?acao=prepararIncluir" method="post">
-            <input id="botao" type="submit" name="btnIncluir" value="Incluir">
+            <input class="botao" type="submit" name="btnIncluir" value="Incluir">
         </form>
-        <button onclick="location.href = '/RunManager';" id="botao" >Voltar ao Menu</button>
+        <button onclick="location.href = '/RunManager';" class="botao" >Voltar</button>
+        <script>
+                    var testApp = angular.module('testApp', []);
+                    testApp.controller('testController', function ($scope, $http) {
+                        $scope.getRequest = function () {
+                            console.log("I've been pressed!");
+                            $http.get("RankingApi")
+                                    .then(function successCallback(response) {
+                                        $scope.rankings = response.data;
+                                    }, function errorCallback(response) {
+                                        console.log("Unable to perform get request");
+                                    });
+                        };
+                    });
+        </script>
     </body>
 </html>
