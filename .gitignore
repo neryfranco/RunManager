@@ -63,3 +63,4 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/java,windows,netbeans,java-web
 RunManager/nbproject/private/private.xml
 RunManager/nbproject/private/private.xml
+/RunManager/nbproject/private/
