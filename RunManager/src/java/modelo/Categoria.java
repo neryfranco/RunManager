@@ -90,7 +90,41 @@ public class Categoria {
         CategoriaDAO.excluir(this);
     }
     
-    public Integer verificaCategoria(String sexo, Integer idade){
-        if(sexo == 'M')
+    public String verificaCategoria(String sexo, Integer idade){
+        if(idade < 12){
+            if(sexo.equals('1'))
+                return "Infantil Masculino";
+            else if(sexo.equals('2'))
+                return "Infantil Feminino";
+            else return "Infantil";
+        }
+        else if(idade < 17){
+            if(sexo.equals('1'))
+                return "Adolescente Masculino";
+            else if(sexo.equals('2'))
+                return "Adolescente Feminino";
+            else return "Adolescente";
+        }
+        else if(idade < 30){
+            if(sexo.equals('1'))
+                return "Jovem Masculino";
+            else if(sexo.equals('2'))
+                return "Jovem Feminino";
+            else return "Jovem";
+        }
+        else if(idade < 50){
+            if(sexo.equals('1'))
+                return "Adulto Masculino";
+            else if(sexo.equals('2'))
+                return "Adulto Feminino";
+            else return "Adulto";
+        }
+        else{
+            if(sexo.equals('1'))
+                return "Idoso Masculino";
+            else if(sexo.equals('2'))
+                return "Idoso Feminino";
+            else return "Idoso";
+        }
     }
 }
