@@ -9,7 +9,7 @@ package modelo;
  *
  * @author Nery
  */
-public class Usuario {
+public class Usuario implements IUsuario{
     
     private String cpf;
     private String nome;
@@ -21,6 +21,7 @@ public class Usuario {
     private String rua;
     private String uf;
     private String cidade;
+    private Integer idade;
 
     public Usuario(String cpf, String nome, String dataNascimento, String sexo, String telCel, String telRes, String cep, String rua, String uf, String cidade) {
         this.cpf = cpf;
@@ -113,6 +114,11 @@ public class Usuario {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+
+    @Override
+    public Integer getIdade() {
+        return idade;
     }
     
     

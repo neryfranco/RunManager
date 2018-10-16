@@ -17,6 +17,7 @@ public class Atleta extends Usuario{
     
     private String email;
     private String senha;
+    private Integer idade;
     private double pace;
     private String apelido;
 

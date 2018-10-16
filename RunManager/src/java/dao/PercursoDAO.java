@@ -107,7 +107,7 @@ public class PercursoDAO {
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            stringSQL = "delete from Percurso where id = " + percurso.getId();
+            stringSQL = "delete from percurso where id = " + percurso.getId();
             comando.execute(stringSQL);
         } catch (SQLException e) {
             throw e;

@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Nery
  */
-public class Categoria {
+public class Categoria{
 
          
     private int id;
@@ -90,41 +90,39 @@ public class Categoria {
         CategoriaDAO.excluir(this);
     }
     
-    public String verificaCategoria(String sexo, Integer idade){
+    public String verificaCategoria(IUsuario usuario){
+        int idade = usuario.getIdade();
+        String sexo = usuario.getSexo();
         if(idade < 12){
-            if(sexo.equals('1'))
+            if(sexo.equals("1"))
                 return "Infantil Masculino";
-            else if(sexo.equals('2'))
+            else if(sexo.equals("2"))
                 return "Infantil Feminino";
-            else return "Infantil";
         }
-        else if(idade < 17){
-            if(sexo.equals('1'))
+        else if(idade < 18){
+            if(sexo.equals("1"))
                 return "Adolescente Masculino";
-            else if(sexo.equals('2'))
+            else if(sexo.equals("2"))
                 return "Adolescente Feminino";
-            else return "Adolescente";
         }
         else if(idade < 30){
-            if(sexo.equals('1'))
+            if(sexo.equals("1"))
                 return "Jovem Masculino";
-            else if(sexo.equals('2'))
+            else if(sexo.equals("2"))
                 return "Jovem Feminino";
-            else return "Jovem";
         }
         else if(idade < 50){
-            if(sexo.equals('1'))
+            if(sexo.equals("1"))
                 return "Adulto Masculino";
-            else if(sexo.equals('2'))
+            else if(sexo.equals("2"))
                 return "Adulto Feminino";
-            else return "Adulto";
         }
         else{
-            if(sexo.equals('1'))
+            if(sexo.equals("1"))
                 return "Idoso Masculino";
-            else if(sexo.equals('2'))
+            else if(sexo.equals("2"))
                 return "Idoso Feminino";
-            else return "Idoso";
         }
+        return null;
     }
 }
