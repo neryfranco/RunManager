@@ -89,4 +89,8 @@ public class Categoria {
     public void excluir() throws SQLException, ClassNotFoundException{
         CategoriaDAO.excluir(this);
     }
+    
+    public Integer verificaCategoria(String sexo, Integer idade){
+        if(sexo == 'M')
+    }
 }
