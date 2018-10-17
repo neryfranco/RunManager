@@ -20,12 +20,11 @@ public class Categoria implements IUsuario {
     private String idadeIni;
     private String idadeFim;
     private String descricao;
-    private Integer idade;
     
     
     @Override
     public Integer getIdade() {
-        return idade;   
+        return null;   
     }
 
     public Categoria(int id, String sexo, String idadeIni, String idadeFim, String descricao) {
@@ -34,10 +33,6 @@ public class Categoria implements IUsuario {
         this.idadeIni = idadeIni;
         this.idadeFim = idadeFim;
         this.descricao = descricao;
-    }
-
-    public Categoria() {
-        
     }
 
     public int getId() {

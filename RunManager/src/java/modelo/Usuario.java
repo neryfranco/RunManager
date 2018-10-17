@@ -10,7 +10,7 @@ package modelo;
  * @author Nery
  */
 public class Usuario {
-    
+
     private String cpf;
     private String nome;
     private String dataNascimento;
@@ -114,6 +114,5 @@ public class Usuario {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
-    
-    
+
 }
