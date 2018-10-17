@@ -9,6 +9,12 @@ package modelo;
  *
  * @author Jessica
  */
-public interface IUsuario {
-    
+public interface InterfaceCategoria {
+
+    public Integer getIdade();
+
+    public String getSexo();
+
+    public Double getCategoria();
+
 }
