@@ -42,7 +42,11 @@ public class TestCategoriaUnitario extends TestCase {
 
     @Test
     public void testCategoria_InfantilMasculino() {
-        categoria.setIdade(11);
+        Categoria categoria new Categoria();
+        Usuario usuario = new Usuario();
+        usuario.setSexo(1);
+        usuario.setIdade(10);
+        assertEquals("Infantil Masculino", categoria.verificaCategoria(usuario));
         
     }
 

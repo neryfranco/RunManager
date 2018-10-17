@@ -13,28 +13,19 @@ import java.util.List;
  *
  * @author Nery
  */
-public class Categoria implements InterfaceCategoria {
+public class Categoria implements IUsuario {
 
-    int id;
-    String sexo;
-    String idadeIni;
-    String idadeFim;
-    String descricao;
-    double categoria;
-    Integer idade;
-
-    @Override
-    public Double getCategoria() {
-        return categoria;
-    }
-
+    private int id;
+    private String sexo;
+    private String idadeIni;
+    private String idadeFim;
+    private String descricao;
+    private Integer idade;
+    
+    
     @Override
     public Integer getIdade() {
-        return idade;
-    }
-
-    public void setIdade(Integer idade) {
-        this.idade = idade;
+        return idade;   
     }
 
     public Categoria(int id, String sexo, String idadeIni, String idadeFim, String descricao) {
@@ -46,7 +37,7 @@ public class Categoria implements InterfaceCategoria {
     }
 
     public Categoria() {
-
+        
     }
 
     public int getId() {
@@ -64,8 +55,6 @@ public class Categoria implements InterfaceCategoria {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
-    
-    
 
     public String getIdadeIni() {
         return idadeIni;
@@ -109,6 +98,43 @@ public class Categoria implements InterfaceCategoria {
 
     public void excluir() throws SQLException, ClassNotFoundException {
         CategoriaDAO.excluir(this);
+    }
+
+    public String verificaCategoria(IUsuario usuario) {
+        int idade = usuario.getIdade();
+        String sexo = usuario.getSexo();
+        if (idade < 12) {
+            if (sexo.equals("1")) {
+                return "Infantil Masculino";
+            } else if (sexo.equals("2")) {
+                return "Infantil Feminino";
+            }
+        } else if (idade < 18) {
+            if (sexo.equals("1")) {
+                return "Adolescente Masculino";
+            } else if (sexo.equals("2")) {
+                return "Adolescente Feminino";
+            }
+        } else if (idade < 30) {
+            if (sexo.equals("1")) {
+                return "Jovem Masculino";
+            } else if (sexo.equals("2")) {
+                return "Jovem Feminino";
+            }
+        } else if (idade < 50) {
+            if (sexo.equals("1")) {
+                return "Adulto Masculino";
+            } else if (sexo.equals("2")) {
+                return "Adulto Feminino";
+            }
+        } else {
+            if (sexo.equals("1")) {
+                return "Idoso Masculino";
+            } else if (sexo.equals("2")) {
+                return "Idoso Feminino";
+            }
+        }
+        return null;
     }
 
 }
