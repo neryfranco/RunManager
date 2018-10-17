@@ -35,6 +35,8 @@ public class Usuario implements IUsuario{
         this.uf = uf;
         this.cidade = cidade;
     }
+    
+    public Usuario(){}
 
     public String getNome() {
         return nome;

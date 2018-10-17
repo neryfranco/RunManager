@@ -90,7 +90,7 @@ public class Categoria{
         CategoriaDAO.excluir(this);
     }
     
-    public String verificaCategoria(IUsuario usuario){
+    public static String verificaCategoria(IUsuario usuario){
         int idade = usuario.getIdade();
         String sexo = usuario.getSexo();
         if(idade < 12){
