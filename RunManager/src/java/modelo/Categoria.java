@@ -15,18 +15,15 @@ import java.util.List;
  */
 public class Categoria {
 
-         
     private int id;
     private String sexo;
-    private String idadeIni;
-    private String idadeFim;
+    private String idade;
     private String descricao;
 
-    public Categoria(int id, String sexo, String idadeIni, String idadeFim, String descricao) {
+    public Categoria(int id, String sexo, String idade, String descricao) {
         this.id = id;
         this.sexo = sexo;
-        this.idadeIni = idadeIni;
-        this.idadeFim = idadeFim;
+        this.idade = idade;
         this.descricao = descricao;
     }
 
@@ -46,20 +43,12 @@ public class Categoria {
         this.sexo = sexo;
     }
 
-    public String getIdadeIni() {
-        return idadeIni;
+    public String getIdade() {
+        return idade;
     }
 
-    public void setIdadeIni(String idadeIni) {
-        this.idadeIni = idadeIni;
-    }
-
-    public String getIdadeFim() {
-        return idadeFim;
-    }
-
-    public void setIdadeFim(String idadeFim) {
-        this.idadeFim = idadeFim;
+    public void setIdade(String idade) {
+        this.idade = idade;
     }
 
     public String getDescricao() {
@@ -69,24 +58,61 @@ public class Categoria {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
-    public static List obterCategorias() throws ClassNotFoundException{
+
+    public static List obterCategorias() throws ClassNotFoundException {
         return CategoriaDAO.obterCategorias();
     }
-    
+
     public static Categoria obterCategoria(int categoria_id) throws ClassNotFoundException {
         return CategoriaDAO.obterCategoria(categoria_id);
     }
 
-    public void gravar() throws SQLException, ClassNotFoundException{
+    public void gravar() throws SQLException, ClassNotFoundException {
         CategoriaDAO.gravar(this);
     }
 
-    public void alterar() throws SQLException, ClassNotFoundException{
+    public void alterar() throws SQLException, ClassNotFoundException {
         CategoriaDAO.alterar(this);
     }
 
-    public void excluir() throws SQLException, ClassNotFoundException{
+    public void excluir() throws SQLException, ClassNotFoundException {
         CategoriaDAO.excluir(this);
+    }
+
+    public String verificaCategoria(IUsuario usuario) {
+        int idade = usuario.getIdade();
+        String sexo = usuario.getSexo();
+        if (idade < 12) {
+            if (sexo.equals("1")) {
+                return "Infantil Masculino";
+            } else if (sexo.equals("2")) {
+                return "Infantil Feminino";
+            }
+        } else if (idade < 18) {
+            if (sexo.equals("1")) {
+                return "Adolescente Masculino";
+            } else if (sexo.equals("2")) {
+                return "Adolescente Feminino";
+            }
+        } else if (idade < 30) {
+            if (sexo.equals("1")) {
+                return "Jovem Masculino";
+            } else if (sexo.equals("2")) {
+                return "Jovem Feminino";
+            }
+        } else if (idade < 50) {
+            if (sexo.equals("1")) {
+                return "Adulto Masculino";
+            } else if (sexo.equals("2")) {
+                return "Adulto Feminino";
+            }
+        } else {
+            if (sexo.equals("1")) {
+                return "Idoso Masculino";
+            } else if (sexo.equals("2")) {
+                return "Idoso Feminino";
+            }
+        }
+        return null;
     }
 }
