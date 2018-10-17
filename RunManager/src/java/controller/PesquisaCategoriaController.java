@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Categoria;
+import modelo.Usuario;
 
 /**
  *
@@ -20,15 +21,15 @@ import modelo.Categoria;
  */
 public class PesquisaCategoriaController extends HttpServlet {
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-   
+
         try {
             request.setAttribute("categorias", Categoria.obterCategorias());
-            RequestDispatcher view=
-                    request.getRequestDispatcher("/pesquisaCategoria.jsp");
+            RequestDispatcher view
+                    = request.getRequestDispatcher("/pesquisaCategoria.jsp");   
             view.forward(request, response);
-        } catch(ClassNotFoundException ex){}
+        } catch (ClassNotFoundException ex) {
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

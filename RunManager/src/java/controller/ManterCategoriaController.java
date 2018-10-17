@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Categoria;
+import modelo.Usuario;
 
 /**
  *
@@ -36,16 +37,34 @@ public class ManterCategoriaController extends HttpServlet {
             prepararEditar(request, response);
         } else if (acao.equals("confirmarEditar")) {
             confirmarEditar(request, response);
+        } else if (acao.equals("verificaCategoria")) {
+            verificaCategoria(request, response);
         }
     }
-    
+
+    private void verificaCategoria(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String sexo = request.getParameter("txtSexo");
+        String sIdade = request.getParameter("txtIdade");
+        Integer idade = Integer.parseInt(sIdade);
+        Categoria categoria = new Categoria(0, "0", "0", "0", "0");
+        Usuario usuario = new Usuario("0", "0", "0", sexo, "0", "0", "0", "0", "0", "0");
+        usuario.setIdade(idade);
+        String resultado = categoria.verificaCategoria(usuario);
+        request.setAttribute("txtIdade", sIdade);
+        request.setAttribute("txtSexo", sexo);
+        request.setAttribute("resultado", resultado);
+        RequestDispatcher view = request.getRequestDispatcher("PesquisaCategoriaController");
+        view.forward(request, response);
+
+    }
+
     public void prepararIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("operacao", "Incluir");
-        RequestDispatcher view=
-                request.getRequestDispatcher("/manterCategoria.jsp");
+        RequestDispatcher view
+                = request.getRequestDispatcher("/manterCategoria.jsp");
         view.forward(request, response);
     }
-    
+
     private void confirmarIncluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         String Sexo = request.getParameter("txtSexo");
         String idadeIni = request.getParameter("txtIdadeInicial");
@@ -56,7 +75,7 @@ public class ManterCategoriaController extends HttpServlet {
         RequestDispatcher view = request.getRequestDispatcher("PesquisaCategoriaController");
         view.forward(request, response);
     }
-    
+
     private void prepararExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         try {
             request.setAttribute("operacao", "Excluir");
@@ -72,7 +91,7 @@ public class ManterCategoriaController extends HttpServlet {
 
     private void confirmarExcluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         int id = Integer.parseInt(request.getParameter("txtID"));
-        Categoria categoria = new Categoria(id,null , null, null, null);
+        Categoria categoria = new Categoria(id, null, null, null, null);
         categoria.excluir();
         RequestDispatcher view = request.getRequestDispatcher("PesquisaCategoriaController");
         view.forward(request, response);
@@ -101,7 +120,6 @@ public class ManterCategoriaController extends HttpServlet {
         RequestDispatcher view = request.getRequestDispatcher("PesquisaCategoriaController");
         view.forward(request, response);
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -121,5 +121,9 @@ public class Usuario implements IUsuario{
         return idade;
     }
     
+    public void setIdade(Integer idade){
+        this.idade = idade;
+    }
+    
     
 }

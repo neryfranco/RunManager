@@ -36,12 +36,41 @@
             </tr>
 
         </table>
+
+      
         <form action="ManterCategoriaController?acao=prepararIncluir" method="post">
             <input class="botao" type="submit" name="btnIncluir" value="Incluir">
         </form>
         <button onclick="location.href = '/RunManager';" class="botao" >Voltar</button>
+        
+        <br>
+        
+        <h2>Verificar Categoria</h2>
+       <form action="ManterCategoriaController?acao=verificaCategoria" method="post">
+           <table>
+            <tr>
+                <td>Informe a sua idade:</td>
+                <td><input class="caixatexto" type="text" name="txtIdade" value="${sIdade}"></td>
+            </tr>
+            <tr>
+                <td>Sexo: </td> 
+                <td><input type="radio" name="txtSexo" value="1" 
+                            <c:if test="${sexo == '1'}"> checked</c:if>> Masculino </td>
+                        <td><input type="radio" name="txtSexo" value="2" 
+                            <c:if test="${sexo == '2'}"> checked</c:if>> Feminino </td>
+            </tr>
+            <br>
+            <tr>
+                <td>Resultado: </td>
+                <td>${resultado}</td>
+            </tr>
+        </table> 
+            <input type="submit" name="btnVerifica" value="Verificar">
+        </form>
+            
+        <br>
         <script>
-            var testApp = angular.module('testApp', []);
+                    var testApp = angular.module('testApp', []);
                     testApp.controller('testController', function ($scope, $http) {
                         $scope.getRequest = function () {
                             console.log("I've been pressed!");
