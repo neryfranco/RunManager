@@ -117,4 +117,14 @@ public class TestCategoria extends TestCase {
         Categoria categoria = new Categoria(0,"0","0","0","0");
         assertEquals("Idoso Feminino", categoria.verificaCategoria(usuarioMock));
     }
+    
+    public void testDadosIncorretos() {
+        IUsuario usuarioMock = createMock(IUsuario.class);
+        expect(usuarioMock.getIdade()).andReturn(50);
+        expect(usuarioMock.getSexo()).andReturn("3");
+        replay(usuarioMock);
+        
+        Categoria categoria = new Categoria(0,"0","0","0","0");
+        assertEquals(null, categoria.verificaCategoria(usuarioMock));
+    }
 }
