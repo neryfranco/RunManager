@@ -98,31 +98,35 @@ public class Categoria{
                 return "Infantil Masculino";
             else if(sexo.equals("2"))
                 return "Infantil Feminino";
+            return "Infantil";
         }
         else if(idade < 18){
             if(sexo.equals("1"))
                 return "Adolescente Masculino";
             else if(sexo.equals("2"))
                 return "Adolescente Feminino";
+            return "Adolescente";
         }
         else if(idade < 30){
             if(sexo.equals("1"))
                 return "Jovem Masculino";
             else if(sexo.equals("2"))
                 return "Jovem Feminino";
+            return "Jovem";
         }
         else if(idade < 50){
             if(sexo.equals("1"))
                 return "Adulto Masculino";
             else if(sexo.equals("2"))
                 return "Adulto Feminino";
+            return "Adulto";
         }
         else{
             if(sexo.equals("1"))
                 return "Idoso Masculino";
             else if(sexo.equals("2"))
                 return "Idoso Feminino";
+            return "Idoso";
         }
-        return null;
     }
 }

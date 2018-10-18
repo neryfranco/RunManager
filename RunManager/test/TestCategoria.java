@@ -10,13 +10,37 @@ import modelo.Categoria;
 import javax.servlet.http.HttpServletRequest;
 import junit.framework.TestCase;
 import modelo.IUsuario;
+import modelo.Usuario;
 import static org.easymock.EasyMock.*;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 
 /**
  *
  * @author usaer
  */
 public class TestCategoria extends TestCase {
+    
+    Usuario usuario;
+    
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+        usuario = new Usuario();
+    }
+    
+    @After
+    public void tearDown() {
+    }
 
     public void testUsuarioInfantilMasculino() {
         IUsuario usuarioMock = createMock(IUsuario.class);
@@ -24,8 +48,7 @@ public class TestCategoria extends TestCase {
         expect(usuarioMock.getSexo()).andReturn("1");
         replay(usuarioMock);
         
-        Categoria categoria = new Categoria(0,"0","0","0","0");
-        assertEquals("Infantil Masculino", categoria.verificaCategoria(usuarioMock));
+        assertEquals("Infantil Masculino", Categoria.verificaCategoria(usuarioMock));
     }
     
     public void testUsuarioInfantilFeminino() {
@@ -34,8 +57,7 @@ public class TestCategoria extends TestCase {
         expect(usuarioMock.getSexo()).andReturn("2");
         replay(usuarioMock);
         
-        Categoria categoria = new Categoria(0,"0","0","0","0");
-        assertEquals("Infantil Feminino", categoria.verificaCategoria(usuarioMock));
+        assertEquals("Infantil Feminino", Categoria.verificaCategoria(usuarioMock));
     }
     
     public void testUsuarioAdolescenteMasculino() {
@@ -44,8 +66,7 @@ public class TestCategoria extends TestCase {
         expect(usuarioMock.getSexo()).andReturn("1");
         replay(usuarioMock);
         
-        Categoria categoria = new Categoria(0,"0","0","0","0");
-        assertEquals("Adolescente Masculino", categoria.verificaCategoria(usuarioMock));
+        assertEquals("Adolescente Masculino", Categoria.verificaCategoria(usuarioMock));
     }
     
     public void testUsuarioAdolescenteFeminino() {
@@ -54,18 +75,16 @@ public class TestCategoria extends TestCase {
         expect(usuarioMock.getSexo()).andReturn("2");
         replay(usuarioMock);
         
-        Categoria categoria = new Categoria(0,"0","0","0","0");
-        assertEquals("Adolescente Feminino", categoria.verificaCategoria(usuarioMock));
+        assertEquals("Adolescente Feminino", Categoria.verificaCategoria(usuarioMock));
     }
-    
+
     public void testUsuarioJovemMasculino() {
         IUsuario usuarioMock = createMock(IUsuario.class);
         expect(usuarioMock.getIdade()).andReturn(29);
         expect(usuarioMock.getSexo()).andReturn("1");
         replay(usuarioMock);
         
-        Categoria categoria = new Categoria(0,"0","0","0","0");
-        assertEquals("Jovem Masculino", categoria.verificaCategoria(usuarioMock));
+        assertEquals("Jovem Masculino", Categoria.verificaCategoria(usuarioMock));
     }
     
     public void testUsuarioJovemFeminino() {
@@ -74,8 +93,7 @@ public class TestCategoria extends TestCase {
         expect(usuarioMock.getSexo()).andReturn("2");
         replay(usuarioMock);
         
-        Categoria categoria = new Categoria(0,"0","0","0","0");
-        assertEquals("Jovem Feminino", categoria.verificaCategoria(usuarioMock));
+        assertEquals("Jovem Feminino", Categoria.verificaCategoria(usuarioMock));
     }
     
     public void testUsuarioAdultoMasculino() {
@@ -84,8 +102,7 @@ public class TestCategoria extends TestCase {
         expect(usuarioMock.getSexo()).andReturn("1");
         replay(usuarioMock);
         
-        Categoria categoria = new Categoria(0,"0","0","0","0");
-        assertEquals("Adulto Masculino", categoria.verificaCategoria(usuarioMock));
+        assertEquals("Adulto Masculino", Categoria.verificaCategoria(usuarioMock));
     }
     
     public void testUsuarioAdultoFeminino() {
@@ -94,8 +111,7 @@ public class TestCategoria extends TestCase {
         expect(usuarioMock.getSexo()).andReturn("2");
         replay(usuarioMock);
         
-        Categoria categoria = new Categoria(0,"0","0","0","0");
-        assertEquals("Adulto Feminino", categoria.verificaCategoria(usuarioMock));
+        assertEquals("Adulto Feminino", Categoria.verificaCategoria(usuarioMock));
     }
     
     public void testUsuarioIdosoMasculino() {
@@ -104,8 +120,7 @@ public class TestCategoria extends TestCase {
         expect(usuarioMock.getSexo()).andReturn("1");
         replay(usuarioMock);
         
-        Categoria categoria = new Categoria(0,"0","0","0","0");
-        assertEquals("Idoso Masculino", categoria.verificaCategoria(usuarioMock));
+        assertEquals("Idoso Masculino", Categoria.verificaCategoria(usuarioMock));
     }
     
     public void testUsuarioIdosoFeminino() {
@@ -114,17 +129,51 @@ public class TestCategoria extends TestCase {
         expect(usuarioMock.getSexo()).andReturn("2");
         replay(usuarioMock);
         
-        Categoria categoria = new Categoria(0,"0","0","0","0");
-        assertEquals("Idoso Feminino", categoria.verificaCategoria(usuarioMock));
+        assertEquals("Idoso Feminino", Categoria.verificaCategoria(usuarioMock));
     }
     
-    public void testDadosIncorretos() {
+        public void testUsuarioInfantil() {
+        IUsuario usuarioMock = createMock(IUsuario.class);
+        expect(usuarioMock.getIdade()).andReturn(11);
+        expect(usuarioMock.getSexo()).andReturn("3");
+        replay(usuarioMock);
+        
+        assertEquals("Infantil", Categoria.verificaCategoria(usuarioMock));
+    }
+                
+    public void testUsuarioAdolescente() {
+        IUsuario usuarioMock = createMock(IUsuario.class);
+        expect(usuarioMock.getIdade()).andReturn(17);
+        expect(usuarioMock.getSexo()).andReturn("3");
+        replay(usuarioMock);
+        
+        assertEquals("Adolescente", Categoria.verificaCategoria(usuarioMock));
+    }
+    
+    public void testUsuarioJovem() {
+        IUsuario usuarioMock = createMock(IUsuario.class);
+        expect(usuarioMock.getIdade()).andReturn(29);
+        expect(usuarioMock.getSexo()).andReturn("3");
+        replay(usuarioMock);
+        
+        assertEquals("Jovem", Categoria.verificaCategoria(usuarioMock));
+    }
+        
+    public void testUsuarioAdulto() {
+        IUsuario usuarioMock = createMock(IUsuario.class);
+        expect(usuarioMock.getIdade()).andReturn(49);
+        expect(usuarioMock.getSexo()).andReturn("3");
+        replay(usuarioMock);
+        
+        assertEquals("Adulto", Categoria.verificaCategoria(usuarioMock));
+    }
+    
+    public void testUsuarioIdoso() {
         IUsuario usuarioMock = createMock(IUsuario.class);
         expect(usuarioMock.getIdade()).andReturn(50);
         expect(usuarioMock.getSexo()).andReturn("3");
         replay(usuarioMock);
         
-        Categoria categoria = new Categoria(0,"0","0","0","0");
-        assertEquals(null, categoria.verificaCategoria(usuarioMock));
+        assertEquals("Idoso", Categoria.verificaCategoria(usuarioMock));
     }
 }

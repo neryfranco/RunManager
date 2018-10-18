@@ -85,4 +85,39 @@ public class TestCategoriaJUnit extends TestCase {
         usuario.setSexo("2");
         assertEquals("Idoso Feminino", Categoria.verificaCategoria(usuario));
     }
+    
+    public void testUsuarioInfantil() {
+        Usuario usuario = new Usuario();
+        usuario.setIdade(11);
+        usuario.setSexo("3");
+        assertEquals("Infantil", Categoria.verificaCategoria(usuario));
+    }
+    
+    public void testUsuarioAdolescente() {
+        Usuario usuario = new Usuario();
+        usuario.setIdade(17);
+        usuario.setSexo("3");
+        assertEquals("Adolescente", Categoria.verificaCategoria(usuario));
+    }
+    
+    public void testUsuarioJovem() {
+        Usuario usuario = new Usuario();
+        usuario.setIdade(29);
+        usuario.setSexo("3");
+        assertEquals("Jovem", Categoria.verificaCategoria(usuario));
+    }
+    
+    public void testUsuarioAdulto() {
+        Usuario usuario = new Usuario();
+        usuario.setIdade(49);
+        usuario.setSexo("3");
+        assertEquals("Adulto", Categoria.verificaCategoria(usuario));
+    }
+    
+    public void testUsuarioIdoso() {
+        Usuario usuario = new Usuario();
+        usuario.setIdade(50);
+        usuario.setSexo("3");
+        assertEquals("Idoso", Categoria.verificaCategoria(usuario));
+    }
 }
